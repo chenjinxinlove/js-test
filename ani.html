@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="animateManange.js"></script>
+<style>
+    .minImages{
+        position: absolute;
+        left:0;
+    }
+</style>
+<body>
+<img id="focusPointSource" class="minImages" src="./img/1.png" alt="">
+</body>
+<script >
+    document.getElementById("focusPointSource").onclick = function () {
+        console.log('ddd')
+        new animateManage({
+            "context":this,
+            "effect":"linear",
+            "time":500,
+            "starCss":{
+                "left":this.left
+            },
+            "css":{
+                "left":200
+            },
+            "callback":function () {
+                alert("dong")
+            }
+        }).init();
+    }
+</script>
+</html>

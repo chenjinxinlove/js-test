@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .minImages {
+        width: 200px;
+        position: relative;
+    }
+
+    .focusPoint {
+        display: none;
+        border: 2px #ccc outset;
+        position: absolute;
+        top: 80px;
+        z-index: 100;
+        -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+        -moz-opacity: 0.5;
+        opacity: 0.5;
+        cursor: move;
+    }
+
+    #imagesSource {
+        width: 200px;
+        height: auto;
+    }
+
+    .magnifier {
+        width: 304px;
+        height: 222px;
+        position: absolute;
+        display: none;
+        top: 300px;
+        overflow: hidden;
+        margin: 0px auto 0px;
+    }
+
+    .maxImage {
+        width: 800px;
+        position: absolute;
+    }
+</style>
+<body>
+<div id="imagesSource" data-maxImg="./img/2.jpg">
+    <img src="./img/2.jpg" alt="" class="mimImage">
+    <div class="focusPoint" id="focusPoint"></div>
+</div>
+<div class="magnifier" id="magnifier">
+    <img src="./img/1.png" class="maxImage" id="magnifierImg" alt="">
+</div>
+</body>
+<script>
+    window.onload = function () {
+        var isMoveFocus = false,//是否移动焦点
+                focusElement = null,     //焦点对象
+                magnifierElement = null, //放大镜
+                magnifierWidth = 800,   //放大镜宽度
+                focusZindex = 100,   //焦点的Z轴
+                magnnifierScale = 0,   //比例尺
+                magnifierZindex = 101,  //放大镜的Z轴
+                eMagnifierMages = null,  //放大镜的对象
+
+                focusArae = { //焦点的面积
+                    "width": 50,
+                    "height": 50
+                },
+                setCss = function (_this, cssOption) {
+                    if (!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style) {
+                        return;
+                    }
+                    for (var cs in cssOption) {
+                        _this.style[cs] = cssOption[cs];
+                    }
+                    return _this;
+                },
+
+                initMagnifierMages = function (_e) {
+                    focusElement = setCss(document.getElementById("focusPoint"), {
+                        "z-index": focusZindex,
+                        "width": focusArae.width,
+                        "height": focusArae.height
+                    });
+
+                    initMagnifierPos(_e);
+
+                    magnifierScale = magnifierWidth / _e.offsetWidth;
+                    var _img = _e.getAttribute("data-maxImg");
+                    document.getElementById("magnifierImg").setAttribute("src", _img)
+
+                },
+                mouseMagnifier = function (_e) {
+                    this.initMagnifierMages(_e);
+                    this.eMagnifierMages = _e;
+                },
+                _mousepos = {
+                    "top": 0,
+                    "left": 0
+                }
+
+
+    }
+</script>
+
+
+</html>

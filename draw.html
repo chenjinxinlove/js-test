@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table id="tableDraw" border="1">
+        <tr>
+            <td>
+                <div class="draw" id="tableDrawContent">被拖拽的内容</div>
+            </td>
+            <td>等待被拖拽元素</td>
+            <td>等待被拖拽元素</td>
+        </tr>
+    </table>
+</body>
+<script>
+    window.onload = function () {
+        var
+                bodyEvents = function () {
+                    document.body.onmousemove = function (e) {
+                        bodyTableDrawmove(e);
+                    }
+
+                    document.body.onmouseup = function (e) {
+                        bodyTableDrawmouseup(e);
+                    }
+                },
+
+                getAbsoluteLeft = function (_e) {
+                    var _left = _e.offsetLeft,
+                            _current = _e.offsetParent;
+                    while (_current !== null){
+                        _left += _current.offsetLeft;
+                        _current = _current.offsetParent;
+                    }
+                    return _left;
+                },
+
+                getAbsoluteTop = function (_e) {
+                    var _top = _e.offsetTop,
+                            _current = _e.offsetParent;
+                    while (_current!==null){
+                        _top += _current.offsetTop;
+                        _current = _current.offsetParent;
+                    }
+                    return _top;
+                },
+
+                setCss = function (_this, cssOption) {
+                    if(!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style){
+                        return;
+                    }
+                    for(var cs in cssOption){
+                        _this.style[cs] = cssOption[cs];
+                    }
+                    return _this;
+                },
+
+                pointCheck = function (_event, _e, options) {
+                    var _pos = getMousePoint(_event),
+                            _w = options && options.width || _e.offsetWidth,
+                            _h = options && options.height || _e.offsetHeight,
+                            _left = getAbsoluteLeft(_e),
+                            _top = getAbsoluteTop(_e);
+                    _pos.left += options && options.left || 0;
+                    if(_pos.left<(_left+_w && _left < _pos.left && _pos.top > _top && _pos.top < (_top+_h))){
+                        return true;
+                    }
+                    return false;
+                },
+
+                _mousepos = {
+                    "top": 0,
+                    "left": 0
+                },
+
+                getMousePoint = function (_e) {
+                    var _body = document.body,
+                            _left = 0,
+                            _top = 0;
+                    if(typeof window.pageXOffset != 'undefined'){
+                        _left = window.pageXOffset;
+                        _top = window.pageYOffset;
+                    }
+                    else if(typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat'){
+                        _left = document.documentElement.scrollLeft;
+                        _top = document.documentElement.scrollTop;
+                    }
+                    else if(typeof _body != 'undefined'){
+                        _left = _body.scrollLeft;
+                        _top = _body.scrollTop;
+                    }
+                    _left += _e.clientX;
+                    _top += _e.clientY;
+
+                    _mousepos.left = _left;
+                    _mousepos.top = _top;
+
+                    return _mousepos;
+                };
+
+        drawContent = null;
+        drawing = false;
+        startDrawTd = null;
+        drawTd = null;
+        startDrawPos = {
+            "left": 0,
+            "top": 0
+        };
+
+        drawTds = [];
+        drawTdsLen = 0;
+        var tableDraw = function (table, tableDrawContent) {
+            drawContent = tableDrawContent;
+
+            var r = table.rows,
+                    rl = r.length,
+                    i = 0,
+                    c =[],
+                    cl = 0,
+                    l = 0;
+            for(;i<rl;i++){
+                c = r[i].cells;
+                cl = c.length;
+                l = 0;
+                for(;i<cl;i++){
+                    drawTds.push(c[l]);
+                }
+                drawTdsLen = drawTds.length;
+                tableDrawing();
+            }
+        },
+        self = this,
+        openTableDraw = function (event) {
+
+            event = event || window.event;
+            var _pos = getMousePoint(event);
+            this.drawing = open;
+
+            starDrawPos = {
+                "left" : _pos.left - getAbsoluteLeft(drawContent),
+                "top" : _pos.top - getAbsoluteTop(drawContent)
+            };
+        },
+                closeTableDraw = function () {
+                    this.drawing = false;
+                    setCss(drawContent,{
+                        "left": "0px",
+                        "top": "0px",
+                        "position":"static"
+                    });
+                    drawTd.style.backgroundColor = "#fff";
+                },
+
+                tableDrawing = function () {
+                    drawContent.onmousedown = function (e) {
+                        startDrawTd = this.parentNode;
+                        openTableDraw(e);
+                    }
+                },
+
+                bodyTableDrawmoveTd = function (event) {
+                    var i = 0,
+                            _drawTdsl = null;
+                    for(;i<drawTdsLen;i++){
+                        _drawTdsl = drawTds[i];
+                        if(pointCheck(event, _drawTdsl)){
+                            if(drawing == open){
+                                drawTd = _drawTdsl;
+                            }
+                        }
+                        else{
+                            _drawTdsl.style.backgroundColor = "#fff";
+                        }
+                    }
+                    _drawTdsl.style.backgroundColor = "#e7ab83";
+                },
+
+                bodyTableDrawmove = function (event) {
+                    event = event || window.event;
+                    var _pos = getMousePoint(event);
+                    if(!drawContent || !drawing) return false;
+
+                    bodyTableDrawmoveTd(event);
+                    setCss(drawContent,{
+                        "left": (_pos.left - startDrawPos.left) + "px",
+                        "top" : (_pos.top - starDrawPos.top) + "px"
+                    });
+
+                    if(drawContent.style.position != "absolute"){
+                        drawContent.style.position = "absolete";
+                    }
+                },
+
+                bodyTableDrawmouseup = function () {
+                    if(!drawContent || !drawTd || !drawing) return false;
+                    drawTd.appendChild(drawContent);
+
+                    var _html = startDrawTd.innerHTML;
+                    if(_html.search("等待被拖入元素") == -1 && _html.search("被拖拽的内容") == -1){
+                        startDrawTd.innerHTML = "等待被拖入元素";
+                    }
+                    closeTableDraw();
+                };
+        tableDraw(
+                document.getElementById("tableDraw"),
+                document.getElementById("tableDrawContent")
+        );
+        bodyEvents();
+
+
+
+
+
+    }
+</script>
+</html>
