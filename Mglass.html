@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+  #samllImg{
+      position: relative;
+      left: 200px;
+      top:200px;
+      width: 350px;
+      height: 449px;
+  }
+    #showFK{
+        position: absolute;
+        top:10px;
+        left:20px;
+        background: #cccccc;
+        opacity: 0.5;
+        width: 80px;
+        height: 100px;
+    }
+</style>
+<body>
+<div id="samllImg">
+    <img  src="img/mglass.jpg" alt="">
+    <div id="showFK"></div>
+</div>
+
+
+</body>
+<script>
+    (function (window, undefined) {
+        var samllImg,showFK;
+
+        var Mglass = function (options) {
+            return new Mglass.prototype.init(options);
+        };
+        Mglass.prototype.init = function (options) {
+            _self = this;
+            if(!options.samllImg && !options.showFK){
+                return;
+            }
+            samllImg = document.getElementById(options.samllImg);
+            showFK = document.getElementById(options.showFK);
+            document.body.onmousemove = function () {
+                _self.controllPieces(samllImg, showFK)
+            }
+        }
+        //得到坐标位置
+        Mglass.prototype.getPointMouse = function(_e){
+            var body = document.body,
+                    _left = 0,
+                    _top = 0,
+                    _mousepos = {};
+            if(typeof window.pageXOffset != 'undefined'){
+                _left = window.pageXOffset;
+                _top = window.pageYOffset;
+            }
+            else if(typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat'){
+                _left = document.documentElement.scrollLeft;
+                _top = document.documentElement.scrollTop;
+            }
+            else {
+                _left = body.offsetLeft;
+                _top = body.offsetTop;
+            }
+            _left += _e.clientX;
+            _top += _e.clientY;
+            _mousepos.left = _left;
+            _mousepos.top = _top;
+            return _mousepos;
+        };
+        //绝对左边
+        Mglass.prototype.getAbsoluteLeft = function (e) {
+            var _left = e.offsetLeft,
+                    _current = e.offsetParent;
+            while (_current !== null){
+                _left += _current.offsetLeft;
+                _current = _current.offsetParent;
+            }
+            return _left;
+        };
+        //绝对顶部
+        Mglass.prototype.getAbsoluteTop = function (e) {
+            var _top = e.offsetTop,
+                    _current = e.offsetParent;
+            while (_current !== null){
+                _top += _current.offsetTop;
+                _current = _current.offsetParent;
+            }
+            return _top;
+        };
+        //设置css
+        Mglass.prototype.setCss = function (_this, Option){
+            if(!_this || _this.nodeType !== 3 || _this.nodeType !== 8 || !_this.style){
+                for(var cs in Option){
+                    _this.style[cs] = Option[cs];
+                }
+            }
+            return _this;
+        };
+        Mglass.prototype.controllPieces = function (samllImg, showFK) {
+            var samllImgAbLeft = this.getAbsoluteLeft(samllImg),
+                    samllImgAbTop = this.getAbsoluteTop(samllImg),
+                    samllHeight = samllImg.offsetHeight,
+                    samllWidth = samllImg.offsetWidth,
+                    KHeight = showFK.offsetHeight,
+                    KWidth = showFK.offsetWidth,
+                    mousePonit = this.getPointMouse(window.event),
+                    smallInLeft = mousePonit.left - samllImgAbLeft,
+                    smallInTop = mousePonit.top - samllImgAbTop;
+            if(smallInLeft >  KWidth / 2 && smallInLeft < samllWidth - KWidth / 2 && smallInTop > KHeight / 2 && smallInTop < samllHeight - KHeight / 2 ){
+                console.log(smallInLeft,smallInTop )
+                this.setCss(showFK, {
+                    'top' :  smallInTop - KHeight / 2 + 'px',
+                    'left' : smallInLeft - KWidth / 2 + 'px',
+                })
+
+
+            }
+        }
+
+
+        Mglass.prototype.init.prototype = Mglass.prototype;
+
+        window.Mglass = Mglass;
+    })(window)
+    Mglass({
+        samllImg:'samllImg',
+        showFK : 'showFK'
+
+    })
+</script>
+
+</html>
