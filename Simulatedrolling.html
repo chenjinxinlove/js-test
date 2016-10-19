@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    p{
+        white-space: nowrap;
+    }
+</style>
+<body>
+<div style="position: relative;background-color:#f6f6f6;width: 200px;border: 1px #ccc solid; overflow: hidden">
+    <div id="contentScroll" style="position: relative;left: 0px">
+        <p>沃尔高价位如何给物品扔给我仍未热狗王热拍给我二刚玩儿个屁王二平共我二姑家无人工委如果今晚而苹果家无人工委及人工王牌热狗</p>
+        <p>沃尔高价位如何给物品扔给我仍未热狗王热拍给我二刚玩儿个屁王二平共我二姑家无人工委如果今晚而苹果家无人工委及人工王牌热狗</p>
+        <p>沃尔高价位如何给物品扔给我仍未热狗王热拍给我二刚玩儿个屁王二平共我二姑家无人工委如果今晚而苹果家无人工委及人工王牌热狗</p>
+    </div>
+    <div id="slible" style="position: absolute;width: 200px;height: 10px;border: 1px solid #ccc"></div>
+    <div id="scrolling" style="position: relative;display: block;width: 100px;height: 10px;background-color: #fff;border: 1px #979797 solid;-moz-border-radius: 3px;-webkit-border-radius: 3px"></div>
+</div>
+</body>
+<script>
+
+
+        (function (window) {
+            var Range = function (options) {
+                return new Range.prototype.init(options);
+            }
+
+            var _mousepos = {"top": 0,"left": 0},
+            isScrollBar = false, //是否开启滚动
+                    scrollBarLeft = 0, //拖拽的修正值
+                    scrollBarMaxLeft = 0,//left最大拖拽值
+                    scrollBarObj = null, //被拖拽的滚轴元素的对象
+                    scrollBarContent = null,//被拖动的内容元素
+                    scrollBarScale = 1;//转换比例
+            Range.prototype.getMousePoint = function (_e) {
+                var _left = 0,
+                        _top = 0;
+                if(typeof window.pageXOffset !== 'undefined'){
+                    _left = window.pageXOffset;
+                    _top = window.pageYOffset;
+                }
+                else if(typeof document.documentMode !== 'undefined' && document.documentMode !== 'BackCompat'){
+                    _left = document.documentElement.scrollLeft;
+                    _top = document.documentElement.scrollTop;
+                }
+                else {
+                    _left = document.body.scrollLeft;
+                    _top = document.body.scrollTop;
+                }
+                _mousepos.left = _left + _e.clientX;
+                _mousepos.top = _top + _e.clientY;
+
+                return _mousepos;
+            };
+            Range.prototype.getAbsoluteleft = function (_e) {
+                var _left = _e.offsetLeft,
+                        _current = _e.offsetParent;
+                while (_current !== null){
+                    _left += _current.offsetLeft;
+                    _current = _current.offsetParent;
+                }
+                return _left;
+            };
+            Range.prototype.getAbsoluteTop = function (_e) {
+                        var _top = _e.offsetTop,
+                                _current = _e.offsetParent;
+                        while (_current !== null){
+                            _top += _current.offsetTop;
+                            _current = _current.offsetParent;
+                        }
+                        return _top;
+                    };
+            Range.prototype.init = function (options) {
+                var _self = this;
+                var _parent = options.scrolling.parentNode,
+                        parentWidth = _parent.offsetWidth,
+                        contentWidth = options.contentScroll.scrollWidth,
+                        _scrolling = options.scrolling,
+                        _scale = scrollBarScale = parentWidth / contentWidth,
+                        _scrollingWidth = parentWidth * _scale;
+
+                scrollBarContent = options.contentScroll;
+                scrollBarObj = _scrolling;
+                //动态设置bar的宽度
+
+                if(typeof options.barWidth === 'number'){
+                    _scrolling.style.width = options.barWidth  + "px";
+                }else{
+                    _scrolling.style.width = _scrollingWidth + "px";
+                }
+
+                //设置最左的位置
+                scrollBarMaxLeft = this.getAbsoluteleft(_parent) + _parent.offsetWidth - _scrolling.offsetWidth - 10;
+                //鼠标摁下时
+                _scrolling.onmousedown = function (event) {
+                    event =  event || window.event;
+                    var _pos = _self.getMousePoint(event);
+                    isScrollBar = true;
+                    scrollBarLeft = _pos.left - _self.getAbsoluteleft(this);
+                };
+                document.body.onmousemove = function (e) {
+                    _self.moveScrollBar(e);
+                }
+
+                document.onmouseup = function (e) {
+                    _self.closeScrollBar(e);
+                }
+            };
+            Range.prototype.closeScrollBar = function () {
+                isScrollBar = false;
+            };
+            Range.prototype.moveScrollBar = function (event) {
+                if(isScrollBar){
+                    event = event || window.event;
+                    var _pos = this.getMousePoint(event),
+                            _left = _pos.left - scrollBarLeft,
+                            cLeft = _left;
+                    if(_left<0){
+                        _left = 0;
+                        cLeft = 0;
+                    }
+
+                    if(_left >scrollBarMaxLeft) _left = scrollBarMaxLeft;
+
+                    if(cLeft > scrollBarMaxLeft + 10) cLeft = scrollBarMaxLeft + 10;
+
+                    scrollBarObj.style.left = _left + "px";
+
+                    scrollBarContent.style.left = -1 * cLeft / scrollBarScale + "px"
+
+                }
+            };
+            Range.prototype.init.prototype = Range.prototype;
+            window.Range = Range;
+        })(window, undefined)
+
+    Range({
+        "contentScroll" : document.getElementById("contentScroll"),
+        "scrolling" : document.getElementById("scrolling"),
+        "direction" : "left",
+        "barWidth" : "auto"
+    });
+</script>
+</html>
