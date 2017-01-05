@@ -5,29 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22e6e6d8-ac5b-4c59-902c-0fe5a5bfa216" name="默认的" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/11.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/12.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/13.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/15.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/16.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/18.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/9.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WaterFall.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accordion.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ghvjhvj.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/fingerprint2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/underscore-min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loading.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/map.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pageView.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parabola.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/underscore.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/RX.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/func.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shijzhuo.html" afterPath="$PROJECT_DIR$/shijzhuo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/index.js" afterPath="$PROJECT_DIR$/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pageView.html" afterPath="$PROJECT_DIR$/pageView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <ignored path="js-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pageView.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pageView.html">
+      <file leaf-file-name="func.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/func.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="619">
-              <caret line="40" column="19" selection-start-line="14" selection-start-column="20" selection-end-line="40" selection-end-column="19" />
+            <state relative-caret-position="253">
+              <caret line="11" column="26" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -63,8 +47,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -74,8 +58,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/Password-verify.js" />
-        <option value="$PROJECT_DIR$/js/Cursor-pos.js" />
         <option value="$PROJECT_DIR$/sddd" />
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/js/From-verify.js" />
@@ -98,7 +80,6 @@
         <option value="$PROJECT_DIR$/js/window.js" />
         <option value="$PROJECT_DIR$/range.js" />
         <option value="$PROJECT_DIR$/js/Countdown.js" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/js/inputFormat.js" />
         <option value="$PROJECT_DIR$/Countdown.html" />
         <option value="$PROJECT_DIR$/js/dd.js" />
@@ -106,7 +87,6 @@
         <option value="$PROJECT_DIR$/js/AutoCom.js" />
         <option value="$PROJECT_DIR$/draw.html" />
         <option value="$PROJECT_DIR$/inputFormat.html" />
-        <option value="$PROJECT_DIR$/js/index.js" />
         <option value="$PROJECT_DIR$/js/range.js" />
         <option value="$PROJECT_DIR$/range.html" />
         <option value="$PROJECT_DIR$/scrool.html" />
@@ -125,6 +105,10 @@
         <option value="$PROJECT_DIR$/js/fingerprint2.min.js.url" />
         <option value="$PROJECT_DIR$/underscore.html" />
         <option value="$PROJECT_DIR$/pageView.html" />
+        <option value="$PROJECT_DIR$/js/RX.html" />
+        <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/js/func.html" />
       </list>
     </option>
   </component>
@@ -135,8 +119,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1313" />
-    <option name="y" value="-23" />
+    <option name="x" value="1272" />
+    <option name="y" value="-65" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -171,8 +155,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -196,7 +180,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jq/maoyiV1.5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -335,24 +319,26 @@
       <workItem from="1477901548108" duration="29000" />
       <workItem from="1477991111862" duration="38000" />
       <workItem from="1482281429616" duration="4381000" />
-      <workItem from="1482290541871" duration="2041000" />
+      <workItem from="1482290541871" duration="3258000" />
+      <workItem from="1482314318318" duration="34000" />
+      <workItem from="1483580346100" duration="2040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253732000" />
+    <option name="totallyTimeSpent" value="257023000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1313" y="-23" width="1936" height="1056" extended-state="1" />
-    <editor active="true" />
+    <frame x="1272" y="-65" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17544784" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26448894" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4463895" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20260021" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -385,20 +371,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/enter-submit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/es5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -438,24 +410,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/range.js" />
-    <entry file="file://$PROJECT_DIR$/js/bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-803">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Cursor-pos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-161">
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="104" selection-start-line="11" selection-start-column="104" selection-end-line="11" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -576,13 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2346">
           <caret line="156" column="2" selection-start-line="156" selection-start-column="2" selection-end-line="156" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -707,9 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -717,7 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="757">
           <caret line="1" column="1943" selection-start-line="1" selection-start-column="1943" selection-end-line="1" selection-end-column="1943" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,14 +672,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="564">
           <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pageView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="40" column="19" selection-start-line="14" selection-start-column="20" selection-end-line="40" selection-end-column="19" />
+        <state relative-caret-position="345">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4824">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/RX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/func.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="26" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
           <folding />
         </state>
       </provider>
