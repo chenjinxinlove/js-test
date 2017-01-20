@@ -1,92 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Document</title>
 </head>
 <body>
-    <h3>常见的验证规则</h3>
-    <div id="draw" style="width: 300px;height: 200px;border: 1px solid red"></div>
+
 </body>
-<script src="js/bundle.js"></script>
-<!--<script >-->
-    <!--window.onload = function () {-->
-        <!--var getRegular = function (rstr) {-->
-            <!--var regData={};-->
-            <!--regData.rtrim = /^(\s*)|(\s*)$/g ;//去除空格的正册-->
-            <!--regData.Chinese = /[\u4e00-\u9fa5]/g ;//中文-->
-            <!--regData.nonumber = /\D/g ; //数字-->
-            <!--regData.nochinese = /[^\u4e00-\u9fa5]/g ; //非中文-->
-            <!--regData.email= /[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?/g;//邮箱-->
-            <!--regData.phone=/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$/;//电话-->
-            <!--regData.decimalNumber=/^\d+(\.\d+)+$/;   //带小数位的数字-->
-            <!--regData.htmlTags = /<[\/\！]*[^<>]*>/ig;//html-->
-            <!--return regData[rstr];-->
-        <!--};-->
-        <!--forElementArr = function (_elementArr,callBack) {-->
-            <!--var arr = _elementArr,-->
-                    <!--self = this;-->
-            <!--if (!(_elementArr instanceof Array)) {-->
-                <!--arr = [_elementArr];-->
-            <!--};-->
-            <!--for (var i = 0,arrLen = arr.length;i<arrLen;i++){-->
-                <!--var arrl = arr[i];-->
-                <!--if (typeof  arrl == 'string') {-->
-                    <!--arrl = document.getElementById(arrl);-->
-                <!--}-->
-                <!--callBack && callBack(i,arrl)-->
-            <!--}-->
-        <!--}-->
-        <!--verification = function (str, reg) {-->
-            <!--return getRegular(reg).test(str);-->
-        <!--}-->
-        <!--setCss = function (_this, cssOption) {-->
-            <!--if (!_this || _this.nodeType === 3 || _this.nodeType ===8 || !_this.style) {-->
-                <!--return;-->
-            <!--}-->
-            <!--for (var cs in cssOption) {-->
-                <!--_this.style[cs] = cssOption[cs];-->
-            <!--}-->
-            <!--return _this;-->
-        <!--}-->
+<script>
 
-        <!--forElementArr([-->
-                <!--document.getElementById("regUser"),-->
-                <!--document.getElementById("regEmail"),-->
-                <!--document.getElementById("regPhone"),-->
-                <!--document.getElementById("regNumber")-->
-        <!--],function (inex,_this) {-->
-            <!--_this.onkeyup = function () {-->
-                <!--var _v = this.value.replace(/^(\s|\u00A0)+|(\s|\u00A0)+$/g,""),-->
-                        <!--_reg = this.getAttribute("data-reg"),-->
-                        <!--__reg = _reg.indexOf(",")>0?_reg.split(","):[_reg],-->
-                        <!--_regLen = __reg.length,-->
-                        <!--_emsg = this.getAttribute("data-emsg"),-->
-                        <!--_smsg = this.getAttribute("data-smsg"),-->
-                        <!--_target = document.getElementById(this.getAttribute("data-tmsg")),-->
-                        <!--i = 0;-->
-                <!--for (;i<_regLen;i++) {-->
-                    <!--if(!verification(_v,__reg[i])){-->
-                        <!--_target.innerHTML = _emsg;-->
-                        <!--setCss(_target,{-->
-                            <!--"color":"red"-->
-                        <!--})-->
-                        <!--return;-->
-                    <!--}-->
-                <!--}-->
-                <!--_target.innerHTML = _smsg;-->
-                <!--setCss(_target,{-->
-                    <!--"color":"green"-->
-                <!--})-->
-            <!--}-->
-        <!--})-->
+function selectSort(arr) {
+    var len = arr.lenght;
+    for(var i =0; i < len; i ++) {
+        var min = arr[i];
+        var k = i;
+        for(var j = i +1; i <len ; i ++) {
+            if(arr[j] < min) {
+                min = arr[j];
+                k = j;
+            }
+        }
+        arr[k] = arr[i];
+        arr[i] = min;
+    }
+    return arr;
+}
 
-    <!--}-->
+    console.log(selectSort([1,4,5,6,7,8,67,444]))
 
 
 
-<!--</script>-->
 
+</script>
 
 
 </html>
