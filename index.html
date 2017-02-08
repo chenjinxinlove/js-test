@@ -6,31 +6,12 @@
 </head>
 <body>
 
+<div id="kk">sdkf;sd</div>
 </body>
 <script>
-
-function selectSort(arr) {
-    var len = arr.lenght;
-    for(var i =0; i < len; i ++) {
-        var min = arr[i];
-        var k = i;
-        for(var j = i +1; i <len ; i ++) {
-            if(arr[j] < min) {
-                min = arr[j];
-                k = j;
-            }
-        }
-        arr[k] = arr[i];
-        arr[i] = min;
-    }
-    return arr;
-}
-
-    console.log(selectSort([1,4,5,6,7,8,67,444]))
-
-
-dqwqweqw
-
+    document.querySelector('#kk').addEventListener('click',function (e) {
+        console.log(e.target.textContent)
+    })
 </script>
 
 
