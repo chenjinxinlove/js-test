@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
+<style>
+    body{
+        background: red;
+    }
+    a{
+        color: #fff;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 34px;
+        display: block;
+        width: 350px;
+        height: 60px;
+        line-height: 60px;
+        border: 1px solid #fff;
+        border-radius: 4px;
+        text-align: center;
+        transition: all 1s linear;
+    }
+    a:hover{
+        color: darkblue;
+        background: #71FF71;
+        -webkit-transition:color .5s linear, background .5s ease-in-out 1s;
+        transition:color .5s linear, background .5s ease-in-out 1s;
+    }
+</style>
 <body>
-
-<div id="kk">sdkf;sd</div>
+<a href="">this is a link</a>
 </body>
-<script>
-    document.querySelector('#kk').addEventListener('click',function (e) {
-        console.log(e.target.textContent)
-    })
-</script>
+
 
 
 </html>

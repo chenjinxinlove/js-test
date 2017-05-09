@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Man bites dog</title>
+</head>
+<body>
+<h1>Hold the front page</h1>
+<p>This tirst paragraph leads you in.</p>
+<p>Now you get the nitty-gritty of the story.</p>
+<p>The nost important information is delivered first.</p>
+<h1>Extra! Extra!</h1>
+<p>Further developments are unfolding.</p>
+<p>You can read all about it here.</p>
+
+<script >
+    function styleHeaderSiblings(){
+//	debugger;
+        if(!document.getElementsByTagName)return false;
+        var headers=document.getElementsByTagName("h1");
+
+        var elem;
+        console.log(headers.length)
+        for(var i=0;i<headers.length;i++){
+            elem=headers[i].nextSibling;
+
+            console.log(elem)
+
+
+
+        }
+    }
+
+
+    styleHeaderSiblings()
+</script>
+
+
+</body>
+</html>
