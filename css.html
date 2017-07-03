@@ -1,40 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <head>
     <meta charset="utf-8" />
-    <title>Man bites dog</title>
+    <title>布局</title>
 </head>
 <body>
-<h1>Hold the front page</h1>
-<p>This tirst paragraph leads you in.</p>
-<p>Now you get the nitty-gritty of the story.</p>
-<p>The nost important information is delivered first.</p>
-<h1>Extra! Extra!</h1>
-<p>Further developments are unfolding.</p>
-<p>You can read all about it here.</p>
 
-<script >
-    function styleHeaderSiblings(){
-//	debugger;
-        if(!document.getElementsByTagName)return false;
-        var headers=document.getElementsByTagName("h1");
-
-        var elem;
-        console.log(headers.length)
-        for(var i=0;i<headers.length;i++){
-            elem=headers[i].nextSibling;
-
-            console.log(elem)
-
-
-
-        }
-    }
-
-
-    styleHeaderSiblings()
-</script>
-
+    <div class="main" style="width: 100%;height: 400px;">
+        <div class="left" style="width: 200px;height: 200px;background: red;position: absolute;top: 0;left: 0;;"></div>
+        <div class="right" style="background: blue;margin-left: 200px ;height: 200px;"></div>
+    </div>
 
 </body>
 </html>
