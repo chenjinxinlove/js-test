@@ -1,0 +1,1026 @@
+<script data-compress="off">
+    A.init(function() {
+        var  _this = this,
+            wtimer,
+            snowInterval,               //产生雪花interval
+            snowStopHover = false,      //雪花特效时取消hover切换效果
+            moveInterval = null,                            //雪花移动interval
+            hideInterval = null;                            //雪花渐隐消失interval
+        var weather4_twoicondata = _this.data.weather4_twoicondata;
+        var tid = -1;
+         var scene;
+
+    // ==========================================================================================
+    // 新版天气脚本 by zhangjiachen
+    // ==========================================================================================
+    var $UA = navigator.userAgent;
+    var $IE = $UA.match(/MSIE (\d+)/);
+    $IE = $IE && +$IE[1];
+    if ($IE) {
+        var dummy = document.createElement('iframe');
+        document.body.appendChild(dummy);
+        $UA = dummy.contentWindow.navigator.userAgent;
+        $IE = +$UA.match(/MSIE (\d+)/)[1];
+        document.body.removeChild(dummy);
+        dummy = null;
+
+        var $IE6 = ($IE == 6);
+        var $IE78 = ($IE == 7 || $IE == 8);
+    }
+
+
+    function URL(path) {
+        return '//www.baidu.com/aladdin/img/new_weath/' + path;
+    }
+
+        function getProtocalUrl(url) {
+            var reg = /^http:\/\/www.baidu.com/;
+            if(reg.test(url)) {
+                url = url.replace("http:","");
+            }
+            return url;
+        }
+
+    var efUsed = {},
+        efFact = {};
+
+    var layerLight;
+
+
+        
+    // ==================================================
+    // 特效
+    // ==================================================
+    efFact.rain = function(exports) {
+        var W = 2;
+        var H = 16;
+
+        var sprites = [];
+        var curNum = 0;
+
+
+        var LAYER_PERCENT = [
+            0,
+            1,1,1,
+            2,2,2,2,2,2,2,2
+        ];
+
+        var LAYER_ALPHA = [
+            [0.25, +0.30],
+            [0.20, +0.10],
+            [0.15, +0.15]
+        ];
+
+        var LAYER_SPEED = [9, 7, 5];
+
+        var GRAVITY = 0.1;
+
+
+        function setOpacity(spt, val) {
+            spt.setYOffset(H * ~~((1 - val) * 10));
+        }
+
+
+        function reset(spt) {
+            var rnd = Math.random() * LAYER_PERCENT.length;
+            var type = LAYER_PERCENT[rnd >> 0];
+
+            spt.setXOffset(W * type);
+            spt.setVelocity(0, LAYER_SPEED[type]);
+            spt.setX(Math.random() * CANVAS_W);
+
+            if (spt.fromtop_) {
+                spt.setY(-10);
+            }
+            else {
+                spt.fromtop_ = true;
+                spt.setY( Math.random() * CANVAS_H );
+            }
+
+            // 越前面的透明度越高
+            var alpha_range = LAYER_ALPHA[type];
+            var opacity = alpha_range[0] + Math.random() * alpha_range[1];
+            setOpacity(spt, opacity);
+        }
+
+        exports.render = function() {
+            var num = exports.arg;
+
+            // 隐藏多余
+            for(var i = num; i < curNum; i++) {
+                sprites[i].setY(999);
+                sprites[i].fromtop_ = false;
+            }
+
+            // 补充不足
+            for(var i = sprites.length; i < num; i++) {
+                var spt = scene.Sprite(URL('rain.png'), exports.layer);
+
+                spt.size(2, 16);
+                reset(spt);
+                sprites[i] = spt;
+            }
+
+            // 渲染
+            for(var i = 0; i < curNum; i++) {
+                var spt = sprites[i];
+
+                spt.yv += GRAVITY;
+                spt.applyYVelocity();
+                spt.update();
+
+                if (spt.y > CANVAS_H) {
+                    reset(spt);
+                }
+            }
+
+            curNum = num;
+        };
+
+        exports.RES = ['rain.png'];
+    };
+
+            
+    // ==================================================
+    // 闪电特效
+    // ==================================================
+    efFact.thunder = function(exports) {
+        var DELAY_MIN = 3000 / 60;
+        var DELAY_RND = 10000 / 60;
+        var NUM = 2;
+
+        var sprites;    // 所有闪电
+        var spt;        // 当前闪电
+
+        var tickWait;   // 下一次闪电倒计时
+        var tick = 0;   // 当前进度
+
+
+        function init() {
+            sprites = [];
+            for(var i = 0; i < NUM; i++) {
+                sprites[i] =
+                    scene.Sprite(URL('thunder/' + i + '.png'), exports.layer);;
+            }
+            reset();
+            tickWait /= 5;
+        }
+
+        function reset() {
+            var id = Math.random() * NUM;
+            spt = sprites[~~id];
+            spt.position(Math.random() * (CANVAS_W - spt.w), 0);
+
+            tickWait = ~~(DELAY_MIN + Math.random() * DELAY_RND);
+            tick = 0;
+        }
+
+        exports.render = function() {
+
+if ($IE78) return;
+
+            if (!sprites) {
+                init();
+            }
+
+            if (--tickWait > 0 || exports.alpha < 1) {
+              return;
+            }
+
+            var opaticy;
+            tick++;
+
+            if (tick < 11) {
+                spt.setH(25 * tick);
+                opaticy = tick * 0.04;
+            }
+            else if (tick < 13) {
+                opaticy = 0;
+            }
+            else if (tick < 28) {
+                opaticy = 1 - (tick - 13) * 0.0714;
+                layerLight.setOpacity(opaticy / 8);
+            }
+            else {
+                layerLight.setOpacity(0);
+                spt.setY(-999).update();
+                reset();
+                return;
+            }
+            spt.setOpacity(opaticy).update();
+        };
+
+        exports.RES = ['thunder/0.png', 'thunder/1.png'];
+    };
+
+            
+    // ==================================================
+    // 光晕特效
+    // ==================================================
+    efFact.halo = function(exports) {
+        var SUN_X = 320;
+
+        var LIGHT_DEF = 1;
+        var LIGHT_MAX = 1;
+        var LIGHT_MIN = 0.85;
+
+        var RING_NUM = 7;
+        var RING_D = 216;
+        var MARGIN_TOP = 100;
+
+        var rings = [];
+        var light;
+        var inited;
+
+        var op = LIGHT_DEF;
+        var A = 0.0005;
+
+
+        function init() {
+            light = scene.Sprite(URL('halo/light.png'), exports.layer);
+            light.position(SUN_X - light.w / 2, 0);
+
+            for(var i = 0; i < RING_NUM; i++) {
+                var spt = scene.Sprite(URL('halo/ring.png'), exports.layer);
+                var y = Math.random() * 250;
+                var x = SUN_X - 150 - y * 0.3;
+
+                spt.position(x, y);
+                spt.size(RING_D, RING_D);
+                spt.setXOffset(RING_D * i);
+
+                rings[i] = spt;
+            }
+        }
+
+        exports.render = function() {
+            if (!inited) {
+                init();
+                inited = true;
+            }
+
+            //
+            // 更新光线亮度
+            //
+            op += A;
+            if (op >= LIGHT_MAX || op <= LIGHT_MIN) {
+
+                A = -A;
+            }
+
+  if (!$IE78) {
+            light.setOpacity(op);
+  }
+            light.update();
+
+            //
+            // 更新光晕
+            //
+            for(var i = 0; i < RING_NUM; i++) {
+                rings[i].update();
+            }
+        };
+
+        exports.RES = ['halo/light.png', 'halo/ring.png'];
+    };
+        
+
+    var defEff, curEff;
+
+
+    function checkCanvas() {
+        return 'getContext' in document.createElement('canvas');
+    }
+
+    function loadEff(e) {
+        var res = e.RES;
+        for(var i = res.length - 1; i >= 0; i--) {
+            res[i] = URL(res[i]);
+        }
+
+        scene.loadImages(res, function() {
+            e.loaded = true;
+        });
+    }
+
+     function renderEff() {
+         if ($IE6) return;
+
+         for(var k in efUsed) {
+             if(efUsed.hasOwnProperty(k)){
+                 var e = efUsed[k];
+                 if (!e.loaded) continue;
+
+                 var last = e.alpha;
+                 e.alpha += ALPHA_DELTA;
+
+                 if (e.alpha > 0)
+                 {
+                     e.render();
+                     if (!$IE78) {
+                         // 淡出中，此过程图层内容仍保持更新
+                         if (e.alpha < 1.0) {
+                             e.layer.setOpacity(e.alpha);
+                         }
+                     }
+                 }
+                 else {
+                     // 已消失，隐藏图层
+                     if (last > 0) {
+                         e.layer.setVisible(false);
+                     }
+                 }
+             }
+         }
+     }
+
+     function setEff(effArgs) {
+         if ($IE6) return;
+
+         for(var k in curEff) {
+             if(curEff.hasOwnProperty(k)){
+                 if ($IE78)  efUsed[k].layer.setVisible(false);
+
+                 efUsed[k].alpha = 1.0;
+             }
+         }
+
+         // 显示的特效层
+         for(var k in effArgs) {
+             if(effArgs.hasOwnProperty(k)){
+                 var e = efUsed[k];
+                 if (!e.loaded && !e.loading) {
+                     e.loading = true;
+                     loadEff(e);
+                 }
+
+                 e.arg = effArgs[k];
+                 e.alpha = 9e9;
+                 e.layer.setVisible(true);
+
+                 if (!$IE78) e.layer.setOpacity(1.0);
+             }
+         }
+
+         curEff = effArgs;
+     }
+
+    function initEff() {
+if ($IE6) return;
+
+        var opt;
+        if (checkCanvas()) {
+            opt = {useCanvas:true, autoClear:true};
+        }
+
+        for(var k in efFact) {
+            if(efFact.hasOwnProperty(k)){
+                // 初始化特效
+                var exports = {};
+                efFact[k](exports);
+                exports.layer = scene.Layer('eff-' + k, opt);
+                exports.layer.setZIndex(1.0);
+                exports.layer.setVisible(false);
+
+                efUsed[k] = exports;
+            }
+        }
+
+        layerLight = scene.Layer('light');
+        layerLight.setOpacity(0);
+        layerLight.setColor('#fff');
+    }
+
+
+    //
+    // 背景渐变
+    //
+     var CANVAS_W = 538,
+         CANVAS_H = 250,
+         ALPHA_DELTA = -0.03;
+
+
+
+
+    var layers_bg = {};
+
+    var fading;
+    var opacity;
+    var defBg, curBg;
+    var divOldBg;
+
+
+    // IE下使用滤镜半透明
+    var setAlpha = 'opacity' in document.body.style ?
+        function (el, v) {el.style.opacity = v} :
+        function (el, v) {
+            var flt = el._flt;
+            if (!flt) {
+                el.style.filter += ' alpha';
+                flt = el._flt = el.filters.alpha;
+            }
+            flt.opacity = v * 100;
+        };
+
+
+    function setBg(bg) {
+        if (bg == curBg) {
+            return;
+        }
+
+        var divBg = layers_bg[bg];
+
+        // 首次背景
+        if (opacity > 0) {
+            setAlpha(divOldBg, 0);
+            divOldBg.style.display = 'none';
+            opacity = 1 - opacity;
+        }
+        else {
+            opacity = 1;
+        }
+
+        divOldBg = layers_bg[curBg];
+
+        // 旧背景放前面，逐渐淡出
+        divOldBg.style.zIndex = 2;
+        setAlpha(divOldBg, 1.0);
+
+        // 新背景放后面，逐渐深入
+        divBg.style.zIndex = 1;
+        divBg.style.display = 'block';
+        setAlpha(divBg, 1.0);
+
+        curBg = bg;
+        fading = true;
+    }
+
+    function renderBg() {
+        opacity += ALPHA_DELTA;
+
+        if (opacity < 0) {
+            divOldBg.style.display = 'none';
+            fading = false;
+        }
+        else {
+            setAlpha(divOldBg, opacity);
+        }
+    }
+
+    //
+    // hover高亮
+    //
+
+    function handleOver() {
+        if (snowStopHover) {
+            return;
+        }
+        if (tid != -1) {
+            clearTimeout(tid);
+            tid = -1;
+        }
+
+        var bg = this.getAttribute('weath-bg');
+        setBg(bg);
+        setEff(this.eff);
+    }
+
+    function handleOut() {
+        if (snowStopHover) {
+            return;
+        }
+        tid = setTimeout(function() {
+          setBg(defBg);
+          setEff(defEff);
+        }, 20);
+    }
+
+
+    function render() {
+        if (fading) {
+            renderBg();
+        }
+
+        renderEff();
+    }
+
+    function initAni() {
+        scene = A.ui.sjs.Scene({w: CANVAS_W, h: CANVAS_H, parent: _this.qq('op_weather4_twoicon')});
+        scene.dom.style.zIndex = 10;
+
+        initEff();
+        setEff(defEff);
+
+        var ticker = scene.Ticker(1000 / 60, render);
+        ticker.run();
+    }
+
+
+    function init() {
+        // hover
+        console.log(_this.q())
+        var arr = _this.q('op_weather4_twoicon_today').concat(_this.q('op_weather4_twoicon_day'));
+        for(var i = arr.length - 1; i >= 0; i--) {
+            var column = arr[i];
+
+            // 获取特效属性
+            var eff = column.getAttribute('weath-eff');
+            if (eff) {
+                eff = new Function('return ' + eff)();
+                column.eff = eff;
+
+                // 默认的动画（当天）
+                if (i == 0) {
+                    defEff = eff;
+                }
+            }
+
+            // 获取背景属性
+            if (i == 0) {
+                curBg = defBg = column.getAttribute('weath-bg');
+            }
+
+            if ($IE) {
+                column.onmouseenter = handleOver;
+                column.onmouseleave = handleOut;
+            }
+            else {
+                column.onmouseover = handleOver;
+                column.onmouseout = handleOut;
+            }
+        }
+
+        //
+        // 获取背景层元素
+        //
+        arr = _this.q('op_weather4_twoicon_bg');
+        for(i = arr.length - 1; i >= 0; i--) {
+            var name = arr[i].getAttribute('bg-name');
+            layers_bg[name] = arr[i];
+        }
+
+        A.use('sjs', initAni);
+    }
+
+
+    wtimer = setTimeout(init, 1);
+    // ====================================================================================================
+
+        //flash.js start
+        var CF =  new(function(){
+            var fdf=false;
+            var checkflash;
+            var hide;
+            var hidebr;
+            var creatFlash;
+            var check;
+            var firstbr=true;
+            var clickURL = "//www.baidu.com/aladdin/flash/weather/index.swf";
+            //给flash加上时间参数
+            function addTimeStamp(url,param){
+                if(!url) return false;
+                var regexp = new RegExp('(\\?|&)('+param+'=[^&$]*)');
+                if(regexp.test(url)){
+                    url = url.replace(regexp , function(s0,s1,s2){
+                        return s1+s2+new Date().getTime();
+                    });
+                    return url;
+                }else{
+                    if(url.indexOf('?')>0){
+                        return url+='&'+param+'='+new Date().getTime();
+                    }else{
+                        return url+='?'+param+'='+new Date().getTime();
+                    }
+                }
+
+            }
+            //setFDF
+            function setFDFfunction()
+            {
+                fdf = true;
+                return fdf;
+            }
+           //creatFlash
+            function creatFlashfunction(murl, mt, url, width, height, fq, showurl, base, container, noshowurl, cURL){
+                // set click URL
+                if(cURL !== "") clickURL = cURL;
+
+                var str = "";
+                if(mt)
+                {
+                    str += "<font size='3'><a href='"+murl+"' target=\"_blank\">"+mt+"</a></font>";
+                }
+                str += "<div style='width:"+width+";height:"+height+";margin-top:3px;'>";
+                str += "<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width="+width+" height="+height+" id='flashResult'>";
+                str += "<param name='movie' value="+url+">";
+                str += "<param name=FlashVars value="+fq+">";
+                str += "<param name=base value="+base+">";
+                str += "<param name='menu' value='false'>";
+                str += "<param name='wmode' value='opaque'>";
+                str += "<param name='allowfullscreen' value='false'>";
+                str += "<param name='allowscriptaccess' value='always'>";
+                str += "<embed FlashVars="+fq+" src="+addTimeStamp(url , 't')+" quality='high' pluginspage='http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width="+width+" height="+height+" menu='false' allowfullscreen='false' allowscriptaccess='always' name='flashResult' wmode='opaque' base="+base+" />";
+                str += "</object></div>";
+
+                if(! noshowurl)
+                {
+                    str += "<span ><font color=\"#008000\"  size='-1'>"+showurl+"</font>&nbsp;-&nbsp;";
+                    str += "<a  class='op_LAMP' target=\"_blank\"  href=\"http://open.baidu.com/\"></a></span>";
+                }
+
+                if(container)
+                {
+                    container.innerHTML = str;
+                }
+                else
+                {
+                    document.write(str);
+                }
+            }
+         //getVersion
+         function getVersion(){
+            var n = navigator;
+            if (n.plugins && n.mimeTypes.length) {
+                var a = n.plugins["Shockwave Flash"];
+                if (a && a.description) {
+                    return a.description.replace(/([a-zA-Z]|\s)+/, "").replace(/(\s)+r/, ".") + ".0";
+                }
+            } else if (window.ActiveXObject && !window.opera) {
+                for (var i = 10; i >= 2; i--) {
+                    try {
+                        var c = new ActiveXObject('ShockwaveFlash.ShockwaveFlash.' + i);
+                        if (c) {
+                            var version = c.GetVariable("$version");
+                            version = version.replace(/WIN/g,'');
+                            version = version.replace(/,/g,'.');
+                            return version;
+                            break;
+                        }
+                    } catch(e) {return "1.0.0"; }
+                }
+            }
+            return "1.0.0";
+        }
+        //hideFunction
+        function hidefunction(flashid , callback)
+        {
+            if(callback){
+                callback();
+                return false;
+            }
+            var fid = flashid?flashid:'flash';
+            var flash = document.getElementById(fid);
+            try{
+            var ft = al_c(flash);
+            var ft = document.getElementById(ft);
+            ft.style.display="none";
+            }catch(e){}
+
+        }
+        //hidebrfunction
+        function hidebrfunction(id)
+        {
+            var flash_version=getVersion().split('.');
+            var hasFlash = false;
+            if(flash_version[0]>9) hasFlash = true;
+            if(flash_version[0] == 9 && flash_version[1] > 0) hasFlash = true;
+            if(flash_version[0] == 9 && flash_version[1]== 0 && flash_version[2]>= 28)
+            hasFlash = true;
+            var fid = id?id:'flash';
+            var flash = document.getElementById(fid);
+            var ft = al_c(flash);
+            var ft = document.getElementById(ft);
+            var fb = ft.nextSibling;
+            if(!hasFlash&&(firstbr==true))
+            {
+            fb.style.display="none";
+            }
+            else if(!firstbr&&(!fdf))
+            {
+                fb.style.display="none";
+            }
+            firstbr = false;
+        }
+        var swfVersion = (function () {
+            var n = navigator;
+            if (n.plugins && n.mimeTypes.length) {
+                var plugin = n.plugins["Shockwave Flash"];
+                if (plugin && plugin.description) {
+                    return plugin.description
+                            .replace(/([a-zA-Z]|\s)+/, "")
+                            .replace(/(\s)+r/, ".") + ".0";
+                }
+            } else if (window.ActiveXObject && !window.opera) {
+                for (var i = 12; i >= 2; i--) {
+                    try {
+                        var c = new ActiveXObject('ShockwaveFlash.ShockwaveFlash.' + i);
+                        if (c) {
+                            var version = c.GetVariable("$version");
+                            return version.replace(/WIN/g,'').replace(/,/g,'.');
+                        }
+                    } catch(e) {}
+                }
+            }
+        })();
+        //checkflashversion
+        function checkflashversion(flashid , callback)
+        {
+            //var flash_version=getVersion().split('.');
+            var version = swfVersion || '1.0.0' ;
+            var flash_version = version.split('.');
+            var hasFlash = false;
+            if(!flash_version) { hasFlash = false;}
+            else{
+                if(flash_version[0]>9) hasFlash = true;
+                if(flash_version[0] == 9 && flash_version[1] > 0) hasFlash = true;
+                if(flash_version[0] == 9 && flash_version[1]== 0 && flash_version[2]>= 28)
+                    hasFlash = true;
+            }
+            if(!hasFlash)
+            {
+                c({'fm':'inlo','url':clickURL,'p1':_this.p1,'p2':1,'tp':"6"});
+                hidefunction(flashid , callback);
+            }
+            else c({'fm':'inlo','url':clickURL,'p1':_this.p1,'p2':1,'tp':"7"});
+        }
+        //checkfunction
+        function checkfunction()
+        {
+
+            if(fdf)
+            {
+            c({'fm':'inlo','url':clickURL,'p1':getFlashP1(),'p2':1,'tp':"8"});
+            return true;
+            }
+            else
+            {
+                c({'fm':'inlo','url':clickURL,'p1':getFlashP1(),'p2':1,'tp':"9"});
+                hidefunction();
+                hidebrfunction();
+            }
+        }
+        //return
+        return{
+        hidebr  :   function(id){   hidebrfunction(id); },
+        hide    :   function(id,callback){  hidefunction(id,callback);  },
+        checkflash: function(id , callback){    checkflashversion(id , callback);   },
+        check   :   function(){ checkfunction();    },
+        creatFlash: function(murl,mt,url,width,height,fq,showurl,base,container,noshowurl){ creatFlashfunction(murl,mt,url,width,height,fq,showurl,base,container,noshowurl);   },
+        setFDF  :   function(){ return setFDFfunction();    }
+        };
+
+        })();
+        //flash.js end
+
+        if(weather4_twoicondata.swfon){
+            var url = getProtocalUrl(weather4_twoicondata.url);
+            var swfon = weather4_twoicondata.swfon;
+            var swfoff = weather4_twoicondata.swfoff;
+            var $flashContainer = _this.find('.op_weather4_twoicon_flash');
+
+            var $open = _this.find('.op_weather4_twoicon_open').eq(0);
+            var $close = _this.find('.op_weather4_twoicon_close').eq(0);
+
+            var hideFlashContainer = function() {
+                    var $c = _this.find('.op_weather4_twoicon_swf_container').eq(0);
+                    if ($c.length>0) {
+                        $c.hide();
+                    }
+                };
+            if ($flashContainer.html() == '') {
+                var fq = 'fq=' + encodeURI(weather4_twoicondata.swfcondition) + '&from=baidu';
+                var fdf;
+                CF.checkflash('op_weather4_twoicon_flash', hideFlashContainer);
+                CF.creatFlash(getProtocalUrl(weather4_twoicondata.url), '', getProtocalUrl(weather4_twoicondata.swfurl), '512', '385', fq, '', '', $flashContainer.get(0), 'noshowurl');
+            }
+
+            if ($open.length>0 && $close.length>0) {
+                $open.on('click', function() {
+                    $close.css('display', 'inline-block');
+                    $open.hide();
+                    $flashContainer.show();
+                });
+                $close.on('click', function() {
+                    $open.show();
+                    $close.hide();
+                    $flashContainer.hide();
+
+                });
+            }
+        }
+        var snows = [];
+        if (weather4_twoicondata.snowlevel && !$IE6) {
+            snowStopHover = true;
+            var snowlevel = weather4_twoicondata.snowlevel;
+            function initFn() {
+                var snowNum = 55 - 18 * (3 - snowlevel),               //雪花总数
+                    r_con = _this.find('#content_right').get(0);         //右侧信息容器
+                //雪花, index为在雪花数组snows[]中的索引
+                var snow = function(index){
+                    var screenWidth = document.documentElement.clientWidth || document.body.clientWidth,    //屏幕宽度
+                        screenHeight = document.documentElement.clientHeight || document.body.clientHeight, //屏幕高度
+                        scale = Math.random() * 1 - 0.3,                //飘落雪花放大缩小系数
+                        size = Math.ceil(16 * (1 + scale) ),            //雪花尺寸
+                        snowX = Math.random() * (screenWidth-100),      //雪花初始化X坐标
+                        snowY = 0,                                      //雪花初始化Y坐标
+                        speedX = 0,                                     //雪花X速度
+                        angleX = 0,                                     //雪花X角速度(正弦函数X增加)
+                        speedY = parseInt(snowlevel,10) + Math.random() * 3,                 //Y速度
+                        amplitude = Math.random() * 3,                  //雪花正弦轨迹振幅
+                        opacity = 1,                                    //透明度
+                        img = null,                                     //雪花dom
+                        moveInterval = null,                            //雪花移动interval
+                        hideInterval = null,                            //雪花渐隐消失interval
+                        _this = this;
+                    if ( Math.random() - 0.5 > 0) {                     //计算speedX, 随机正弦向左/向右
+                        speedX = (0.01 + Math.random()/100);
+                    } else {
+                        speedX = -(0.01 + Math.random()/100);
+                    }
+                    var draw = function (){         //画雪花dom
+                        img = document.createElement('img');
+                        var bgNum = Math.ceil(Math.random()*100 ) % 100;//初始化4种雪花,第4种圆形最少
+                        if (bgNum > 95) {
+                            bgNum = 4;
+                        } else if (bgNum <=95 && bgNum >65) {
+                            bgNum = 3;
+                        } else if (bgNum <=65 && bgNum >35) {
+                            bgNum = 2;
+                        } else if (bgNum <=35 && bgNum >0) {
+                            bgNum = 1;
+                        } else {
+                            bgNum = 1;
+                        }
+                        var cssStyle = {
+                            'position':'absolute',
+                            'zIndex':'10000000',
+                            'opacity':opacity,
+                            'width':(size + 'px'),
+                            'height':(size + 'px')
+                        };
+                        img.src = '//www.baidu.com/aladdin/img/weather4_twoicon/snowflake' + bgNum + '.png';
+                        for( var i in cssStyle) {
+                            if(cssStyle.hasOwnProperty(i)){
+                                img.style[i] = cssStyle[i];
+                            }
+                        }
+                        img.style.left = snowX + 'px';
+                        img.style.top = snowY + 'px';
+                        document.body.appendChild(img);
+                    };
+                    var move = function (){ //雪花移动
+                        angleX += speedX;
+                        snowX = snowX + amplitude * Math.sin(angleX);
+                        snowY += speedY;
+                        var screenWNow = document.documentElement.clientWidth || document.body.clientWidth,
+                            screenHNow = document.documentElement.clientHeight || document.body.clientHeight;
+                        if ( 50 < snowX && snowX < (screenWNow - 50) && 0 < snowY && snowY < (screenHNow - 100) ) {
+                            img.style.left = snowX + 'px';
+                            img.style.top = snowY + 'px';
+                        } else {    //屏幕外渐隐消失
+                            img.style.left = snowX + 'px';
+                            img.style.top = snowY + 'px';
+                            if ( !hideInterval) {
+                                hideInterval = setInterval(function(){  //渐隐
+                                    if (opacity >= 0) {
+                                        opacity -= 0.2;
+                                        img.style.opacity = opacity;
+                                    } else {
+                                        destory(); //销毁本雪花
+                                        snows[index] = new snow(index); //同时在创建一个雪花
+                                    }
+                                }, 50);
+                            }
+                        }
+                    };
+                    var destory = this.destory = function(){    //销毁雪花
+                        clearInterval(hideInterval);
+                        clearInterval(moveInterval);
+                        if (img.parentNode) {
+                            img.parentNode.removeChild(img);
+                        }
+                        _this = null;
+                    };
+                    var init = function() {     //初始化雪花
+                        draw();
+                        moveInterval = setInterval(function(){
+                            move();
+                        }, 50)
+                    };
+                    init();
+                };
+                function initSnow(){    //初始化产生20个雪花, 每隔300ms再创建一个
+                    var initSnowNum = 10 + 3 * snowlevel;
+                    for (var i = 0; i < initSnowNum; i ++) {
+                        snows[i] = new snow(i);
+                    }
+                    snowInterval = setInterval( function() {
+                        var snowCount = snows.length;
+                        if ( snowCount < snowNum) {
+                            snows[snowCount] = new snow(snowCount);
+                        } else {
+                            clearInterval(snowInterval);
+                        }
+                    }, 300);
+                }
+                function initBtn() {    //关闭特效btn
+                    var $firstSnowBtn = _this.find('.op_weather4_twoicon_firstsnow_btn').eq(0),   //btn的dom
+                        $firstSnowDiv = _this.find('.op_weather4_twoicon_firstsnow').eq(0);       //btn的div容器
+                    if ($firstSnowBtn.length>0) {
+                        $firstSnowDiv.show();
+                        $firstSnowBtn.on('click', function() {      //关闭特效
+                            snowStopHover = false;
+                            clearInterval(snowInterval);
+                            for (var i=0; i< snowNum; i ++) {
+                                if (snows[i]) {
+                                    snows[i].destory();
+                                }
+                            }
+                            $firstSnowDiv.hide();
+                            _this.find('.op_weather4_twoicon_snowtop').eq(0).hide();
+                        });
+                    }
+                }
+                initBtn();
+                initSnow();
+            }
+            initFn();
+        }
+
+        // 城市
+        var query = weather4_twoicondata.oq;
+        if(query.indexOf("天气") < 0)return;//用户query包含“天气”并且出现的天气ala结果才存储key
+
+        A.use('localstorage',function(){
+            //使用localstorage组件，添加最近访问城市
+            var storage = A.ui.localstorage({
+                fileName : 'bd_weather_city',
+                expiresDay : 30
+            });
+            storage.init();
+
+            var curCity = weather4_twoicondata.fetchkey.split(weather4_twoicondata.resourceid+'_')[1]; //当前城市
+            curCity = (curCity.indexOf('天气') < 0 ) ? curCity + '天气' : curCity; //当fetchkey中没有“天气”时，为它加上
+            var localStorElem = _this.qq('op_weather4_twoicon_u'); //获取展示的elem
+
+            weatherHis(1); //默认显示1条城市信息
+            function wencodeHTML(source) {//对目标字符串进行html编码
+               return String(source)
+                .replace(/&/g,'&amp;')
+                .replace(/</g,'&lt;')
+                .replace(/>/g,'&gt;')
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+            };
+            function weatherHis(cityNum){
+                var cityStorage = storage.get('op_weather4_twoicon_city');
+                var storageMax = cityNum;
+                var cityList = (!cityStorage) ? new Array() : unescape(cityStorage).split(';'); //城市列表
+                //移除当前城市
+                for(var i=0, j=0; i<cityList.length; i++) {
+                    if( cityList[i] == curCity || j == 99) {  //存储100条城市天气信息
+                        cityList.splice(i,1);
+                    } else {
+                        j++;
+                    }
+                }
+                //打印最近访问城市
+                if(cityList && cityList.length > 0) {
+                    for(var j = 0; j < storageMax; j++) {
+                        var cityA = document.createElement('a');
+                        var url = "//www.baidu.com/s?wd=" + encodeURIComponent(cityList[j]) + "&ie=utf-8";
+                        var cityName=document.createTextNode(wencodeHTML(cityList[j]) );
+                        cityA.appendChild(document.createTextNode( wencodeHTML(cityList[j]) ));
+                        //cityA.innerHTML=wencodeHTML(cityList[j]);
+                        //T.insertHTML(cityA,'beforeEnd',cityName);
+                        cityA.href = url;
+                        cityA.target = '_blank';
+                        cityA.className = 'OP_LOG_LINK';
+                        localStorElem.appendChild( cityA );
+                        //T.insertHTML(localStorElem,'beforeEnd',cityA);
+                    }
+                    localStorElem.style.display = 'inline';
+                    c({'fm': 'inlo', rsv_wct : 1});
+                }
+
+                var setStorige = cityList.length > 0 ? curCity + ';' + cityList.join(';') : curCity;
+                storage.set('op_weather4_twoicon_city', escape(setStorige));
+            }
+        });
+
+        this.dispose = function(){
+            if(snows.length>1){
+                for (var i = 0; i < snows.length; i ++) {
+                    snows[i].destory();
+                }
+            }
+            clearTimeout(tid);
+            clearTimeout(wtimer);
+            clearInterval(snowInterval);
+            clearInterval(hideInterval);
+            clearInterval(moveInterval);
+            scene&&scene.dispose&&scene.dispose();
+        };
+    });
+
+</script>
