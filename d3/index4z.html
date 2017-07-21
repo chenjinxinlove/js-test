@@ -5,64 +5,209 @@
     <title>第4章</title>
 </head>
 <body>
-<div id="linear" class="clear"><span>n</span></div>
-<div id="linear-capped" class="clear">
-    <span>1 &lt; = a*n + b &lt; = 20</span>
-</div>
-<div id="pow" class="clear"><span>n^2</span></div>
-<div id="pow-capped" class="clear">
-    <span>1 &lt; = a*n^2 + b &lt; = 10</span>
-</div>
-<div id="log" class="clear"><span>log(n)</span></div>
-<div id="log-capped" class="clear">
-    <span>1 &lt; = a*log(n) + b &lt; = 10</span>
-</div>
+<!--<div id="linear" class="clear"><span>n</span></div>-->
+<!--<div id="linear-capped" class="clear">-->
+    <!--<span>1 &lt; = a*n + b &lt; = 20</span>-->
+<!--</div>-->
+<!--<div id="pow" class="clear"><span>n^2</span></div>-->
+<!--<div id="pow-capped" class="clear">-->
+    <!--<span>1 &lt; = a*n^2 + b &lt; = 10</span>-->
+<!--</div>-->
+<!--<div id="log" class="clear"><span>log(n)</span></div>-->
+<!--<div id="log-capped" class="clear">-->
+    <!--<span>1 &lt; = a*log(n) + b &lt; = 10</span>-->
+<!--</div>-->
+
+//坐标轴
+<!--<div class="control-group">-->
+    <!--<button onclick="renderAll('bottom')">-->
+        <!--bottom-->
+    <!--</button>-->
+    <!--<button onclick="renderAll('top')">-->
+        <!--top-->
+    <!--</button>-->
+    <!--<button onclick="renderAll('left')">-->
+        <!--left-->
+    <!--</button>-->
+    <!--<button onclick="renderAll('right')">-->
+        <!--right-->
+    <!--</button>-->
+<!--</div>-->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+//绘制网格线
+<script>
+    var height = 500,
+            width = 500,
+            margin = 25;
+    var svg = d3.select('body').append('svg')
+            .attr('class', 'axis')
+            .attr('width', width)
+            .attr('height', height);
+
+    function renderXAxis() {
+        var axisLength = width - 2 * margin;
+
+        var scale = d3.scale.linear()
+                .domain([0, 100])
+                .range([0, axisLength]);
+        var xAixs = d3.svg.axis()
+                .scale(scale)
+                .orient('bottom');
+        svg.append('g')
+                .attr('class', 'x-axis')
+                .attr('transform', function () {
+                    return 'translate(' +  margin + ',' + (height - margin )+ ')';
+                })
+                .call(xAixs);
+
+        d3.selectAll('g.x-axis g.tick')
+                .append('line')
+                .classed('grid-line', true)
+                .attr('x1', 0)
+                .attr('y1', 0)
+                .attr('x2', 0)
+                .attr('y2', -(height - 2 * margin));
+    }
+
+    function renderYAxis() {
+        var axisLength = height - 2 * margin;
+
+        var scale = d3.scale.linear()
+                .domain([100, 0])
+                .range([0, axisLength]);
+
+        var yAxis = d3.svg.axis()
+                .scale(scale)
+                .orient('left');
+
+        svg.append('g')
+                .attr('class', 'y-axis')
+                .attr('tranform', function () {
+                    return 'translate(' + margin + ','+ margin +')';
+                })
+                .call(yAxis);
+
+        d3.selectAll("g.y-axis g.tick")
+                .append('line')
+                .classed('grid-line', true)
+                .attr('x1', 0)
+                .attr('y1', 0)
+                .attr('x2', axisLength)
+                .attr('y2', 0);
+    }
+
+    renderXAxis();
+    renderYAxis();
+
+</script>
+<!--<script>-->
+    <!--var heigth = 500,-->
+            <!--width = 500,-->
+            <!--margin = 25,-->
+            <!--offset = 50,-->
+            <!--axisWidth = width - 2 * margin,-->
+            <!--svg;-->
+
+    <!--function createSvg() {-->
+        <!--svg = d3.select('body').append("svg")-->
+                <!--.attr('class', 'axis')-->
+                <!--.attr('width', width)-->
+                <!--.attr('height', heigth);-->
+    <!--}-->
+    <!--function  renderAxis(scale, i, orient) {-->
+        <!--var axis = d3.svg.axis()//创建-->
+                <!--.scale(scale)//设定或者获取坐标轴的比例尺-->
+                <!--.orient(orient)//坐标轴的方向，top， bottom， right， left-->
+                <!--.ticks(5)//指定刻度,默认10-->
+<!--//                .innerTickSize('10')//内刻度大小-->
+<!--//                .outerTickSize('10')//外刻度-->
+<!--//                .tickSize(20);//设置内外刻度-->
+                <!--.tickSubdivide(5)//设置每个刻度之间的小刻度数-->
+                <!--.tickPadding(10)//设置标签数字跟坐标轴的距离(以像素为单位)-->
+                <!--.tickFormat(function (v) {//格式化-->
+                    <!--return v + '%';-->
+                <!--})-->
+
+
+        <!--svg.append('g')-->
+                <!--.attr('transform', function () {-->
+                    <!--if(['top', 'bottom'].indexOf(orient) >= 0)-->
+                        <!--return "translate("+ margin + "," + i * offset +")";-->
+                    <!--else-->
+                        <!--return "translate("+ i * offset + "," + margin +")";-->
+                <!--})-->
+                <!--.call(axis)-->
+    <!--}-->
+
+    <!--function renderAll(orient) {-->
+        <!--if (svg) svg.remove();-->
+
+        <!--createSvg();-->
+
+        <!--renderAxis(d3.scale.linear()-->
+                <!--.domain([0, 1000])-->
+                <!--.range([0, axisWidth]),1, orient);-->
+        <!--renderAxis(d3.scale.pow()-->
+                <!--.exponent(2)-->
+                <!--.domain([0, 1000])-->
+                <!--.range([0, axisWidth]),2, orient);-->
+        <!--renderAxis(d3.time.scale()-->
+                <!--.domain([new Date(2012, 0 , 1), new Date()])-->
+                <!--.range([0, axisWidth]),3, orient);-->
+    <!--}-->
+<!--</script>-->
 
 </body>
 
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script>
-    var max = 11, data = [];
-    for (var i = 1; i < max; i++) data.push(i);
 
-    var linear = d3.scale.linear()
-                    .domain([1, 10])
-                    .range([1, 10]);
-    var linearCapped = d3.scale.linear()
-            .domain([1, 10])
-            .range([1, 20])
+<!--<script>-->
+    <!--var max = 11, data = [];-->
+    <!--for (var i = 1; i < max; i++) data.push(i);-->
 
-    var pow = d3.scale.pow().exponent(2)
-    var powCapped = d3.scale.pow()
-            .exponent(2)
-            .domain([1, 10])
-            .rangeRound([1, 10])
+    <!--var linear = d3.scale.linear()-->
+                    <!--.domain([1, 10])-->
+                    <!--.range([1, 10]);-->
+    <!--var linearCapped = d3.scale.linear()-->
+            <!--.domain([1, 10])-->
+            <!--.range([1, 20])-->
 
-    var log = d3.scale.log();
-    var logCapped = d3.scale.log()
-            .domain([1, 10])
-            .rangeRound([1, 10])
+    <!--var pow = d3.scale.pow().exponent(2)-->
+    <!--var powCapped = d3.scale.pow()-->
+            <!--.exponent(2)-->
+            <!--.domain([1, 10])-->
+            <!--.rangeRound([1, 10])-->
 
-    function render(data, scale, selector) {
-        d3.select(selector).selectAll("div.cell")
-                .data(data)
-                .enter().append('div').classed("cell", true)
-        d3.select(selector).selectAll("div.cell")
-                .data(data)
-                .exit().remove();
-        d3.select(selector).selectAll("div.cell")
-                .data(data)
-                .style("display", "inline-block")
-                .text(function (d) {
-                    return d3.round(scale(d), 2)
-                })
-    }
-    console.log(linear, linearCapped, pow, powCapped, log, logCapped)
-    render(data, linear, "#linear");
-    render(data, linearCapped,"#linear-capped");
-    render(data, pow, "#pow");
-    render(data, powCapped, "#pow-capped");
-    render(data, log, "#log");
-    render(data, logCapped, "#log-capped")
-</script>
+    <!--var log = d3.scale.log();-->
+    <!--var logCapped = d3.scale.log()-->
+            <!--.domain([1, 10])-->
+            <!--.rangeRound([1, 10])-->
+
+    <!--function render(data, scale, selector) {-->
+        <!--d3.select(selector).selectAll("div.cell")-->
+                <!--.data(data)-->
+                <!--.enter().append('div').classed("cell", true)-->
+        <!--d3.select(selector).selectAll("div.cell")-->
+                <!--.data(data)-->
+                <!--.exit().remove();-->
+        <!--d3.select(selector).selectAll("div.cell")-->
+                <!--.data(data)-->
+                <!--.style("display", "inline-block")-->
+                <!--.text(function (d) {-->
+                    <!--return d3.round(scale(d), 2)-->
+                <!--})-->
+    <!--}-->
+    <!--console.log(linear, linearCapped, pow, powCapped, log, logCapped)-->
+    <!--render(data, linear, "#linear");-->
+    <!--render(data, linearCapped,"#linear-capped");-->
+    <!--render(data, pow, "#pow");-->
+    <!--render(data, powCapped, "#pow-capped");-->
+    <!--render(data, log, "#log");-->
+    <!--render(data, logCapped, "#log-capped")-->
+
+    <!--//插值器-->
+    <!--var interpolate = d3.interpolateNumber(0, 100);-->
+    <!--console.log(interpolate(0.1));-->
+    <!--console.log(interpolate(0.99));-->
+
+<!--</script>-->
 </html>

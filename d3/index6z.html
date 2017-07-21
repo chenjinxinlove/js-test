@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<body>
+
+</body>
+<script>
+    var body = d3.select('body'),
+            duration = 5000;
+
+    body.append('div')
+            .classed('box', true)
+            .style('background-color', '#e9967a')
+            .transition()
+            .duration(duration)
+            .style('background-color', '#add8e6')
+            .style('width', '100px')
+            .style('height','100px');
+</script>
+</html>
