@@ -1,0 +1,2 @@
+/* set rem */
+!function(a,b){var c=a.documentElement,d="orientationchange"in window?"orientationchange":"resize",e=function(){c.style.fontSize=10*(a.body.clientWidth/320)+"px"};e(),b.addEventListener&&b.addEventListener(d,e,!1);}(document,window);
