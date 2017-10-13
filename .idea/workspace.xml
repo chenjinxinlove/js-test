@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22e6e6d8-ac5b-4c59-902c-0fe5a5bfa216" name="默认的" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/index7.2.2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7d.html" afterPath="$PROJECT_DIR$/7d.html" />
     </list>
     <ignored path="js-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,12 +24,12 @@
     <favorites_list name="js-test" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="7d.html" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="7d.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/7d.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="487">
-              <caret line="1196" column="9" lean-forward="true" selection-start-line="1196" selection-start-column="9" selection-end-line="1196" selection-end-column="9" />
+              <caret line="1196" column="9" lean-forward="false" selection-start-line="1196" selection-start-column="9" selection-end-line="1196" selection-end-column="9" />
               <folding>
                 <marker date="1505726760973" expanded="true" signature="79072:79092" ph="..." />
                 <marker date="1505726760973" expanded="true" signature="79560:79605" ph="..." />
@@ -38,6 +38,26 @@
                 <marker date="1505726760973" expanded="true" signature="79855:79915" ph="..." />
                 <marker date="1505726760973" expanded="true" signature="80039:80059" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index4z.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/d3/index4z.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-759">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index7.2.2.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/d3/index7.2.2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="671">
+              <caret line="40" column="50" lean-forward="false" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,7 +83,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/underscore-min.js" />
         <option value="$PROJECT_DIR$/js/fingerprint2.min.js.url" />
         <option value="$PROJECT_DIR$/underscore.html" />
         <option value="$PROJECT_DIR$/pageView.html" />
@@ -114,6 +133,7 @@
         <option value="$PROJECT_DIR$/yttq/index.html" />
         <option value="$PROJECT_DIR$/yttq/沿途天气，伴你平安同行_files/jquery.weather.js" />
         <option value="$PROJECT_DIR$/7d.html" />
+        <option value="$PROJECT_DIR$/d3/index7.2.2.html" />
       </list>
     </option>
   </component>
@@ -154,7 +174,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -163,14 +182,20 @@
               <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="js-test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="js-test" type="462c0819:PsiDirectoryNode" />
+              <item name="d3" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../jq/forecast-details" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -182,16 +207,16 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="I:\code\js\js-test\js" />
-      <recent name="I:\code\js\js-test\css" />
-      <recent name="C:\Users\chen\Desktop\js-test" />
-      <recent name="C:\Users\chen\Desktop\js-test\img" />
-      <recent name="C:\Users\chen\Desktop\js-test\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="I:\code\js\js-test\js" />
       <recent name="C:\Users\chen\Desktop\js-test\js" />
+      <recent name="C:\Users\chen\Desktop\js-test\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\code\js\js-test\d3" />
+      <recent name="I:\code\js\js-test\js" />
+      <recent name="I:\code\js\js-test\css" />
+      <recent name="C:\Users\chen\Desktop\js-test" />
       <recent name="C:\Users\chen\Desktop\js-test\img" />
     </key>
   </component>
@@ -389,12 +414,15 @@
       <workItem from="1502701367071" duration="52000" />
       <workItem from="1505273949734" duration="1462000" />
       <workItem from="1505357484305" duration="1307000" />
-      <workItem from="1505726188549" duration="575000" />
+      <workItem from="1505726188549" duration="721000" />
+      <workItem from="1507512230207" duration="41000" />
+      <workItem from="1507684656497" duration="613000" />
+      <workItem from="1507879746314" duration="483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="458216000" />
+    <option name="totallyTimeSpent" value="459499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -403,12 +431,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1459431" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.164859" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -464,6 +492,51 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/7d.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1505726760973" expanded="true" signature="79072:79092" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79560:79605" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79646:79706" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79776:79821" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79855:79915" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="80039:80059" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7d.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1505726760973" expanded="true" signature="79072:79092" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79560:79605" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79646:79706" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79776:79821" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79855:79915" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="80039:80059" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/7d.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1505726760973" expanded="true" signature="79072:79092" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79560:79605" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79646:79706" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79776:79821" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="79855:79915" ph="..." />
+            <marker date="1505726760973" expanded="true" signature="80039:80059" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mbx/zdd.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -503,7 +576,7 @@
     <entry file="file://$PROJECT_DIR$/7d.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="487">
-          <caret line="1196" column="9" lean-forward="true" selection-start-line="1196" selection-start-column="9" selection-end-line="1196" selection-end-column="9" />
+          <caret line="1196" column="9" lean-forward="false" selection-start-line="1196" selection-start-column="9" selection-end-line="1196" selection-end-column="9" />
           <folding>
             <marker date="1505726760973" expanded="true" signature="79072:79092" ph="..." />
             <marker date="1505726760973" expanded="true" signature="79560:79605" ph="..." />
@@ -512,6 +585,22 @@
             <marker date="1505726760973" expanded="true" signature="79855:79915" ph="..." />
             <marker date="1505726760973" expanded="true" signature="80039:80059" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/index4z.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-759">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/index7.2.2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="40" column="50" lean-forward="false" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
