@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22e6e6d8-ac5b-4c59-902c-0fe5a5bfa216" name="默认的" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/7.2.line-tension.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/7.3.area.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/index.7.1.line.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/index.7.4.area.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/7.6.arc.text.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/d3/7.arc-transition.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d3/d3-cookbook" afterPath="$PROJECT_DIR$/d3/d3-cookbook" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d3/7.5.arc.html" afterPath="$PROJECT_DIR$/d3/7.5.arc.html" />
     </list>
     <ignored path="js-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +28,41 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="area-interpolation.html" pinned="false" current-in-tab="true">
+            <file leaf-file-name="area-interpolation.html" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/area-interpolation.html">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="345">
                     <caret line="48" column="16" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="51" selection-end-column="59" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="arc.html" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="667">
+                    <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="arc-label.html" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-label.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="614">
+                    <caret line="53" column="1" lean-forward="true" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="arc-transition.html" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-transition.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="552">
+                    <caret line="51" column="66" lean-forward="true" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
                     <folding />
                   </state>
                 </provider>
@@ -49,11 +78,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="arc.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc.html">
+      <file leaf-file-name="7.arc-transition.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/d3/7.arc-transition.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="326">
+              <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -80,10 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/d3.html" />
-        <option value="$PROJECT_DIR$/js/dddddddd.js" />
-        <option value="$PROJECT_DIR$/js/index.js" />
         <option value="$PROJECT_DIR$/node/udp_server.js" />
         <option value="$PROJECT_DIR$/node/udp_client.js" />
         <option value="$PROJECT_DIR$/testjd.html" />
@@ -131,6 +156,10 @@
         <option value="$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/area.html" />
         <option value="$PROJECT_DIR$/d3/7.3.area.html" />
         <option value="$PROJECT_DIR$/d3/index.7.4.area.html" />
+        <option value="$PROJECT_DIR$/d3/7.5.arc.html" />
+        <option value="$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-label.html" />
+        <option value="$PROJECT_DIR$/d3/7.6.arc.text.html" />
+        <option value="$PROJECT_DIR$/d3/7.arc-transition.html" />
       </list>
     </option>
   </component>
@@ -208,54 +237,6 @@
               <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="chapter7" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js-test" type="462c0819:PsiDirectoryNode" />
-              <item name="d3" type="462c0819:PsiDirectoryNode" />
-              <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter8" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js-test" type="462c0819:PsiDirectoryNode" />
-              <item name="d3" type="462c0819:PsiDirectoryNode" />
-              <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter9" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js-test" type="462c0819:PsiDirectoryNode" />
-              <item name="d3" type="462c0819:PsiDirectoryNode" />
-              <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter10" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js-test" type="462c0819:PsiDirectoryNode" />
-              <item name="d3" type="462c0819:PsiDirectoryNode" />
-              <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter11" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js-test" type="462c0819:PsiDirectoryNode" />
-              <item name="d3" type="462c0819:PsiDirectoryNode" />
-              <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter12" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js-test" type="462c0819:PsiDirectoryNode" />
-              <item name="d3" type="462c0819:PsiDirectoryNode" />
-              <item name="d3-cookbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chapter13" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -488,12 +469,12 @@
       <workItem from="1507684656497" duration="613000" />
       <workItem from="1507879746314" duration="540000" />
       <workItem from="1508381180219" duration="56000" />
-      <workItem from="1510885282235" duration="17698000" />
+      <workItem from="1510885282235" duration="19489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="477310000" />
+    <option name="totallyTimeSpent" value="479101000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -777,14 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-label.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-621">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter8/line-chart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5516">
@@ -881,22 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-transition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/d3/index.7.1.line.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/area-interpolation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -913,10 +870,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/d3/index.7.1.line.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="667">
+          <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-label.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="53" column="1" lean-forward="true" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/7.5.arc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="38" column="54" lean-forward="false" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/7.6.arc.text.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="6" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/d3-cookbook/src/chapter7/arc-transition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="51" column="66" lean-forward="true" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/7.arc-transition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
           <folding />
         </state>
       </provider>
