@@ -13,7 +13,7 @@
 
     var _width = 600, _height = 300,
       _margins = {top: 30, left: 30, right: 30, bottom: 30},
-      _x, _y,
+      _x, _y, _r,
       _data = [],
       _colors = d3.scale.category10(),
       _svg,
@@ -112,29 +112,35 @@
     }
 
     function  renderLines() {
-      _line = d3.svg.line()
-        .x(function (d) {
-          return _x(d.x);
-        })
-        .y(function (d) {
-          return _y(d.y);
-        })
+      _r.range([0, 50]);
+      _data.forEach(function (list, i) {
+        _bodyG.selectAll('circle._' + i)
+          .data(list)
+          .enter()
+          .append('circle')
+          .attr('class', 'bubble _' + i);
 
-      _bodyG.selectAll('path.line')
-        .data(_data)
-        .enter()
-        .append('path')
-        .style('stroke', function (d, i) {
-          return _colors(i);
-        })
-        .attr('class', 'line');
+        _bodyG.selectAll('circle._' + i)
+          .data(list)
+          .style('stroke', function (d, j) {
+            return _colors(j);
+          })
+          .style('fill', function (d,i) {
+            return _colors(i);
+          })
+          .transition()
+          .attr('cx', function (d) {
+            return _x(d.x);
+          })
+          .attr('cy', function (d) {
+            return _y(d.y);
+          })
+          .attr('r', function (d) {
+            return _r(d.r);
+          })
 
-      _bodyG.selectAll('path.line')
-        .data(_data)
-        .transition()
-        .attr('d', function (d) {
-          return _line(d)
-        })
+
+      })
     }
 
     function renderDots() {
@@ -219,6 +225,11 @@
       return _chart;
     };
 
+    _chart.r = function (r) {
+      if (!arguments.length) return _r;
+      _r = r;
+      return _chart;
+    };
     _chart.addSeries = function (series) { // <-1D
       _data.push(series);
       return _chart;
@@ -242,22 +253,23 @@
     chart.render();
   }
 
-  var numberOfSeries = 2,
+  var numberOfSeries = 1,
     numberOfDataPoint = 11,
     data = [];
 
-  for(var i = 0; i < numberOfSeries; ++i)
+  for (var i = 0; i < numberOfSeries; ++i)
     data.push(d3.range(numberOfDataPoint).map(function (i) {
-      return {x: i, y: randomData()};
-    }))
+      return {x: randomData(), y: randomData(), r: randomData()};
+    }));
 
   var chart = lineChart()
     .x(d3.scale.linear().domain([0, 10]))
-    .y(d3.scale.linear().domain([0, 10]));
+    .y(d3.scale.linear().domain([0, 10]))
+    .r(d3.scale.pow().exponent(2).domain([0, 10]));
 
   data.forEach(function (series) {
     chart.addSeries(series);
-  })
+  });
 
   chart.render();
 
