@@ -26,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="8.line.chart.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="8.line.chart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/d3/8.line.chart.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="111">
@@ -58,8 +58,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/node/udp_client.js" />
-        <option value="$PROJECT_DIR$/testjd.html" />
         <option value="$PROJECT_DIR$/css.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/scrool.hrml.html" />
@@ -109,6 +107,8 @@
         <option value="$PROJECT_DIR$/d3/7.6.arc.text.html" />
         <option value="$PROJECT_DIR$/d3/7.arc-transition.html" />
         <option value="$PROJECT_DIR$/d3/8.line.chart.html" />
+        <option value="$PROJECT_DIR$/d3/8.line.area.html" />
+        <option value="$PROJECT_DIR$/d3/8.scatterplot-chart.html" />
       </list>
     </option>
   </component>
@@ -195,17 +195,17 @@
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="I:\code\js\js-test\d3" />
-      <recent name="I:\code\js\js-test\js" />
-      <recent name="I:\code\js\js-test\css" />
-      <recent name="C:\Users\chen\Desktop\js-test" />
-      <recent name="C:\Users\chen\Desktop\js-test\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="I:\code\js\js-test\js" />
       <recent name="C:\Users\chen\Desktop\js-test\js" />
       <recent name="C:\Users\chen\Desktop\js-test\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/d3" />
+      <recent name="I:\code\js\js-test\d3" />
+      <recent name="I:\code\js\js-test\js" />
+      <recent name="I:\code\js\js-test\css" />
+      <recent name="C:\Users\chen\Desktop\js-test" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -419,18 +419,18 @@
       <workItem from="1508381180219" duration="56000" />
       <workItem from="1510885282235" duration="19489000" />
       <workItem from="1511058429650" duration="217000" />
-      <workItem from="1511058664639" duration="3623000" />
+      <workItem from="1511058664639" duration="5235000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="482941000" />
+    <option name="totallyTimeSpent" value="484553000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="22" y="30" width="809" height="797" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2360406" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2360406" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -726,6 +726,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="78" column="22" lean-forward="true" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/8.line.area.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="187" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="297" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/d3/8.scatterplot-chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
           <folding />
         </state>
       </provider>

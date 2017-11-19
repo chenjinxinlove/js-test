@@ -107,7 +107,7 @@
           .attr('clip-path', 'url(#body-clip)');
       }
       renderLines();
-
+      renderAreas();
       renderDots();
     }
 
@@ -161,6 +161,34 @@
           .attr('r', 4.5)
       })
     }
+
+    function renderAreas() {
+      var area = d3.svg.area()
+        .x(function (d) {
+          return _x(d.x)
+        })
+        .y0(yStart())
+        .y1(function (d) {
+          return _y(d.y)
+        })
+
+      _bodyG.selectAll('path.area')
+        .data(_data)
+        .enter()
+        .append('path')
+        .style('fill', function (d, i) {
+          return _colors(i);
+        })
+        .attr('class', 'area');
+
+      _bodyG.selectAll('path.area')
+        .data(_data)
+        .transition()
+        .attr('d', function (d) {
+          return area(d);
+        })
+    }
+
       function xStart() {
         return _margins.left;
       }
