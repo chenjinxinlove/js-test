@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="./d3-cookbook/css/styles.css"/>
+    <script type="text/javascript" src="./d3-cookbook/lib/d3.js"></script>
+    <script type="text/javascript" src="./d3-cookbook/lib/topojson.js"></script>
+
+    <style>
+        .states {
+            fill: none;
+            stroke: #fff;
+            stroke-linejoin: round;
+        }
+    </style>
+</head>
+<body>
+<script>
+  var width = 960,
+    height = 500;
+
+  var color = d3.scale.threshold()
+    .domain([.02, .04, .06, .08, .10])
+    .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
+  var path = d3.geo.path();
+  git
+  var svg = d3.select('body').append('svg')
+    .attr('width', width)
+    .attr('height', height);
+  
+  var g = svg.append('g')
+    .call(d3.behavior.zoom()
+    .scaleExtent([1, 10])
+    .on('zoom', zoom));
+  
+  d3.json('./d3-cookbook/data/us.json', function (error, us) {
+    d3.tsv('./d3-cookbook/data/unemployment.tsv', function (error, unemployment) {
+      var rateById = {};
+
+      unemployment.forEach(function (d) {
+        rateById[d.id] = + d.rate;
+      });
+
+      g.append('g')
+        .attr('class', 'counties')
+        .selectAll('path')
+        .data(topojson.feature(us, us.objects.counties).features)
+        .enter().append('path')
+        .attr('d', path)
+        .style('fill', function (d) {
+          return color([rateById[d.id]]);
+        })
+      
+      g.append('path')
+        .datum(topojson.mesh(us, us.objects.states, function (a, b) {
+          return a !== b;
+        }))
+        .attr('class', 'states')
+        .attr('d', path);
+
+    });
+  });
+
+  function zoom() {
+    g.attr('transform', 'translate('
+        + d3.event.translate
+        + ')scale(' + d3.event.scale + ')'
+    )
+  }
+</script>
+
+</body>
+</html>
