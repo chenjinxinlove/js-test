@@ -2,40 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>秦皇岛香格里拉大酒店</title>
 </head>
-<style>
-    body, button, select, textarea, input, label, option, fieldset, legend{font-family: 微软雅黑;font-size: 12px;line-height: 18px;color: #444;}
-    body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td{margin: 0;padding: 0;}
-    textarea{resize: none}
-    .clear{height:1px;overflow:hidden;clear:both;}
-    a,img{border:0;}
-    a{color: #666;text-decoration: none;}
-    li{list-style-type:none;}
-    .fl{float:left;}
-    .fr{float:right;}
-    .nf{clear:both;}
-    .red{color:red;font-weight:bold;}
-    .green{color:#00b500;font-weight:bold;}
-    .ds{display:block;}
-    .hid{overflow:hidden;}
-    .clearfix{*zoom:1}
-    .clearfix:after{display:block;visibility:hidden;clear:both;height:0;content:'.';font-size:0}
-    .jianbian{background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#f4f4f4),color-stop(100%,#eee));background: -webkit-linear-gradient(top,#f4f4f4 0,#eee 100%);background: linear-gradient(to bottom,#f4f4f4 0,#eee 100%);}
-    .bottomshadow{border-bottom: solid 1px #B3B3B3;-webkit-box-shadow: 0 1px 1px 0 #DFDFDF;box-shadow: 0 1px 1px 0 #DFDFDF;}
-    #content{
-        height: 480px;
-        width: 1080px;
-        background: url("./bg.jpg") no-repeat center;
-        font-size: 80px;
-        line-height: 480px;
-        text-align: center;
-        color: red;
-    }
-</style>
+<link rel="stylesheet" href="./css.css?ddddsdfsfsdf">
+<link rel="stylesheet" href="./style.css?dgfff">
 <body>
-<div id="content">
-    中国天气网测试页面
+
+<div class="content">
+
+
+
+
+
+    <div class="scene">
+
+    </div>
 </div>
 </body>
+<script type="text/javascript" src="http://i.tq121.com.cn/j/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    if (typeof Array.prototype.forEach != "function") {
+        Array.prototype.forEach = function (fn, context) {
+            for (var k = 0, length = this.length; k < length; k++) {
+                if (typeof fn === "function" && Object.prototype.hasOwnProperty.call(this, k)) {
+                    fn.call(context, this[k], k, this);
+                }
+            }
+        };
+    }
+    if (typeof Array.prototype.map != "function") {
+        Array.prototype.map = function (fn, context) {
+            var arr = [];
+            if (typeof fn === "function") {
+                for (var k = 0, length = this.length; k < length; k++) {
+                    arr.push(fn.call(context, this[k], k, this));
+                }
+            }
+            return arr;
+        };
+    }
+    var url  = "http://123.57.156.3:8081/callback/api/weather?lat=119.5630181758&lon=39.9090768411";
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: url,
+        dataType: "jsonp",
+        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+        success: function(json){
+            var data = eval("("+json+")");
+            var result = data.result;
+            var minRainMsg = result.min.msg;
+            var tomorrowData = result.fif.fif.slice(0,3);
+            var sceneData = result.sk.dataSK;
+            var twentyFourDatas = [];
+            data.result.fif.jh.jh.forEach(function (value) {
+                var arr = {};
+                var time = value.jf.slice(8, 10);
+                arr.time = time;
+                arr.template = value.jb;
+                if (time > 6 && time < 18) {
+                    arr.wather = 'd' + value.ja;
+                } else {
+                    arr.wather = 'n' + value.ja;
+                }
+
+                twentyFourDatas.push(arr);
+            });
+
+            function air(aqi) {
+                var color , name;
+                if (aqi) {
+                    if (aqi > 0 && aqi < 50) {
+                        color = "#3bb64f";
+                        name = '优';
+                    } else if (aqi >= 50 && aqi < 100) {
+                        color = "#efdc31";
+                        name = '良';
+                    } else if (aqi >= 100 && aqi < 150) {
+                        color = "#ff6000";
+                        name = '轻污染';
+                    } else if (aqi >= 150 && aqi <= 200) {
+                        color = "#f61c1c";
+                        name = '污染';
+                    } else if (aqi > 200 && aqi <= 300) {
+                        color = "#bb002f";
+                        name = '重度污染';
+                    } else {
+                        color = "#7e0808";
+                        name = '严重污染';
+                    };
+                }
+                return {
+                    color: color,
+                    name: name
+                }
+            }
+
+            var skstr = '<span class="tem">'+ sceneData.temp +'º</span>'+
+                    '<i class="item-icon '+ sceneData.weathercode +' icons_bg scale" title="多云"></i>'+
+                    '<span class="info">' + sceneData.weather +'</span>'+
+                    '<div class="other">'+
+                    '<p><span class="hubefore"></span>' +
+                '<span class="hu">湿度 '+ sceneData.sd +'</span></p>' +
+                '<p><span class="wind"></span><span>'+ sceneData.WD +' '+ sceneData.WS +'</span></p>' +
+                '<p><span class="air"></span>空气<span class="airshow" style="background:' + air(sceneData.aqi).color +'">'+ sceneData.aqi +'' + air(sceneData.aqi).name +'</span></p>'+
+                    '</div>';
+            $('.scene').html(skstr);
+
+
+
+
+            /**
+             * Created by chen on 2017/4/11.
+             */
+                var yubao = '';
+                tomorrowData.forEach(function (item, index) {
+                    var  ss ;
+                    index == 2 ? ss = '' : ss = "pxone"
+                    yubao += '<li class="item '+ ss +'">' +
+                        '                <p class="time">' + item.week + '(' +  item.day +')'+'</p>' +
+                        '                <p class="ionc">' +
+                        '                   <i class="item-icon dfdf d'+ item.bWear +' icons_bg"></i>' +
+                        '                   <i class="item-icon dfdf n'+ item.nWear +' icons_bg"></i>' +
+                        '                </p>' +
+                        '                <p class="temd">'+ item.nTem + ' ~ '+ item.bTem + '℃</p>' +
+                        '                <p class="windd">'+ item.bWindx +' '+ item.bWindl +' '+'</p>'+
+                            '</li>'
+                })
+            $('.mh-concent').html(yubao)
+
+
+
+
+
+
+
+
+        },
+        error: function(){
+            // alert('fail');
+        }
+    })
+
+   
+</script>
+
 </html>
