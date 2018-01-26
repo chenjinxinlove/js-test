@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    html, body, *{
+        padding: 0;
+        margin: 0;
+    }
+    div{
+        background: red;
+        width: 2000px;
+        
+    }
+    .clearfix::after{
+        content: '';
+        height: 0;
+        display: table;
+        clear: both;
+        visibility: hidden;
+    }
+    p{
+        background: yellow;
+        width: 200px;
+        height: 200px;
+        float: left;
+    }
+</style>
+<body>
+    <div class="clearfix">
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <script>
+        let box = document.getElementsByTagName('div')[0];
+        console.log(box.style.width);
+        // console.log(box.currentStyle.width);
+        console.log(getComputedStyle(box).width)
+        console.log(box.getBoundingClientRect().width)
+    </script>
+</body>
+</html>
