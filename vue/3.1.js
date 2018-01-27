@@ -1,29 +1,4 @@
-class Event {
-    constructor() {
-        this.handler = {};
-    }
-
-    on(eventType, handler) {
-        if(!(eventType in this.handler)) {
-            this.handler[eventType] = []
-        }
-        this.handler[eventType].push(handler);
-    }
-
-    emit(type, ...args) {
-        // debugger;
-        while(type){
-            if(this.handler[type]){
-                this.handler[type].forEach(function(callback){
-                    callback(...args);
-                });
-            }
-            let index = type.lastIndexOf(".");
-            type = index>0 ? type.slice(0, index) : "";
-        }
-        return this;
-    }
-}
+git git
 
 
 function Observer(data, parentStr, originEvent) {
