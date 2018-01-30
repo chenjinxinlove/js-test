@@ -1,5 +1,3 @@
-git git
-
 
 function Observer(data, parentStr, originEvent) {
     this.event = originEvent ? originEvent :  new Event();

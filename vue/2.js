@@ -69,35 +69,6 @@ Observer.prototype.setGet = function (key, value) {
 
 };
 
-// let obj = {
-//     a: 1,
-//     b: 2,
-//     c: {
-//         d: 3,
-//         e: 4
-//     }
-// }
-//
-// let app1 = new Observer(obj);
-//
-//
-// // 要实现的结果如下：
-// app1.data.c.d // 你访问了 name
-
-// let app1 = new Observer({
-//     name: 'youngwind',
-//     age: 25
-// });
-//
-// app1.data.name = {
-//     lastName: 'liang',
-//     firstName: 'shaofeng'
-// };
-//
-// app1.data.name.lastName;
-// // 这里还需要输出 '你访问了 lastName '
-// app1.data.name.firstName = 'lalala';
-// // 这里还需要输出 '你设置了firstName, 新的值为 lalala'
 
 //任务三：传递回调函数
 
