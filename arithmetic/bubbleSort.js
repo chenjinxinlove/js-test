@@ -11,3 +11,7 @@ function bubbleSort(arr) {
     }
     return arr;
 }
+
+//点击每一列的时候alert其index
+
+var docment.getElementByTagName('li')
