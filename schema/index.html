@@ -5,44 +5,30 @@
     <title>Title</title>
 </head>
 <body>
-
+<div id="app">唤起网易app</div>
 </body>
-
+<script src="callApp.js"></script>
 <script>
-    var url = {
-        open: 'app://****',
-        down: ''
+    var app = new CallApp({
+        scheme: '',
+        androidScheme: '',
+        iosScheme: '',
+        params:'',
+        applink: '',
+        universalLink:'',
+        androidIntent: '',
+        timeout:2000,
+        autoCall:true
+    })
+    document.getElementById('app').onclick = function () {
+        app.call(function (flag) {
+            if (flag) {
+                alert('成功')
+            } else {
+                alert('失败')
+            }
+        })
     }
-    
-    var iframe = document.createElement('iframe');
-    var body = document.body;
-    iframe.style.cssText='display:none;width=0;height=0';
-    var timer = null;
-    
-    var openapp = document.getElementById('openapp');
-    openapp.addEventListener('click', function () {
-        if(/MicroMessenger/gi.test(navigator.userAgent)) {
-            // 引导用户在浏览器中打开
-        }else{
-            body.appendChild(iframe);
-            iframe.src = url.open;
-            timer = setTimeout(function() {
-                wondow.location.href = url.down;
-            }, 500);
-        }
-    }, false);
-    //当页面成功唤起app之后，我们再切换回来浏览器，发现跳转到了下载页面。
-    $(document).on('visibilitychange webkitvisibilitychange', function() {
-        var tag = document.hidden || document.webkitHidden;
-        if (tag) {
-            clearTimeout(timer);
-        }
-    })
-
-    $(window).on('pagehide', function() {
-        clearTimeout(timer);
-    })
-
 
 </script>
 </html>
