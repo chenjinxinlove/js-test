@@ -115,7 +115,7 @@ function deepCopy(p, c) {
     }
     return c;
 }
-
+var v = {...obj};
 function shallowCopy(p) {
     var c = {};
     for (var i in p) {
@@ -283,6 +283,8 @@ var overtime = (function () {
                 time += args[i];
             }
             return time;
+        }else {
+            [].push.applys(args, arguments);
         }
     }
 })();
