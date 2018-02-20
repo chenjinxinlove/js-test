@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<br>
+<input type="password">
+<br>
+<input type="submit">
+<br>
+<input type="button">
+<br>
+<input type="radio">
+<br>
+<input type="checkbox">
+<br>
+<input type="color">
+<br>
+<input type="date">
+<br>
+<input type="datetime">
+<br>
+<input type="datetime-local">
+<br>
+<input type="number">
+<br>
+<input type="search">
+<br>
+<input type="range">
+<br>
+<input type="email">
+<br>
+<input type="month">
+<br>
+<input type="tel">
+<br>
+<input type="time">
+<br>
+<input type="url">
+<br>
+<input type="week">
+
+<style>
+    .line-height{
+        line-height: 50px;
+        font-size: 12px;
+        margin-top: 16px;
+    }
+</style>
+<div class="line-height">
+    陈继续拿回来刷卡机速度快；xxxxxxx阿斯顿是弗朗加利三等奖；爱上
+</div>
+<style>
+    .box{
+        width: 280px;
+        line-height: 120px;
+        background-color: #f0f3f9;
+        margin: auto;
+    }
+    .content{
+        display: inline-block;
+        line-height: 20px;
+        margin: 0 20px;
+        vertical-align: middle;
+    }
+</style>
+
+<div class="box">
+    <div class="content">基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助。</div>
+</div>
+
+<section class="layout float">
+    <h1>float布局</h1>
+    <style>
+       .left-right-center{
+           height: 500px;
+       }
+        .layout.float .left {
+            float: left;
+            width: 300px;
+            height: 100%;
+            background: red;
+        }
+        .layout.float .right {
+            float: right;
+            width: 300px;
+            background: blue;
+            height: 100%;
+        }
+        .layout.float .center{
+            background: yellow;
+            height: 100%;
+            margin: 0 300px;
+        }
+
+    </style>
+    <article class="left-right-center">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">sss</div>
+    </article>
+</section>
+<section class="layout position">
+    <h1>position</h1>
+    <style>
+        .layout.position .left-center-right{
+            /*position: relative;*/
+            height: 500px;
+        }
+        .layout.position .left{
+            position: absolute;
+            /*top:0;*/
+            /*left:0;*/
+            background: red;
+            width: 300px;
+            height: 100%;
+        }
+        .layout.position .right{
+            position: absolute;
+            /*top:0;*/
+            /*right: 0;*/
+            background: blue;
+            width: 300px;
+            height: 100%;
+        }
+        .layout.position .center{
+            background: yellow;
+            margin: 0 300px;
+            height: 100%;
+        }
+    </style>
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">sss</div>
+        <div class="right"></div>
+    </article>
+</section>
+
+
+<section class="layout position">
+    <h1>position</h1>
+    <style>
+        .layout.position .left-center-right{
+            position: relative;
+        }
+        .layout.position .left{
+            position: absolute;
+            top:0;
+            left:0;
+            background: red;
+            width: 300px;
+        }
+        .layout.position .right{
+            position: absolute;
+            top:0;
+            right: 0;
+            background: blue;
+            width: 300px;
+        }
+        .layout.position .center{
+            background: yellow;
+            margin: 0 300px;
+        }
+    </style>
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">sss</div>
+        <div class="right"></div>
+    </article>
+</section>
+<section class="layout grail">
+    <h1>grail</h1>
+    <style>
+        .layout.grail .center-left-right{
+            padding: 0 300px;
+            height: 500px;
+        }
+        .layout.grail .center{
+            float: left;
+            width: 100%;
+            background: yellow;
+            height: 100%;
+        }
+        .layout.grail .left{
+            float: left;
+            width: 300px;
+            margin-left: -100%;
+            background: red;
+            position: relative;
+            left: -300px;
+            height: 100%;
+        }
+        .layout.grail .right{
+            float: left;
+            width: 300px;
+            margin-left: -300px;
+            background: blue;
+            position: relative;
+            right: -300px;
+            height: 100%;
+        }
+    </style>
+    <article class="center-left-right">
+        <div class="center">555</div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </article>
+</section>
+</body>
+</html>

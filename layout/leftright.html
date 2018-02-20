@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    html, body{
+        padding: 0;
+        margin: 0;
+    }
+    .layout article div{
+        min-height: 100px;
+    }
+</style>
+<!-- <section class="layout float">
+    <h1>float布局</h1>
+    <style>
+        .layout.float .left {
+            float: left;
+            width: 300px;
+            background: red;
+        }
+        .layout.float .right {
+            float: right;
+            width: 300px;
+            background: blue;
+        }
+        .layout.float .center{
+            background: yellow;
+            overflow: auto;
+        }
+
+    </style>
+    <article class="left-right-center">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center">
+            
+
+        </div>
+    </article>
+</section> -->
+
+<!-- <section class="layout position">
+    <h1>position</h1>
+    <style>
+        .layout.position .left-center-right{
+            position: relative;
+        }
+        .layout.position .left{
+            position: absolute;
+            top:0;
+            left:0;
+            background: red;
+            width: 300px;
+        }
+        .layout.position .right{
+            position: absolute;
+            top:0;
+            right: 0;
+            background: blue;
+            width: 300px;
+        }
+        .layout.position .center{
+            background: yellow;
+            margin: 0 300px;
+        }
+    </style>
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+        </div>
+        <div class="right"></div>
+    </article>
+</section> -->
+<!-- <section class="layout flexbox">
+    <h1>flexbox</h1>
+    <style>
+        .layout.flexbox .left-center-right {
+            display: flex;
+        }
+        .layout.flexbox .left{
+            width: 300px;
+            background: red;
+        }
+        .layout.flexbox .center{
+            flex: 1;
+            background: yellow;
+        }
+        .layout.flexbox .right {
+            width: 300px;
+            background: blue;
+        }
+    </style>
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center"><p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p></div>
+        <div class="right"></div>
+    </article>
+</section> -->
+
+<section class="layout table">
+    <h1>table</h1>
+    <style>
+        .layout.table .left-center-right{
+            display: table;
+            width: 100%;
+            height: 100px;
+        }
+        .layout.table .left-center-right>div{
+            display: table-cell;
+        }
+        .layout.table .left{
+            width: 300px;
+            background: red;
+        }
+        .layout.table .center{
+            background: yellow;
+        }
+        .layout.table .right {
+            width: 300px;
+            background: blue;
+        }
+    </style>
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+        </div>
+        <div class="right"></div>
+    </article>
+</section>
+
+<section class="layout grid">
+    <h1>grid</h1>
+    <style>
+        .layout.grid .left-center-right{
+            display: grid;
+            grid-template-columns: 300px auto 300px;
+            grid-template-rows: 50px;
+        }
+        .layout.grid .left{
+            background: red;
+        }
+        .layout.grid .center{
+            background: yellow;
+        }
+        .layout.grid .right{
+            background: blue;
+        }
+    </style>
+    <article class="left-center-right">
+        <div class="left"></div>
+        <div class="center">
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+        </div>
+        <div class="right"></div>
+    </article>
+</section>
+
+<section class="layout grail">
+    <h1>grail</h1>
+    <style>
+        .layout.grail .center-left-right{
+            padding: 0 300px;
+        }
+        .layout.grail .center{
+            float: left;
+            width: 100%;
+            background: yellow;
+        }
+        .layout.grail .left{
+            float: left;
+            width: 300px;
+            margin-left: -100%;
+            background: red;
+            position: relative;
+            left: -300px;
+        }
+        .layout.grail .right{
+            float: left;
+            width: 300px;
+            margin-left: -300px;
+            background: blue;
+            position: relative;
+            right: -300px;
+        }
+    </style>
+    <article class="center-left-right">
+        <div class="center">
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+            <p>1</p>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </article>
+</section>
+<div style="clear: both"></div>
+<section class="layout flies" >
+    <h1>flies</h1>
+    <style>
+        .layout.flies .center-wrap{
+            float: left;
+            width: 100%;
+        }
+        .layout.flies .center{
+            margin: 0 300px;
+            background: yellow;
+        }
+        .layout.flies .left{
+            background: red;
+            width: 300px;
+            float: left;
+            margin-left: -100%;
+        }
+        .layout.flies .right {
+            background: blue;
+            float: left;
+            width: 300px;
+            margin-left: -300px;
+        }
+    </style>
+    <article class="center-left-right">
+        <div class="center-wrap">
+            <div class="center">
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+            </div>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </article>
+</section>
+
+</body>
+</html>

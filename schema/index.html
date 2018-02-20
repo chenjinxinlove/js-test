@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">唤起网易app</div>
+</body>
+<script src="callApp.js"></script>
+<script>
+    var app = new CallApp({
+        scheme: '',
+        androidScheme: '',
+        iosScheme: '',
+        params:'',
+        applink: '',
+        universalLink:'',
+        androidIntent: '',
+        timeout:2000,
+        autoCall:true
+    })
+    document.getElementById('app').onclick = function () {
+        app.call(function (flag) {
+            if (flag) {
+                alert('成功')
+            } else {
+                alert('失败')
+            }
+        })
+    }
+
+</script>
+</html>

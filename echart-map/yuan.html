@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500"></canvas>
+<div></div>
+半径：<input type="text" value="" id="r">
+颜色： <input type="text" id="color">
+<input type="button" value="重画" id="buttom">
+<script>
+    function draw(color, r) {
+        color = color || "#FF0000";
+        r = r || 50;
+        var ctx = document.getElementById('canvas').getContext('2d');
+        ctx.beginPath();
+        ctx.clearRect(0,0,500, 500)
+        ctx.fillStyle= color;
+        ctx.arc(250 , 250,r,0,2 * Math.PI , true);
+        ctx.fill();
+    }
+
+    document.getElementById('buttom').onclick = function () {
+        var r = document.getElementById('r').value;
+        var color = document.getElementById('color').value;
+        draw(color, r);
+    }
+
+    draw();
+</script>
+</body>
+</html>

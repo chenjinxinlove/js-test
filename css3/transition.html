@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .container{
+        width: 400px;
+        min-height: 120px;
+        max-height: 300px;
+        border:1px solid red;
+        overflow-x: hidden;
+        overflow-y: auto;
+        outline: none;
+    }
+    .container:hover{
+        /*width: 800px;*/
+    }
+    .item1{
+        flex-grow: 1;
+        background: red;
+    }
+    .item2{
+        background: yellow;
+        flex-grow: 2;
+    }
+    .item3{
+        background: black;
+        flex-grow: 3;
+    }
+</style>
+<div>
+    /空列表
+    <div id="box"></div>
+    //内容列表
+    <ul id="con">
+        <li>第1项</li>
+        <li>第2项</li>
+        <li>第3项</li>
+        <li>第4项</li>
+    </ul>
+</div>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+    var con = $("con");
+    var box = $("box");
+    var liDoms = document.getElementsByTagName("li");
+    var i = 0,
+        len = liDoms.length;
+    //循环设置每个子项的draggable属性，以及时候拖动标记
+    for (; i < len; i += 1) {
+        liDoms[i].draggable = 'true';
+        liDoms[i].flag = false;
+        liDoms[i].ondragstart = function() {
+            this.flag = true;
+        };
+        liDoms[i].ondragend = function() {
+            this.flag = false;
+        };
+    }
+
+    //投放区事件
+    $("box").ondragenter = function(e) {
+        e.preventDefault();
+        console.log('进入');
+
+    };
+    $("box").ondragover = function(e) {
+        e.preventDefault();
+        console.log('移动');
+    };
+    $("box").ondragleave = function(e) {
+        e.preventDefault();
+        console.log('离开');
+    };
+    $("box").ondrop = function(e) {
+
+        e.preventDefault();
+        for (var i = 0; i < liDoms.length; i += 1) {
+
+            if (liDoms[i].flag) {
+                box.appendChild(liDoms[i]);
+            }
+        }
+
+        console.log('成功');
+
+    };
+    //投放区事件
+    $("con").ondragenter = function(e) {
+        e.preventDefault();
+        console.log('进入');
+
+    };
+    $("con").ondragover = function(e) {
+        e.preventDefault();
+        console.log('移动');
+    };
+    $("con").ondragleave = function(e) {
+        e.preventDefault();
+        console.log('离开');
+    };
+    $("con").ondrop = function(e) {
+
+        e.preventDefault();
+        for (var i = 0; i < liDoms.length; i += 1) {
+
+            if (liDoms[i].flag) { //此时获得是时box对象下li，而不是原容器的li了
+                $("con").appendChild(liDoms[i]);
+            }
+        }
+
+        console.log('成功');
+
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="index.js"></script>
+</head>
+<body>
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<div id="mydiv" draggable="true">sasdasd</div>
+
+<div id="container" style="height: 600px;width: 500px;
+background: red"></div>
+<script>
+    var list = document.getElementById('ul').getElementsByTagName('li');
+    for (var i = 0; i <3 ; i++) {
+        list[i].onclick= (function (a) {
+            return function () {
+                alert(a)
+            }
+        })(i)
+    }
+
+    var myDiv = document.getElementById('mydiv');
+
+    myDiv.ondragstart = function () {
+        console.log('开始拖');
+    }
+
+    myDiv.ondrag = function () {
+        console.log('正在拖');
+    }
+
+    myDiv.ondragend = function () {
+        console.log('结束拖')
+    }
+
+    var container = document.getElementById('container');
+
+
+    container.ondragenter = function () {
+        console.log('放入');
+    }
+    container.ondragover = function () {
+        e.preventDefault();
+        console.log('放上了');
+    }
+
+    container.ondrag = function () {
+        console.log('出去了')
+    }
+
+    container.ondrop = function () {
+        console.log('鼠标放下了');
+        //删除被拖动的源对象
+        var id = e.dataTransfer.getData('PlaneID');//得到数据--id值
+        var p = document.getElementById(id); //根据id值找到相关的元素
+        p.parentNode.removeChild(p);  //从父元素中删除子节点
+    }
+
+</script>
+</body>
+</html>
