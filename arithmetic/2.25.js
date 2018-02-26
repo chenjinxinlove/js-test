@@ -1,167 +1,217 @@
-var myEvent = new Event('myEvent');
-docment.addEventListener('myEvent', func, false);
-docment.dispatchEvent('myEvent');
-
-var bind = Function.prototype.bind || function (context) {
-    var self = this;
-    return function (...args) {
-      self.apply(context, args);
-    }
-  };
-
-a.bind(foo)
-
-用context的this来改变运行函数的this
-
-function shaffle(arr) {
-  while (arr.some(item => item instanceof Array)) {
-    arr = [].concat(...arr);
-  }
-
+var arr = [];
+for (var i = 0 ; i < 20000; i++) {
+    arr.push(Math.floor(Math.random() * 200000));
 }
-
 
 function bubbleSort(arr) {
-  for (var i = 0; i < arr.length; i ++) {
-    for (var j = 0; j < arr.length - 1 - i; j ++) {
-      if (arr[j] > arr[j+1]) {
-        var temp = arr[j+1];
-        arr[j+1] = arr[j];
-        arr[j] = temp;
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+      for (var j = 0; j < len - 1 - i; j ++) {
+        if (arr[j] > arr[j+1]) {
+          var temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+        }
       }
     }
-  }
-  return arr;
+    return arr;
+
 }
+console.log('冒泡排序');
+console.time();
+console.log(bubbleSort(arr));
+console.timeEnd();
 
 function selectionSort(arr) {
-  var len = arr.length;
-  var minIndex;
-  for (var i = 0; i < len - 1; i++) {
-    minIndex = i;
-    for (var j = i; j < len; j++){
-      if (arr[j] < arr[minIndex]){
-        minIndex = j;
+    var len = arr.length, minIndex;
+    for (var i = 0; i < len - 1; i++) {
+      minIndex = i;
+      for (var j = i; j < len; j++) {
+        if (arr[j] < arr[minIndex]) {
+          minIndex = j;
+        }
       }
     }
-    if(minIndex !== i) {
+    if (i !== minIndex) {
       var temp = arr[i];
       arr[i] = arr[minIndex];
       arr[minIndex] = temp;
     }
-  }
-  return arr;
+    return arr;
 }
+
+console.log('选择排序');
+console.time();
+console.log(selectionSort(arr));
+console.timeEnd();
 
 function insertSort(arr) {
-  var len = arr.length;
-  for (var i = 1; i < len; i ++) {
-    for (var j = i; j > 0; j--) {
-      if (arr[j] < arr[j-1]) {
-        var temp = arr[j-1];
-        arr[j-1] = arr[j];
-        arr[j] = temp;
-      } else {
-        break;
+    for (var i = 1; i <arr.length; i ++) {
+      for (var j = i; j > 0; j-- ) {
+        if (arr[j] < arr[j - 1]){
+          var temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+        } else {
+          break;
+        }
       }
     }
-  }
-  return arr;
-}
-
-
-function merginSort(arr){
-  var len = arr.length, middleIndex;
-  if (len === 1) {
     return arr;
-  }
-  middleIndex = Math.floor(len / 2);
-  var left = arr.slice(0, middleIndex);
-  var right = arr.slice(middleIndex);
-  mergin(merginSort(left), merginSort(right));
 }
+
+console.log('插入排序');
+console.time();
+console.log(insertSort(arr));
+console.timeEnd();
 
 function mergin(left, right) {
-  var res = [];
-  while (left.length > 0 && right.length > 0) {
-    if (left[0] < right[0]) {
-      res.push(left.shift());
-    } else {
-      res.push(right.shift());
+    var re = [];
+    while (left.length > 0 && right.length > 0) {
+      if (left[0] > right[0]) {
+        re.push(right.shift());
+      } else {
+        re.push(left.shift());
+      }
     }
-  }
-  return res.concat(left).concat(right);
+    return re.concat(left).concat(right);
 }
+
+function merginSort(arr) {
+    if (arr.length === 1) {
+      return arr;
+    }
+    var middle =  Math.floor(arr.length / 2);
+    var left = arr.slice(0, middle);
+    var right = arr.slice(middle);
+    return mergin(merginSort(left), merginSort(right));
+}
+
+console.log('归并排序');
+console.time();
+console.log(merginSort(arr));
+console.timeEnd();
 
 
 function quickSort(arr) {
-  if(arr.lenght <= 1) {
+    if (arr.length <= 1) {
+      return arr;
+    }
+    var middleIndex = Math.floor(arr.length / 2);
+    var middle = arr.splice(middleIndex, 1)[0];
+    var left = [], right = [];
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i] <= middle) {
+        left.push(arr[i])
+      } else {
+        right.push(arr[i]);
+      }
+    }
+    return quickSort(left).concat([middle], quickSort(right));
+}
+
+console.log('快速排序');
+console.time();
+console.log(quickSort(arr));
+console.timeEnd();
+
+function search(arr, item) {
+    var low, higt, middle, element;
+    low = 0;
+    higt = arr.length - 1;
+    while (low < higt) {
+      middle = Math.floor((low + higt) / 2);
+      element = arr[middle];
+      if (middle > item) {
+        higt = middle - 1;
+      } else if (middle < item) {
+        low = middle + 1;
+      } else {
+        return middle;
+      }
+    }
+    return -1;
+}
+
+var searchArr = quickSort(arr);
+console.log('二分查找排序');
+console.time();
+console.log(search(searchArr, 176));
+console.timeEnd();
+console.time();
+console.log(searchArr.indexOf(176));
+console.timeEnd();
+
+var bind = Function.prototype.bind || function (context) {
+    var self = this;
+    return function () {
+        self.apply(context, {}.slice.call(arguments, 1))
+    }
+}
+
+function flat(arr) {
+    while (arr.some(item => item instanceof  'Array')) {
+      arr = [].concat(...arr);
+    }
     return arr;
-  }
-  var middleIndex = Math.floor(arr.length/ 2);
-  var middle = arr.splice(middleIndex, 1)[0];
-  var left = [], right = [];
+}
 
-  for (var i = 0 ; i < arr.length; i++) {
-    if (arr[i] <= middle) {
-      left.push(arr[i])
-    } else {
-      right.push(arr[i])
+const statusProvider = (promise, status) => data => {
+  if (promise.status !== 'PENDING') return false;
+  promise.status = status;
+  promise.result = data;
+  switch (status) {
+      case 'FILFILLED': return promise.successListener.forEach(fn => fn(data))
+      case 'REJECTED': return promise.failureListener.forEach(fn => fn(data))
+  }
+}
+
+class Promise {
+  constructor(executor){
+    this.task = [];
+    this.status = 'PENDING';
+    this.result = '';
+    this,successListener = [];
+    this.failureListener = [];
+    executor(statusProvider(this, 'FULFILLED'), statusProvider(this, 'REJECTED'));
+  }
+  then(...args) {
+    switch (this.status) {
+        case 'PENDING': {
+          this.successListener.push(args[0]);
+          this.failureListener.push(args[1]);
+          break;
+        }
+        case 'FULFILLED': {
+          args[0](this.result);
+          break;
+        }
+        case 'REJECTED': {
+          args[1](this.result);
+        }
     }
   }
-
-  return quickSort(left).concat([middle], quickSort(right))
-
-}
-/ 大致分三步：
-// 1、找基准（一般是以中间项为基准）
-// 2、遍历数组，小于基准的放在left，大于基准的放在right
-// 3、递归
-function quickSort(arr){
-  //如果数组<=1,则直接返回
-  if(arr.length<=1){
-    return arr;
+  catch(...arg) {
+    return this.then(undefined, arg);
   }
-  var pivotIndex=Math.floor(arr.length/2);
-  //找基准，并把基准从原数组删除
-  var pivot=arr.splice(pivotIndex,1)[0];
-  //定义左右数组
-  var left=[];
-  var right=[];
+}
 
-  //比基准小的放在left，比基准大的放在right
-  for(var i=0;i<arr.length;i++){
-    if(arr[i]<=pivot){
-      left.push(arr[i]);
-    }else{
-      right.push(arr[i]);
+const createStore = (reducer) => {
+  let state = {};
+  let listeners = [];
+
+  const getState = () => state;
+
+  const dispatch = (action) => (reducer) => {
+    state = reducer(state, action);
+    listeners.forEach(fn => fn());
+
+    let subscribe = (listener) => {
+      listeners.push(listener);
     }
+    dispatch({type: '@@CHEN-REDUX'});
+    return {getState, dispatch, subscribe}
   }
-  //递归
-  return quickSort(left).concat([pivot],quickSort(right));
-}
-var arr=[2,3,6,4,2,1,90,100,20,5];
-console.log(quickSort(arr)); // ≈
-
-var searchArr =
-
-function binarySearch(item) {
-  var arr = [1,2,3,4,5,6,7,8,9];
-  var low, higt, middle, element;
-
-  low = 0;
-  higt = arr.length - 1;
-  while (low <= higt) {
-    middle =  Math.floor((low + higt) / 2);
-    element = arr[middle];
-    if (item > element) {
-      low = middle + 1;
-    } else if (item < element){
-      higt = middle - 1;
-    } else {
-      return middle;
-    }
-  }
-  return -1;
 
 }
+
