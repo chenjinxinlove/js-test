@@ -52,3 +52,31 @@ let p2 = Promise.resolve(2);
 let p3 = new Promise(resolve => setTimeout(resolve, 2000, 3));
 Pall(p1, p2, p3).then(console.log); // [1, 2, 3] (after about 2 seconds)
 
+//4flip  翻转
+
+//const flip = fn => (first, ...rest) => fn(...rest, first)
+
+var flip = function (fn) {
+  return function () {
+      var args = [].slice.call(arguments);
+      var first = args[0];args.shift();
+      args = args.push(first);
+      return fn.apply(null, args)
+  }
+};
+
+//5 over   越过
+//const over = (...fns) => (...args) => fns.map(fn => fn.apply(null, args))
+
+var over  = function () {
+    var fns = [].slice.call(arguments);
+    return function () {
+        var args = [].slice.call(arguments);
+        return fns.map(function (fn) {
+            return fn.apply(null, args);
+        })
+    }
+}
+
+//6 overArgs
+//const overArgs = (fn, transforms) => (...args) => fn(...args.map((val, i) => transforms[i](val)))
