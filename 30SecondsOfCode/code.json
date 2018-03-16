@@ -1,0 +1,99 @@
+[
+  {
+    "id": "arg",
+    "num": "1",
+    "name": "arg任意的",
+    "type": "adapter",
+    "descEn": "Creates a function that accepts up to n arguments, ignoring any additional arguments.",
+    "descCn": "创建一个函数，该函数接受最多n个参数，忽略任何附加参数。",
+    "es6": "const ary = (fn, n) => (...args) => fn(...args.slice(0, n));",
+    "es5": "var ary = function (fn, n) {return fn.apply(null, [].slice.call(arguments, 0, n))}}",
+    "test": "const firstTwoMax = ary(Math.max, 2);[[2, 6, 'a'], [8, 4, 6], [10]].map(x => firstTwoMax(...x)); // [6, 8, 10]",
+    "difficulty":"1"
+  },
+  {
+    "id": "call",
+    "num": "2",
+    "name": "call呼叫",
+    "type": "adapter",
+    "descEn": "Given a key and a set of arguments, call them when given a context. Primarily useful in composition.",
+    "descCn": "给定一个键和一组参数，在给定上下文时调用它们。主要用于合成。",
+    "es6": "const call = (key, ...args) => context => context[key](...args);",
+    "es5": "var call = function (key) {var args = [].slice.call(arguments, 1);return function (context) {return context[key].apply(context, args);}}",
+    "test": "var map = call('map', x => 2 * x);map([1,2,3])//[2, 4, 6]",
+    "difficulty":"1"
+  },
+  {
+    "id": "collectInto",
+    "num": "3",
+    "name": "collectInto聚集进入",
+    "type": "adapter",
+    "descEn": "Changes a function that accepts an array into a variadic function.",
+    "descCn": "变化一个函数，让一个可变函数的参数，变成数组传入",
+    "es6": "const collectInto = fn => (...args) => fn(args);",
+    "es5": "var collectInto = function (fn) {return function () {return fn([].slice.call(arguments))}}",
+    "test": "const pall = collectInto(function (arr) {console.log(arr);});pall(1, 2, 3);//[1, 2, 3]",
+    "difficulty":"1"
+  },
+  {
+    "id": "flip",
+    "num": "4",
+    "name": "flip翻转参数",
+    "type": "adapter",
+    "descEn": "Flip takes a function as an argument, then makes the first argument the last.",
+    "descCn": "翻转将函数的参数，使第一个参数成为最后一个参数。",
+    "es6": "const flip = fn => (first, ...rest) => fn(...rest, first);",
+    "es5": "var flip = function (fn) {return function () {var args = [].slice.call(arguments);var first = args[0];args.shift();args.push(first);return fn.apply(fn, args)}};",
+    "test": "var f = flip(function(f,d){console.log(f,d)});f(1,2)",
+    "difficulty":"1"
+  },
+  {
+    "id": "over",
+    "num": "5",
+    "name": "over越过",
+    "type": "adapter",
+    "descEn": "Creates a function that invokes each provided function with the arguments it receives and returns the results.",
+    "descCn": "创建一个函数，传入任意个函数，参数调用每个提供的函数并返回结果。",
+    "es6": "const over = (...fns) => (...args) => fns.map(fn => fn.apply(null, args));",
+    "es5": "var over  = function () {var fns = [].slice.call(arguments);return function () {var args = [].slice.call(arguments);return fns.map(function (fn) {return fn.apply(null, args);})}}",
+    "test": "const minMax = over(Math.min, Math.max);minMax(1, 2, 3, 4, 5); // [1,5]",
+    "difficulty":"1"
+  },
+  {
+    "id": "overArgs",
+    "num": "6",
+    "name": "overArgs",
+    "type": "adapter",
+    "descEn": "Creates a function that invokes the provided function with its arguments transformed.",
+    "descCn": "创建一个函数，该函数调用所提供的函数，并将其参数转换。",
+    "es6": "const overArgs = (fn, transforms) => (...args) => fn(...args.map((val, i) => transforms[i](val)));",
+    "es5": "var overArgs = function (fn, transforms) {return function () {var args = [].slice.call(arguments);return args.map(function (val, i) {return transforms[i](val)})}}",
+    "test": "const square = n => n * n;const double = n => n * 2;const fn = overArgs((x, y) => [x, y], [square, double]);fn(9, 3); // [81, 6]",
+    "difficulty":"2"
+  },
+  {
+    "id": "pipeAsyncFunctions",
+    "num": "7",
+    "name": "pipeAsyncFunctions",
+    "type": "adapter",
+    "descEn": "Performs left-to-right function composition for asynchronous functions.",
+    "descCn": "从左到右的管道去执行异步函数",
+    "es6": "const pipeAsyncFunctions = (...fns) => arg => fns.reduce((p, f) => p.then(f), Promise.resolve(arg));",
+    "es5": "",
+    "test": "const sum = pipeAsyncFunctions(x => x + 1,x => new Promise(resolve => setTimeout(() => resolve(x + 2), 1000)),x => x + 3,async x => (await x) + 4);(async () => {console.log(await sum(5)); // 15 (after one second)})();",
+    "difficulty":"3"
+  },
+  {
+    "id": "pipeFunctions",
+    "num": "8",
+    "name": "pipeFunctions",
+    "type": "adapter",
+    "descEn": "Performs left-to-right function composition.",
+    "descCn": "从左到右的管道去执行函数",
+    "es6": "const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));",
+    "es5": "",
+    "test": "const add5 = x => x + 5;const multiply = (x, y) => x * y;const multiplyAndAdd5 = pipeFunctions(multiply, add5);multiplyAndAdd5(5, 2); // 15",
+    "difficulty":"3"
+  }
+
+]
