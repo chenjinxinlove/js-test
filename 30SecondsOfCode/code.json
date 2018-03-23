@@ -170,7 +170,7 @@
     "es6": "const pull = (arr, ...args) => {let argState = Array.isArray(args[0]) ? args[0] : args;let pulled = arr.filter((v, i) => !argState.includes(v));arr.length = 0;pulled.forEach(v => arr.push(v));};",
     "es5": "",
     "test": "let myArray = ['a', 'b', 'c', 'a', 'b', 'c'];pull(myArray, 'a', 'c'); // myArray = [ 'b', 'b' ]",
-    "difficulty":"1"
+    "difficulty":"2"
   },
   {
     "id": "reducedFilter",
@@ -182,6 +182,51 @@
     "es5": "",
     "test": "const data = [{id: 1,name: 'john',age: 24},{id: 2,name: 'mike',age: 50}];reducedFilter(data, ['id', 'name'], item => item.age > 24); // [{ id: 2, name: 'mike'}]",
     "difficulty":"1"
+  },
+  {
+    "id": "remove",
+    "num": "29",
+    "name": "开除",
+    "descEn":"Removes elements from an array for which the given function returns false.",
+    "descCn":"从数组中删除给定函数返回false的元素。",
+    "es6": "const remove = (arr, func) =>Array.isArray(arr)? arr.filter(func).reduce((acc, val) => {arr.splice(arr.indexOf(val), 1);return acc.concat(val);}, []) : [];",
+    "es5": "",
+    "test": "remove([1, 2, 3, 4], n => n % 2 === 0); // [2, 4]",
+    "difficulty":"2"
+  },
+  {
+    "id": "shuffle",
+    "num": "30",
+    "name": "打乱",
+    "descEn":"Randomizes the order of the values of an array, returning a new array.",
+    "descCn":"随机化一个数组的值的顺序，返回一个新的数组。",
+    "es6": "const shuffle = ([...arr]) => {let m = arr.length;while (m) {const i = Math.floor(Math.random() * m--);[arr[m], arr[i]] = [arr[i], arr[m]];return arr;};",
+    "es5": "",
+    "test": "const foo = [1, 2, 3];shuffle(foo); // [2,3,1], foo = [1,2,3]",
+    "difficulty":"2"
+  },
+  {
+    "id": "symmetricDifference",
+    "num": "31",
+    "name": "对称差分",
+    "descEn":"Returns the symmetric difference between two arrays.",
+    "descCn":"返回两个数组之间的对称差异。",
+    "es6": "const symmetricDifference = (a, b) => {const sA = new Set(a),sB = new Set(b);return [...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x))];};",
+    "es5": "",
+    "test": "symmetricDifference([1, 2, 3], [1, 2, 4]); // [3,4]",
+    "difficulty":"2"
+  },
+  {
+    "id": "take",
+    "num": "32",
+    "name": "取",
+    "descEn":"Returns an array with n elements removed from the beginning.",
+    "descCn":"返回删除了n个元素的数组。",
+    "es6": "const take = (arr, n = 1) => arr.slice(0, n);",
+    "es5": "",
+    "test": "take([1, 2, 3], 5); // [1, 2, 3]",
+    "difficulty":"2"
   }
+
 
 ]

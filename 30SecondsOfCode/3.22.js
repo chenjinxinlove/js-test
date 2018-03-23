@@ -28,4 +28,85 @@ const data = [
 
 reducedFilter(data, ['id', 'name'], item => item.age > 24); // [{ id: 2, name: 'mike'}]
 
+const remove = (arr, func) => {
+  Array.isArray(arr)
+    ? arr.filter(arr).reduce((acc, val) => {
+      arr.splice(arr.indexOf(val), 1);
+      return acc.concat(val)
+    }, []) : []
+}
+
+
+const remove = (arr, func) => {
+  Array.isArray(arr)
+    ? arr.filter(func).reduce((acc, val) => {
+    arr.splice(arr.indexOf(val), 1);
+    return acc.concat(val)
+    }) : []
+}
+
+
+
+const shuffle = ([...arr]) => {
+  let m = arr.length;
+  while (m) {
+    const i = Math.floor(Math.random() * m--);
+    [arr[m], arr[i]] = [arr[i], arr[m]];
+  }
+  return arr;
+};
+
+const shuffle = ([...arr]) => {
+  let m = arr.lenght;
+  while (m) {
+    const i = Math.floor(Math.random() * m--);
+    [arr[m], arr[i]] = [arr[i], arr[m]]
+
+  }
+}
+
+
+
+
+
+
+const symmetricDifference = (a, b) => {
+  const sA = new Set(a),
+    sB = new Set(b);
+  return [...a.filter(x => !sB.has(x)), ...b.filter(x => !sA.has(x))];
+};
+
+const symmetricDifference = (a, b) => {
+  const sA = new Set(a),
+    sB = new Set(b);
+  return [...a.filter(x=>!sB.has(x)), ...b.filter(x => !sA.has(x))];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
