@@ -267,6 +267,7 @@
     "descEn":"",
     "descCn":"如果页面底部可见，则返回true，否则为false。",
     "es6": "const bottomVisible = () =>document.documentElement.clientHeight + window.scrollY >=(document.documentElement.scrollHeight || document.documentElement.clientHeight);",
+    "es5": "",
     "test": "",
     "difficulty":"1"
   },
@@ -276,6 +277,7 @@
     "name": "拷贝到剪切板",
     "descEn":"Copy a string to the clipboard. Only works as a result of user action (i.e. inside a click event listener).",
     "descCn":"将字符串复制到剪贴板。只有在用户操作(即在单击事件监听器内)才能工作。",
+    "es5": "",
     "es6": "",
     "test": "",
     "difficulty":"3"
@@ -286,6 +288,7 @@
     "name": "创建事件的发布订阅",
     "descEn":"Creates a pub/sub (publish–subscribe) event hub with emit, on, and off methods.",
     "descCn":"创建一个发布/订阅事件中心，它可以发出、打开和关闭方法。",
+    "es5": "",
     "es6": "",
     "test": "",
     "difficulty":"3"
@@ -296,6 +299,7 @@
     "name": "获取设备类型",
     "descEn":"Detects wether the website is being opened in a mobile device or a desktop/laptop.",
     "descCn":"检测网站是否在移动设备或台式/笔记本电脑上打开",
+    "es5": "",
     "es6": "const detectDeviceType = () =>/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)? 'Mobile': 'Desktop';",
     "test": "",
     "difficulty":"1"
@@ -306,12 +310,100 @@
     "name": "元素在viewport中是否可见",
     "descEn":"Returns true if the element specified is visible in the viewport, false otherwise.",
     "descCn":"如果指定的元素在viewport中可见，则返回true，否则为false",
+    "es5": "",
     "es6": "const elementIsVisibleInViewport = (el, partiallyVisible = false) => {const { top, left, bottom, right } = el.getBoundingClientRect();const { innerHeight, innerWidth } = window;return partiallyVisible? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth)): top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;};",
     "test": "",
     "difficulty":"1"
 
+  },
+  {
+    "id": "getScrollPosition",
+    "num": "41",
+    "name": "得到滑动的位置",
+    "descEn":"Returns the value of a CSS rule for the specified element.",
+    "descCn":"返回指定元素的CSS样式的值。",
+    "es5": "",
+    "es6": "const getScrollPosition = (el = window) => ( x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,y: el.pageYOffset !== undefined ? el.pageYOffset : el.screenTop});",
+    "test": "",
+    "difficulty":"1"
+
+  },
+  {
+    "id": "getStyle",
+    "num": "42",
+    "name": "得到样式",
+    "descEn":"Returns the scroll position of the current page.",
+    "descCn":"返回当前页面的滚动位置。",
+    "es5": "",
+    "es6": "const getStyle = (el, ruleName) => getComputedStyle(el)[ruleName]",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "observeMutations",
+    "num": "43",
+    "name": "观察突变",
+    "descEn":"Returns a new MutationObserver and runs the provided callback for each mutation on the specified element.",
+    "descCn":"返回一个新的MutationObserver，并为指定元素上的每个突变运行提供的回调。",
+    "es5": "",
+    "es6": "const observeMutations = (element, callback, options) => {const observer = new MutationObserver(mutations => mutations.forEach(m => callback(m)));observer.observe(element,Object.assign({childList: true,attributes: true,attributeOldValue: true,characterData: true,characterDataOldValue: true,subtree: true},options));return observer;};",
+    "test": "",
+    "difficulty":"4"
+  },
+  {
+    "id": "off",
+    "num": "44",
+    "name": "取消事件",
+    "descEn":"Removes an event listener from an element.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const off = (el, evt, fn, opts = false) => el.removeEventListener(evt, fn, opts);",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "onUserInputChange",
+    "num": "45",
+    "name": "监听用户输入",
+    "descEn":"Run the callback whenever the user input type changes (mouse or touch). Useful for enabling/disabling code depending on the input device. This process is dynamic and works with hybrid devices (e.g. touchscreen laptops).",
+    "descCn":"在用户输入类型更改(鼠标或触摸)时运行回调。对启用/禁用依赖于输入设备的代码非常有用。这个过程是动态的，并与混合设备(例如触摸屏笔记本)一起工作。",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"3"
+  },
+  {
+    "id": "recordAnimationFrames",
+    "num": "46",
+    "name": "",
+    "descEn":"Invokes the provided callback on each animation frame.",
+    "descCn":"在每个动画框架上调用提供的回调。",
+    "es5": "",
+    "es6": "const recordAnimationFrames = (callback, autoStart = true) => {let running = true,raf;const stop = () => {running = false;cancelAnimationFrame(raf);;const start = () => {running = true;run();;const run = () => {raf = requestAnimationFrame(() => {callback();if (running) run(););};if (autoStart) start();return { start, stop };};",
+    "test": "",
+    "difficulty":"4"
+  },
+  {
+    "id": "runAsync",
+    "num": "47",
+    "name": "运行异步",
+    "descEn":"Runs a function in a separate thread by using a Web Worker, allowing long running functions to not block the UI",
+    "descCn":"通过使用Web Worker在一个单独的线程中运行一个函数，允许长时间运行的函数不阻塞UI。",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"4"
+  },
+  {
+    "id": "scrollToTop",
+    "num": "48",
+    "name": "滑动到顶部",
+    "descEn":"Smooth-scrolls to the top of the page.",
+    "descCn":"平滑滚动到页面顶端。",
+    "es5": "",
+    "es6": "const scrollToTop = () => {const c = docment.documentElement.scrollTop || docment.body.scrollTop;if (c > 0) {window.requestAnimationFrame(screenTop);window.screenTop(0, c - c / 8)}}",
+    "test": "",
+    "difficulty":"2"
   }
-
-
 
 ]
