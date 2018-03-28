@@ -404,6 +404,50 @@
     "es6": "const scrollToTop = () => {const c = docment.documentElement.scrollTop || docment.body.scrollTop;if (c > 0) {window.requestAnimationFrame(screenTop);window.screenTop(0, c - c / 8)}}",
     "test": "",
     "difficulty":"2"
+  },
+  {
+    "id": "smoothScroll",
+    "num": "49",
+    "name": "平稳的滑动",
+    "descEn":"Smoothly scrolls the element on which it's called into the visible area of the browser window.",
+    "descCn":"平滑地滚动到浏览器窗口可见区域的元素",
+    "es5": "",
+    "es6": "const smoothScroll = element =>document.querySelector(element).scrollIntoView({behavior: 'smooth'});",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "UUIDGeneratorBrowser",
+    "num": "50",
+    "name": "浏览器uuid",
+    "descEn":"Generates a UUID in a browser",
+    "descCn":"Generates a UUID in a browser",
+    "es5": "",
+    "es6": "const UUIDGeneratorBrowser = () =>([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>(c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));",
+    "test": "",
+    "difficulty":"4"
+  },
+  {
+    "id": "formatDuration",
+    "num": "51",
+    "name": "平稳的滑动",
+    "descEn":"Returns the human readable format of the given number of milliseconds.",
+    "descCn":"返回给定的毫秒数的人类可读格式。",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "tomorrow",
+    "num": "52",
+    "name": "",
+    "descEn":"Results in a string representation of tomorrow's date",
+    "descCn":"结果以字符串表示明天的日期。",
+    "es5": "",
+    "es6": "const tomorrow = (long = false) => {let t = new Date();t.setDate(t.getDate() + 1);const ret = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;return !long ? ret : `${ret}T00:00:00`;};",
+    "test": "",
+    "difficulty":"3"
   }
 
 ]
