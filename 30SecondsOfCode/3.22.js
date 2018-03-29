@@ -88,12 +88,13 @@ const symmetricDifference = (a, b) => {
 
 
 
-
-
-
-
-
-
+var attempt = function (fn) {
+    try {
+      return fn.apply(fn, [].slice.call(arguments, 1))
+    } catch (e) {
+      return e instanceof Error ? e : new Error(e)
+    }
+}
 
 
 

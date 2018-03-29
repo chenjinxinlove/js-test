@@ -448,6 +448,50 @@
     "es6": "const tomorrow = (long = false) => {let t = new Date();t.setDate(t.getDate() + 1);const ret = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;return !long ? ret : `${ret}T00:00:00`;};",
     "test": "",
     "difficulty":"3"
+  },
+  {
+    "id": "attempt",
+    "num": "53",
+    "name": "尝试",
+    "descEn":"Attempts to invoke a function with the provided arguments, returning either the result or the caught error object.",
+    "descCn":"尝试使用提供的参数调用函数，返回结果或捕获的错误对象。",
+    "es5": "var attempt = function (fn) {try {return fn.apply(fn, [].slice.call(arguments, 1))} catch (e) {return e instanceof Error ? e : new Error(e)}}",
+    "es6": "const attempt = (fn, ...args) => {try {return fn(...args);} catch (e) {return e instanceof Error ? e : new Error(e);}};",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "bind",
+    "num": "54",
+    "name": "bind",
+    "descEn":"Creates a function that invokes fn with a given context, optionally adding any additional supplied parameters to the beginning of the arguments.",
+    "descCn":"创建一个函数，它使用给定的上下文调用fn，并可以在参数的开头添加任何附加的参数。",
+    "es5": "",
+    "es6": "const bind = (fn, context, ...args) =>function() {return fn.apply(context, args.concat(...arguments));};",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "chainAsync",
+    "num": "55",
+    "name": "链式异步",
+    "descEn":"Chains asynchronous functions.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const chainAsync = fns => {let curr = 0;const next = () => fns[curr++](next);next();};",
+    "test": "",
+    "difficulty":"3"
+  },
+  {
+    "id": "compose",
+    "num": "56",
+    "name": "",
+    "descEn":"Performs right-to-left function composition.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));",
+    "test": "",
+    "difficulty":"3"
   }
 
 ]
