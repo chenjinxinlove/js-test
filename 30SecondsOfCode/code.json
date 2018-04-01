@@ -536,7 +536,94 @@
     "es6": "const memoize = fn => {const cache = new Map();const cached = function(val) {return cache.has(val) ? cache.get(val) : cache.set(val, fn.call(this, val)) && cache.get(val);};cached.cache = cache;return cached;};",
     "test": "",
     "difficulty":"3"
+  },
+  {
+    "id": "once",
+    "num": "61",
+    "name": "执行一次",
+    "descEn":"Ensures a function is called only once.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const once = fn => {let called = false;return function(...args) {if (called) return;called = true;return fn.apply(this, args);};};",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "partial",
+    "num": "62",
+    "name": "部分求值",
+    "descEn":"Creates a function that invokes fn with partials prepended to the arguments it receives.",
+    "descCn":"创建一个调用fn的函数，并对其接收到的参数进行预先处理。",
+    "es5": "",
+    "es6": "const partial = (fn, ...partials) => (...args) => fn(...partials, ...args);",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "runPromisesInSeries",
+    "num": "63",
+    "name": "批量运行promises",
+    "descEn":"Runs an array of promises in series.",
+    "descCn":"在系列中运行一系列的promise。",
+    "es5": "",
+    "es6": "const runPromisesInSeries = ps => ps.reduce((p, next) => p.then(next), Promise.resolve());",
+    "test": "const delay = d => new Promise(r => setTimeout(r, d));runPromisesInSeries([() => delay(1000), () => delay(2000)]); ",
+    "difficulty":"3"
+  },
+  {
+    "id": "throttle",
+    "num": "64",
+    "name": "节流函数",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"3"
+  },
+  {
+    "id": "times",
+    "num": "65",
+    "name": "",
+    "descEn":"Iterates over a callback n times",
+    "descCn":"迭代回叫n次",
+    "es5": "",
+    "es6": "const times = (n, fn, context = undefined) => {let i = 0;while (fn.call(context, i) !== false && ++i < n) {}};",
+    "test": "var output = '';times(5, i => (output += i));console.log(output); // 01234",
+    "difficulty":"2"
+  },
+  {
+    "id": "uncurry",
+    "num": "66",
+    "name": "",
+    "descEn":"Uncurries a function up to depth n.",
+    "descCn":"使一个函数达到深度n。",
+    "es5": "",
+    "es6": "const uncurry = (fn, n = 1) => (...args) => {const next = acc => args => args.reduce((x, y) => x(y), acc);if (n > args.length) throw new RangeError('Arguments too few!');return next(fn)(args.slice(0, n));};",
+    "test": "",
+    "difficulty":"4"
+  },
+  {
+    "id": "unfold",
+    "num": "65",
+    "name": "",
+    "descEn":"Builds an array, using an iterator function and an initial seed value.",
+    "descCn":"使用迭代器函数和初始种子值构建一个数组。",
+    "es5": "",
+    "es6": "const unfold = (fn, seed) => {let result = [],val = [null, seed];while ((val = fn(val[1]))) result.push(val[0]);return result;};",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "maxBy",
+    "num": "66",
+    "name": "最大通过",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "const maxBy = (arr, fn) => Math.max(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));",
+    "test": "maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8",
+    "difficulty":"1"
   }
-
 
 ]
