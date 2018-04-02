@@ -605,7 +605,7 @@
   },
   {
     "id": "unfold",
-    "num": "65",
+    "num": "67",
     "name": "",
     "descEn":"Builds an array, using an iterator function and an initial seed value.",
     "descCn":"使用迭代器函数和初始种子值构建一个数组。",
@@ -616,7 +616,7 @@
   },
   {
     "id": "maxBy",
-    "num": "66",
+    "num": "68",
     "name": "最大通过",
     "descEn":"",
     "descCn":"",
@@ -624,6 +624,51 @@
     "es6": "const maxBy = (arr, fn) => Math.max(...arr.map(typeof fn === 'function' ? fn : val => val[fn]));",
     "test": "maxBy([{ n: 4 }, { n: 2 }, { n: 8 }, { n: 6 }], o => o.n); // 8",
     "difficulty":"1"
+  },
+  {
+    "id": "powerset",
+    "num": "69",
+    "name": "",
+    "descEn":"Returns the powerset of a given array of numbers.",
+    "descCn":"返回给定数组的幂集。",
+    "es5": "",
+    "es6": "const powerset = arr => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);",
+    "test": "powerset([1, 2]); // [[], [1], [2], [2,1]]",
+    "difficulty":"2"
+  },
+  {
+    "id": "primes",
+    "num": "65",
+    "name": "精华",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"3"
+  },
+  {
+    "id": "randomIntArrayInRange",
+    "num": "66",
+    "name": "",
+    "descEn":"Returns an array of n random integers in the specified range.",
+    "descCn":"返回指定范围内的n个随机整数数组。",
+    "es5": "",
+    "es6": "const randomIntArrayInRange = (min, max, n = 1) =>Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min);",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "round",
+    "num": "66",
+    "name": "",
+    "descEn":"Rounds a number to a specified amount of digits.",
+    "descCn":"将数字发送到指定数量的数字。",
+    "es5": "",
+    "es6": "const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);",
+    "test": "",
+    "difficulty":"2"
   }
+
 
 ]

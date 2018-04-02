@@ -103,9 +103,10 @@ var attempt = function (fn) {
 
 
 
+const powerset = arr => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]]);
+const powerset = arr => arr.reduce((a, v) => a.concat(a.map(r => [v].concat(r))), [[]])
 
-
-
+powerset([1, 2]); // [[], [1], [2], [2,1]]
 
 
 
