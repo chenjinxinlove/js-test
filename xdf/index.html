@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline" role="menu" aria-activedescendant="" tabindex="0" style="padding: 16px 0px; width: 100%;"><li class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected"><div class="ant-menu-submenu-title" aria-expanded="true" aria-owns="/dashboard$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-dashboard"></i><span>dashboard</span></span><i class="ant-menu-submenu-arrow"></i></div><ul class="ant-menu  ant-menu-sub ant-menu-inline" role="menu" aria-activedescendant="" id="/dashboard$Menu"><li class="ant-menu-item ant-menu-item-selected" role="menuitem" aria-selected="true" style="padding-left: 48px;"><a href="#/dashboard/analysis"><span>分析页</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" style="padding-left: 48px;"><a href="#/dashboard/monitor"><span>监控页</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" style="padding-left: 48px;"><a href="#/dashboard/workplace"><span>工作台</span></a></li></ul></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/form$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-form"></i><span>表单页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/list$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-table"></i><span>列表页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/profile$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-profile"></i><span>详情页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/result$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-check-circle-o"></i><span>结果页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/exception$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-warning"></i><span>异常页</span></span><i class="ant-menu-submenu-arrow"></i></div></li></ul>
+<iframe id="iframe" src="http://10.155.237.251:8000/" frameborder="0" width="2000" height="2000"></iframe>
+</body>
+<script>
+    window.onhashchange = function() {
+        var B = document.getElementById('iframe');
+        B.src = (B.src).replace(/\#.*/, '')  + window.location.hash;
+    }
+    document.cookie
+</script>
+</html>

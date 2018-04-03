@@ -638,7 +638,7 @@
   },
   {
     "id": "primes",
-    "num": "65",
+    "num": "70",
     "name": "精华",
     "descEn":"",
     "descCn":"",
@@ -649,7 +649,7 @@
   },
   {
     "id": "randomIntArrayInRange",
-    "num": "66",
+    "num": "71",
     "name": "",
     "descEn":"Returns an array of n random integers in the specified range.",
     "descCn":"返回指定范围内的n个随机整数数组。",
@@ -660,12 +660,56 @@
   },
   {
     "id": "round",
-    "num": "66",
+    "num": "72",
     "name": "",
     "descEn":"Rounds a number to a specified amount of digits.",
     "descCn":"将数字发送到指定数量的数字。",
     "es5": "",
     "es6": "const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "sdbm",
+    "num": "73",
+    "name": "",
+    "descEn":"Hashes the input string into a whole number.",
+    "descCn":"将输入字符串散列成整数。",
+    "es5": "",
+    "es6": "const sdbm = str => {let arr = str.split('');return arr.reduce((hashCode, currentVal) =>(hashCode = currentVal.charCodeAt(0) + (hashCode << 6) + (hashCode << 16) - hashCode),0);};",
+    "test": "",
+    "difficulty":"4"
+  },
+  {
+    "id": "sumBy",
+    "num": "74",
+    "name": "",
+    "descEn":"Returns the sum of an array, after mapping each element to a value using the provided function.",
+    "descCn":"返回数组的和，然后使用所提供的函数将每个元素映射到一个值。",
+    "es5": "",
+    "es6": "const sumBy = (arr, fn) =>arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val) => acc + val, 0);",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "toSafeInteger",
+    "num": "75",
+    "name": "",
+    "descEn":"Converts a value to a safe integer.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const toSafeInteger = num =>Math.round(Math.max(Math.min(num, Number.MAX_SAFE_INTEGER), Number.MIN_SAFE_INTEGER));",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "bindAll",
+    "num": "76",
+    "name": "",
+    "descEn":"Binds methods of an object to the object itself, overwriting the existing method..",
+    "descCn":"",
+    "es5": "",
+    "es6": "const bindAll = (obj, ...fns) =>fns.forEach(fn => ((f = obj[fn]),(obj[fn] = function() {return f.apply(obj);})));",
     "test": "",
     "difficulty":"2"
   }
