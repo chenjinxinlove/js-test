@@ -124,15 +124,52 @@
     "difficulty":"2"
   },
   {
-    "id": "shallowClone",
-    "num": "91",
+    "id": "capitalizeEveryWord",
+    "num": "92",
     "name": "",
-    "descEn":"Unlatten an object with the paths for keys.",
-    "descCn":"创建对象的一个浅克隆。",
+    "descEn":"Capitalizes the first letter of every word in a string.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "unflattenObject",
+    "num": "94",
+    "name": "",
+    "descEn":"",
+    "descCn":"",
     "es5": "",
     "es6": "",
-    "test": "unflattenObject({ 'a.b.c': 1, d: 1 }); // { a: { b: { c: 1 } }, d: 1 }",
+    "test": "",
     "difficulty":"4"
   },
+  {
+    "id": "escapeHTML",
+    "num": "95",
+    "name": "",
+    "descEn":"Escapes a string for use in HTML.",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "escapeRegExp",
+    "num": "96",
+    "name": "",
+    "descEn":"Escapes a string to use in a regular expression.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');",
+    "test": "",
+    "difficulty":"1"
+  }
 
 ]
+
+
+
+
