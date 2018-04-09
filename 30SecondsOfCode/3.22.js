@@ -110,5 +110,25 @@ powerset([1, 2]); // [[], [1], [2], [2,1]]
 
 
 
+const deepClone = obj => {
+    let clone = Object.assign({}. obj);
+    Object.keys(clone).forEach(
+        key => (clone[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key])
+    )
+}
 
+const deepClone = obj => {
+    let clone = Object.assign({}, obj);
+    Object.keys(clone).forEach(
+        key => (clone[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key])
+    )
+}
+
+
+const functions = (obj, inherited = false) =>
+    (
+        inherited ?
+            [...Object.keys(obj), ...Object.keys(Object.getPrototypeOf(obj))]
+            : Object.keys(obj)
+    ).filter(key => typeof obj[key] === 'function')
 
