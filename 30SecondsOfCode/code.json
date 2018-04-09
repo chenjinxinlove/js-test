@@ -910,6 +910,50 @@
     "es6": "const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');",
     "test": "",
     "difficulty":"1"
+  },
+  {
+    "id": "fromCamelCase",
+    "num": "97",
+    "name": "",
+    "descEn":"Escapes a string to use in a regular expression.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const fromCamelCase = (str, separator = '_') =>str.replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2').replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2').toLowerCase();",
+    "test": " fromCamelCase('someDatabaseFieldName', ' '); // 'some database field name'",
+    "difficulty":"2"
+  },
+  {
+    "id": "isAbsoluteURL",
+    "num": "98",
+    "name": "",
+    "descEn":"Returns true if the given string is an absolute URL, false otherwise.",
+    "descCn":"如果给定的字符串是绝对URL，则返回true，否则为false。",
+    "es5": "",
+    "es6": "const isAbsoluteURL = str => /^[a-z][a-z0-9+.-]*:/.test(str);",
+    "test": "isAbsoluteURL('https://google.com'); // true",
+    "difficulty":"1"
+  },
+  {
+    "id": "isAnagram",
+    "num": "99",
+    "name": "",
+    "descEn":"Checks if a string is an anagram of another string (case-insensitive, ignores spaces, punctuation and special characters).",
+    "descCn":"检查字符串是否是另一个字符串的字符(不区分大小写，忽略空格、标点符号和特殊字符)。",
+    "es5": "",
+    "es6": "const isAnagram = (str1, str2) => {const normalize = str =>str.toLowerCase().replace(/[^a-z0-9]/gi, '').split('').sort().join('');return normalize(str1) === normalize(str2);};",
+    "test": "isAnagram('iceman', 'cinema'); // true",
+    "difficulty":"1"
+  },
+  {
+    "id": "mask",
+    "num": "100",
+    "name": "",
+    "descEn":"Replaces all but the last num of characters with the specified mask character.",
+    "descCn":"用指定的掩码字符替换所有的字符。",
+    "es5": "",
+    "es6": "const mask = (cc, num = 4, mask = '*') =>('' + cc).slice(0, -num).replace(/./g, mask) + ('' + cc).slice(-num);",
+    "test": "mask(1234567890, 3); // '*******890'",
+    "difficulty":"2"
   }
 
 
