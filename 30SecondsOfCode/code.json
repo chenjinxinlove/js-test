@@ -954,8 +954,51 @@
     "es6": "const mask = (cc, num = 4, mask = '*') =>('' + cc).slice(0, -num).replace(/./g, mask) + ('' + cc).slice(-num);",
     "test": "mask(1234567890, 3); // '*******890'",
     "difficulty":"2"
+  },
+  {
+    "id": "pad",
+    "num": "101",
+    "name": "",
+    "descEn":"Pads a string on both sides with the specified character, if it's shorter than the specified length.",
+    "descCn":"如果短于指定的长度，则在两边以指定的字符填充字符串。",
+    "es5": "",
+    "es6": "const pad = (str, length, char = ' ') =>str.padStart((str.length + length) / 2, char).padEnd(length, char);",
+    "test": "pad(String(42), 6, '0'); // '004200'",
+    "difficulty":"2"
+  },
+  {
+    "id": "reverseString",
+    "num": "102",
+    "name": "",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "const reverseString = str => [...str].reverse().join('');",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "sortCharactersInString",
+    "num": "103",
+    "name": "",
+    "descEn":"Alphabetically sorts the characters in a string.",
+    "descCn":"按字母顺序排列字符串中的字符。",
+    "es5": "",
+    "es6": "const sortCharactersInString = str => [...str].sort((a, b) => a.localeCompare(b)).join('');",
+    "test": "sortCharactersInString('cabbage'); // 'aabbceg'",
+    "difficulty":"1"
+  },
+  {
+    "id": "stringPermutations",
+    "num": "104",
+    "name": "",
+    "descEn":"This function's execution time increases exponentially with each character. Anything more than 8 to 10 characters will cause your browser to hang as it tries to solve all the different combinations.",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "stringPermutations('abc'); // ['abc','acb','bac','bca','cab','cba']",
+    "difficulty":"4"
   }
-
 
 
 ]
