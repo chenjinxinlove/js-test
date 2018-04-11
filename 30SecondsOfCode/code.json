@@ -998,6 +998,50 @@
     "es6": "",
     "test": "stringPermutations('abc'); // ['abc','acb','bac','bca','cab','cba']",
     "difficulty":"4"
+  },
+  {
+    "id": "stripHTMLTags",
+    "num": "103",
+    "name": "",
+    "descEn":"stripHTMLTags",
+    "descCn":"",
+    "es5": "",
+    "es6": "const stripHTMLTags = str => str.replace(/<[^>]*>/g, '');",
+    "test": "stripHTMLTags('<p><em>lorem</em> <strong>ipsum</strong></p>'); // 'lorem ipsum'",
+    "difficulty":"1"
+  },
+  {
+    "id": "toCamelCase",
+    "num": "104",
+    "name": "",
+    "descEn":"Converts a string to camelcase.",
+    "descCn":"将字符串转换为camelcase。",
+    "es5": "",
+    "es6": "",
+    "test": "toCamelCase('some_database_field_name'); // 'someDatabaseFieldName'",
+    "difficulty":"2"
+  },
+  {
+    "id": "toKebabCase",
+    "num": "105",
+    "name": "",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "toKebabCase('camelCase'); // 'camel-case'",
+    "difficulty":"2"
+  },
+  {
+    "id": "URLJoin",
+    "num": "106",
+    "name": "",
+    "descEn":"Joins all given URL segments together, then normalizes the resulting URL.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const URLJoin = (...args) =>args.join('/').replace(/[\/]+/g, '/').replace(/^(.+):\//, '$1://').replace(/^file:/, 'file:/').replace(/\/(\?|&|#[^!])/g, '$1').replace(/\?/g, '&').replace('&', '?');",
+    "test": "URLJoin('http://www.google.com', 'a', '/b/cd', '?foo=123', '?bar=foo'); // 'http://www.google.com/a/b/cd?foo=123&bar=foo'",
+    "difficulty":"2"
   }
 
 
