@@ -1042,7 +1042,52 @@
     "es6": "const URLJoin = (...args) =>args.join('/').replace(/[\/]+/g, '/').replace(/^(.+):\//, '$1://').replace(/^file:/, 'file:/').replace(/\/(\?|&|#[^!])/g, '$1').replace(/\?/g, '&').replace('&', '?');",
     "test": "URLJoin('http://www.google.com', 'a', '/b/cd', '?foo=123', '?bar=foo'); // 'http://www.google.com/a/b/cd?foo=123&bar=foo'",
     "difficulty":"2"
+  },
+  {
+    "id": "words",
+    "num": "107",
+    "name": "",
+    "descEn":"Converts a given string into an array of words.",
+    "descCn":"将给定的字符串转换为单词数组。",
+    "es5": "",
+    "es6": "const words = (str, pattern = /[^a-zA-Z-]+/) => str.split(pattern).filter(Boolean);",
+    "test": "words('I love javaScript!!'); // ["I", "love", "javaScript"]",
+    "difficulty":"2"
+  },
+  {
+    "id": "getType",
+    "num": "108",
+    "name": "",
+    "descEn":"Returns the native type of a value.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const getType = v =>v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name.toLowerCase();",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "isArrayLike",
+    "num": "109",
+    "name": "",
+    "descEn":"Checks if the provided argument is array-like (i.e. is iterable).",
+    "descCn":"",
+    "es5": "",
+    "es6": "const isArrayLike = val => {try {return [...val], true;} catch (e) {return false;}};",
+    "test": "",
+    "difficulty":"2"
+  },
+  {
+    "id": "isPromiseLike",
+    "num": "110",
+    "name": "",
+    "descEn":"Returns true if an object looks like a Promise, false otherwise.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const isPromiseLike = obj =>obj !== null &&(typeof obj === 'object' || typeof obj === 'function') &&typeof obj.then === 'function';",
+    "test": "",
+    "difficulty":"2"
   }
+
 
 
 ]
