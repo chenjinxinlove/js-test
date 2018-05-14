@@ -1086,8 +1086,49 @@
     "es6": "const isPromiseLike = obj =>obj !== null &&(typeof obj === 'object' || typeof obj === 'function') &&typeof obj.then === 'function';",
     "test": "",
     "difficulty":"2"
+  },
+  {
+    "id": "isNaN",
+    "num": "111",
+    "name": "",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"1"
+  },
+  {
+    "id": "coalesceFactory",
+    "num": "112",
+    "name": "",
+    "descEn":"Returns a customized coalesce function that returns the first argument that returns true from the provided argument validation function.",
+    "descCn":"",
+    "es5": "",
+    "es6": "const coalesceFactory = valid => (...args) => args.find(valid);",
+    "test": "const customCoalesce = coalesceFactory(_ => ![null, undefined, '', NaN].includes(_));customCoalesce(undefined, null, NaN, '', 'Waldo'); // "Waldo"",
+    "difficulty":"2"
+  },
+  {
+    "id": "getURLParameters",
+    "num": "113",
+    "name": "",
+    "descEn":"Returns an object containing the parameters of the current URL",
+    "descCn":"",
+    "es5": "",
+    "es6": "const getURLParameters = url =>(url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce((a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),{});",
+    "test": "getURLParameters('http://url.com/page?name=Adam&surname=Smith'); // {name: 'Adam', surname: 'Smith'}",
+    "difficulty":"2"
+  },
+  {
+    "id": "hexToRGB",
+    "name": "114",
+    "descEn":"",
+    "descCn":"",
+    "es5": "",
+    "es6": "",
+    "test": "",
+    "difficulty":"4"
   }
-
-
 
 ]
