@@ -194,3 +194,41 @@ const uncurry = (fn, n = 1) => (...args) => {
   if (n > args.length) throw new RangeError('arguments too few');
   return next(fn)(args.slice(0, n))
 }
+
+const bindAll = (obj, ...fns) =>
+  fns.forEach(
+    fn => (
+      (f = obj[fn]),
+      (obj[fn] = function() {
+        return f.apply(obj)
+      })
+    )
+  )
+
+const deepClone = obj => {
+  let clone = Object.assign({}, obj);
+  Object.keys(clone).forEach(
+    key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
+  );
+  return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
+}
+
+const flattenObject = (obj, prefix = '') => 
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? prefix + '.' : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+
+  const pad = (str, length, char = ' ') => 
+    str.padStart((str.length + length) / 2, char).padEnd(length, char);
+
+const capitalizeEveryWord = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
+
+const fromCamelCase = (str, separator = '_') => 
+  str
+    .replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
+    .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2')
+    .toLowerCase();
