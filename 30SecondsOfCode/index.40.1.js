@@ -232,3 +232,24 @@ const fromCamelCase = (str, separator = '_') =>
     .replace(/([a-z\d])([A-Z])/g, '$1' + separator + '$2')
     .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + separator + '$2')
     .toLowerCase();
+
+const reverseaString = str => [...str].reverse().join();
+
+const toCamelCase = str => {
+  let s = 
+    str && 
+    str
+  .match(/[A-Z]{2, 0}(?=[A-Z][a-z]+[0-9]*|\b) | [A-Z]?[a-z]+[0-9]* | [A-Z]|[0-9]+/g)
+  .map(x => x.slice(0, 1).toUpperCase() + x.slice(1).toLowerCase())
+  .join('');
+  return s.slice(0, 1).toLowerCase() + s.slice()
+}
+
+const toKebabCase = str =>
+  str &&
+  str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('-');
+
+const is = (type, val) => ![, null].includes(val) && val.constructor === type;
