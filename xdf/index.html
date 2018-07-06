@@ -1,18 +1,84 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css">
+
+  <!-- Demo styles -->
+  <style>
+    html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
-<ul class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline" role="menu" aria-activedescendant="" tabindex="0" style="padding: 16px 0px; width: 100%;"><li class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected"><div class="ant-menu-submenu-title" aria-expanded="true" aria-owns="/dashboard$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-dashboard"></i><span>dashboard</span></span><i class="ant-menu-submenu-arrow"></i></div><ul class="ant-menu  ant-menu-sub ant-menu-inline" role="menu" aria-activedescendant="" id="/dashboard$Menu"><li class="ant-menu-item ant-menu-item-selected" role="menuitem" aria-selected="true" style="padding-left: 48px;"><a href="#/dashboard/analysis"><span>分析页</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" style="padding-left: 48px;"><a href="#/dashboard/monitor"><span>监控页</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" style="padding-left: 48px;"><a href="#/dashboard/workplace"><span>工作台</span></a></li></ul></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/form$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-form"></i><span>表单页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/list$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-table"></i><span>列表页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/profile$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-profile"></i><span>详情页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/result$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-check-circle-o"></i><span>结果页</span></span><i class="ant-menu-submenu-arrow"></i></div></li><li class="ant-menu-submenu ant-menu-submenu-inline"><div class="ant-menu-submenu-title" aria-expanded="false" aria-owns="/exception$Menu" aria-haspopup="true" style="padding-left: 24px;"><span><i class="anticon anticon-warning"></i><span>异常页</span></span><i class="ant-menu-submenu-arrow"></i></div></li></ul>
-<iframe id="iframe" src="http://10.155.237.251:8000/" frameborder="0" width="2000" height="2000"></iframe>
+  <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+      <div class="swiper-slide">Slide 10</div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      direction: 'vertical',
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
 </body>
-<script>
-    window.onhashchange = function() {
-        var B = document.getElementById('iframe');
-        B.src = (B.src).replace(/\#.*/, '')  + window.location.hash;
-    }
-    document.cookie
-</script>
 </html>

@@ -253,3 +253,46 @@ const toKebabCase = str =>
     .join('-');
 
 const is = (type, val) => ![, null].includes(val) && val.constructor === type;
+
+
+const isPromiseLike = obj => 
+  obj !== null &&
+  (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function'
+
+
+  const getURLParameters = url =>
+  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+    (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+    {}
+  );
+
+const httpGet = (url, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.onload = () => callback(request.responseText);
+  request.onerror = () => err(request);
+  request.send();
+}  
+
+const httpPost = (url, data, callback, err = console.error) => {
+  const request = new XMLHttpRequest();
+  request.open('POST', url, true);
+  request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  request.onload = () => callback(request.responseText);
+  request.onerror = () => err(request);
+  request.send(data);
+ }
+
+ const parseCookie = str => 
+  str
+    .split(';')
+    .map(v => v.split('='))
+    .reduce((acc, v) => {
+      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+      return acc;
+    }, {})
+    
+const fibonacci = n => 
+    Array.from({ length: n }).reduce(
+      (acc, val, i) => acc.concat(i > 1 ? acc[i - 1] + acc[i - 2] : i)
+    )
