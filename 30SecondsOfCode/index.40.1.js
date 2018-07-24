@@ -36,9 +36,8 @@ const sum = pipeAsyncFunctions(
   })
 
 
-  const filterNonUnique = (arr) => arr.filter(v => v.indexOf(arr) === v.lastIndexOf(arr))
+  const filterNonUnique = (arr) => arr.filter(v => arr.indexOf(v) === arr.lastIndexOf(v))
 
-  const filterNonUnique = (arr) => arr.filter(v => v.indexOf(arr) === v.lastIndexOf(arr))
 
   const flatten = (arr, depth = 1) => 
     arr.reduce((a, v) => a.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1): v), [])
