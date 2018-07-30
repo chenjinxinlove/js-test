@@ -65,14 +65,21 @@ const promisify = func => (...args) =>
 
 // 开始传入函数，在出入函数需要的参数，为了转化成primise，执行函数，自己写callback，错误返回reject，成功resolve
 
-// const deepFlatten = arr => [].concat(...arr.map((v) => Array.isArray(v) ? deepFlatten(v) : v))
+const deepFlatten = arr => [].concat(...arr.map((v) => Array.isArray(v) ? deepFlatten(v) : v))
+
+// concat可以连接数组 [].concat([1,2,3,4], [4,5,6,7]) => [1, 2, 3, 4, 4, 5, 6, 7]
+// 然后试试map来变量数组，是数组的递归扁平，不是数组的返回[]
+
 
 // deepFlatten([1, [2], [[3], 4], 5]); // [1,2,3,4,5]
 
-// const differenceBy = ((a, b, fn) => {
-//     const s = new Set(...fn(b));
-//     return b.filter(v => !s.has((fn(v))))
-//   })
+const differenceBy = ((a, b, fn) => {
+    const s = new Set(...fn(b));
+    return b.filter(v => !s.has((fn(v))))
+  })
+
+// 利用new Set 来把一个数组的去重，然后在利用filter来进行比较
+
 
 
 //   const filterNonUnique = (arr) => arr.filter(v => arr.indexOf(v) === arr.lastIndexOf(v))
