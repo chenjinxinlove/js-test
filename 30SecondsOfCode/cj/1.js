@@ -82,27 +82,30 @@ const differenceBy = ((a, b, fn) => {
 
 
 
-//   const filterNonUnique = (arr) => arr.filter(v => arr.indexOf(v) === arr.lastIndexOf(v))
+  const filterNonUnique = (arr) => arr.filter(v => arr.indexOf(v) === arr.lastIndexOf(v))
+//   [1, 2, 2, 3, 4, 4, 5].indexOf(5) => 6 [1, 2, 2, 3, 4, 4, 5].lastIndexOf(5) => 6
+// indexOf是从前面开始遍历，lastindexof是从后面开始遍历，但是位置都是从前面算的，但是如果是有重复的书就不一样了
 
 // console.log(filterNonUnique([1, 2, 2, 3, 4, 4, 5])); // [1,3,5]
 
-// const flatten = (arr, depth = 1) =>
-//   arr.reduce((a, v) => a.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1) : v), [])
+const flatten = (arr, depth = 1) =>
+  arr.reduce((a, v) => a.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1) : v), [])
 
 // flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); // [1, 2, 3, [4, 5], 6, 7, 8]
 
-// const shuffle = arr => {
-//     let m = arr.length;
-//     while (m) {
-//         const i = Math.floor(Math.random() * m--);
-//         [arr[m], arr[i]] = [arr[i], arr[m]];
-//     }
-//     return arr
-// }
+const shuffle = arr => {
+    let m = arr.length;
+    while (m) {
+        const i = Math.floor(Math.random() * m--); // 产生在循环只内的随机数
+        [arr[m], arr[i]] = [arr[i], arr[m]];// 交换两个值
+    }
+    return arr
+}
 
 // console.log(shuffle([1,2,3]))
 
-// const union = (a, b) => [...new Set([...a, ...b])]
+const union = (a, b) => [...new Set([...a, ...b])]
+const union = (a, b) => Array.from(new Set([...a, ...b]))
 
 // console.log(union([1,2,3], [4,3,2]))
 
