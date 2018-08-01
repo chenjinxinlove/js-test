@@ -104,7 +104,7 @@ const shuffle = arr => {
 
 // console.log(shuffle([1,2,3]))
 
-const union = (a, b) => [...new Set([...a, ...b])]
+// const union = (a, b) => [...new Set([...a, ...b])]
 const union = (a, b) => Array.from(new Set([...a, ...b]))
 
 // console.log(union([1,2,3], [4,3,2]))
@@ -112,7 +112,20 @@ const union = (a, b) => Array.from(new Set([...a, ...b]))
 // const pick = (obj, arr) => 
 //     arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {})
 
+var pick = function pick(obj, arr) {
+    return arr.reduce(function (acc, curr) {
+      curr in obj && (acc[curr] = obj[curr])
+      return acc;
+    }, {});
+  };
+
 // console.log( pick({ 'a': 1, 'b': '2', 'c': 3 }, ['a', 'c']))
+// curr in obj && (acc[curr] = obj[curr])
+// 就是类似于if(curr in obj) {
+//     acc[curr] = obj[curr]
+// }
+// ,acc 就是return acc
+
 
 
 // const zip = (...arrays) => {
