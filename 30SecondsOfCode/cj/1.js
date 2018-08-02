@@ -128,11 +128,16 @@ var pick = function pick(obj, arr) {
 
 
 
-// const zip = (...arrays) => {
-//     const maxLength = Math.max(...arrays.map(x => x.length));
-//     return Array.from({length: maxLength}).map((_, i) => {
-//         return Array.from({length: arrays.length}, (_, k) => arrays[k][i])
-//     })
-// }
+const zip = (...arrays) => {
+    // 计算出传入数组中最大的长度
+    const maxLength = Math.max(...arrays.map(x => x.length));
+    // 使用Array.from来创建数组
+    return Array.from({length: maxLength}).map((_, i) => {
+        console.log('i', i)
+        // 创建长度，利用函数来区别
+        return Array.from({length: arrays.length}, (_, k) => { console.log('ki',k,i); console.log(arrays[k][i]); return arrays[k][i];})
+    })
+}
 
-// console.log(zip(['a', 'b'], [1, 2], [true, false]))
+
+console.log(zip(['a', 'b'], [1, 2, 3], [true, false]))
