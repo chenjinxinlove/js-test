@@ -138,6 +138,6 @@ const zip = (...arrays) => {
         return Array.from({length: arrays.length}, (_, k) => { console.log('ki',k,i); console.log(arrays[k][i]); return arrays[k][i];})
     })
 }
-
+   
 
 console.log(zip(['a', 'b'], [1, 2, 3], [true, false]))

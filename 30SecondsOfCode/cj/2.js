@@ -15,6 +15,8 @@ const chainAsync = fns => {
     next()
 } 
 
+// 全都是next函数组成的数组，顺序调用然后把next在传入
+
 chainAsync([
     next => {
       console.log('0 seconds');
@@ -27,6 +29,9 @@ chainAsync([
 
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
 
+// 管道调用还函数，把上一个函数的的结果传入到下一个函数
+
+// reduce如何不穿默认的参数，就会少循环一次，把第一个当做默认值  先执行g()那个，把自己执行的参数传入f中，然后返回
 const add5 = x => x + 5
 const multiply = (x, y) => x * y
 const multiplyAndAdd5 = compose(add5, multiply)
@@ -41,6 +46,7 @@ curry(Math.min, 3)(10)(50)(2) //-> 2
 const runPromisesInSeries = ps => ps.reduce((p, next) => p.then(next), Promise.resolve())
 
 const delay = d => new Promise(r => setTimeout(r, d));
+// const delay = d => new Promise(r => setTimeout(r, d))
 runPromisesInSeries([() => delay(1000), () => delay(2000)]);
 
 
