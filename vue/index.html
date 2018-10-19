@@ -20,14 +20,17 @@
           </transition>
         </div>
 </body>
-<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
 <script>
-    new Vue({
+    const vue = new Vue({
         el: '#example-3',
         data: {
-            show: true
+          a: {
+            b: 1
+          }
         }
     })
+    console.log(vue.$data)
 </script>
 
 </html>
