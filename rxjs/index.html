@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/rxjs/5.5.12/Rx.min.js"></script>
+<body>
+    <div id="getStart">Get Rxjs Start Count</div>
+    <div id="text"></div>
+</body>
+<script>
+    Rx.Observable.fromEvent(document.querySelector('#getStart'), 'click')
+    .subscribe(
+        v => { 
+            Rx.Observable.ajax('https://api.github.com/repos/ReactiveX/rxjs', {
+                responseType: 'json'
+            }).subscribe(value => {
+                const startCount = value.response.stargazers_count;
+                document.querySelector('#text').innerText = startCount;
+            })
+        }
+    );
+</script>
+</html>
