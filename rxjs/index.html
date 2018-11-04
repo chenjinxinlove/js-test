@@ -23,5 +23,8 @@
             })
         }
     );
+    Rx.Observable.from([1,2,3,4]).map(x => x*x).subscribe(v => {
+        console.log(v);
+    })
 </script>
 </html>
