@@ -65,16 +65,20 @@
 
 // console.info('tag', findIndex$)
 
-const source$ = Rx.Observable.range(1, 100).takeWhile(
-    value => value % 2 === 0
-).subscribe(
-    v => {
-        console.log('Value', v)
-    },
-    e => {
-        console.log('Error', e)
-    },
-    () => {
-        console.log('Completed')
-    }
-);
+// const source$ = Rx.Observable.range(1, 100).takeWhile(
+//     value => value % 2 === 0
+// ).subscribe(
+//     v => {
+//         console.log('Value', v)
+//     },
+//     e => {
+//         console.log('Error', e)
+//     },
+//     () => {
+//         console.log('Completed')
+//     }
+// );
+
+const source$ = Rx.Observable.interval(1000);
+const notifier$ = Rx.Observable.timer(2500);
+const takeUnit$ = source$.takeUnit(notifier$);
