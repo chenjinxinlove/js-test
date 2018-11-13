@@ -67,16 +67,3 @@ travel_file()
 travel_file $dir $dir2
 # s='{"input":{"size":500578,"type":"image/png"},"output":{"size":120030,"type":"image/png","width":1024,"height":512,"ratio":0.2398,"url":"https://api.tinify.com/output/f8v3danh8v21e3b7.png"}}'
   
-# parse_json(){  
-  
-# value=`echo $1 | sed 's/.*"url":\([^,}]*\).*/\1/'`
-# echo $value | sed 's/\"//g'
-# }  
-  
-  
-  
-# echo $s  
-  
-# value=$(parse_json $s "url")  
-  
-# echo $value  
