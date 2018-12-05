@@ -12,20 +12,20 @@
     <div id="text"></div>
 </body>
 <script>
-    Rx.Observable.fromEvent(document.querySelector('#getStart'), 'click')
-    .subscribe(
-        v => { 
-            Rx.Observable.ajax('https://api.github.com/repos/ReactiveX/rxjs', {
-                responseType: 'json'
-            }).subscribe(value => {
-                const startCount = value.response.stargazers_count;
-                document.querySelector('#text').innerText = startCount;
-            })
-        }
-    );
-    Rx.Observable.from([1,2,3,4]).map(x => x*x).subscribe(v => {
-        console.log(v);
-    })
+    // Rx.Observable.fromEvent(document.querySelector('#getStart'), 'click')
+    // .subscribe(
+    //     v => { 
+    //         Rx.Observable.ajax('https://api.github.com/repos/ReactiveX/rxjs', {
+    //             responseType: 'json'
+    //         }).subscribe(value => {
+    //             const startCount = value.response.stargazers_count;
+    //             document.querySelector('#text').innerText = startCount;
+    //         })
+    //     }
+    // );
+    // Rx.Observable.from([1,2,3,4]).map(x => x*x).subscribe(v => {
+    //     console.log(v);
+    // })
 </script>
 <script src="./index.js"></script>
 </html>

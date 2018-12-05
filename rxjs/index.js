@@ -78,35 +78,61 @@
 //         console.log('Completed')
 //     }
 // );
-const source$ = Rx.Observable.interval(1000);
-const notifier$ = Rx.Observable.timer(2500);
-const takeUnit$ = source$.takeUnit(notifier$);
-var source = Rx.Observable.interval(500)
-var subject = new Rx.Subject()
-var multicasted = source.multicast(subject)
-var subscription1, subscription2, subscriptionConnect
+// const source$ = Rx.Observable.interval(1000);
+// const notifier$ = Rx.Observable.timer(2500);
+// const takeUnit$ = source$.takeUnit(notifier$);
+// var source = Rx.Observable.interval(500)
+// var subject = new Rx.Subject()
+// var multicasted = source.multicast(subject)
+// var subscription1, subscription2, subscriptionConnect
 
-subscription1 = multicasted.subscribe({
-	next: v => console.log('observerA: ' + v),
-})
-// 这里我们应该调用 `connect()`，因为 `multicasted` 的第一个
-// 订阅者关心消费值
-subscriptionConnect = multicasted.connect()
+// subscription1 = multicasted.subscribe({
+// 	next: v => console.log('observerA: ' + v),
+// })
+// // 这里我们应该调用 `connect()`，因为 `multicasted` 的第一个
+// // 订阅者关心消费值
+// subscriptionConnect = multicasted.connect()
 
-setTimeout(() => {
-	subscription2 = multicasted.subscribe({
-		next: v => console.log('observerB: ' + v),
-	})
-}, 600)
+// setTimeout(() => {
+// 	subscription2 = multicasted.subscribe({
+// 		next: v => console.log('observerB: ' + v),
+// 	})
+// }, 600)
 
-setTimeout(() => {
-	subscription1.unsubscribe()
-}, 1200)
+// setTimeout(() => {
+// 	subscription1.unsubscribe()
+// }, 1200)
 
-// 这里我们应该取消共享的 Observable 执行的订阅，
-// 因为此后 `multicasted` 将不再有订阅者
-setTimeout(() => {
-	subscription2.unsubscribe()
-	subscriptionConnect.unsubscribe() // 用于共享的 Observable 执行
-}, 2000)
+// // 这里我们应该取消共享的 Observable 执行的订阅，
+// // 因为此后 `multicasted` 将不再有订阅者
+// setTimeout(() => {
+// 	subscription2.unsubscribe()
+// 	subscriptionConnect.unsubscribe() // 用于共享的 Observable 执行
+// }, 2000)
 
+// const $source = Rx.Observable.interval(5000);
+// const $secondSource = Rx.Observable.interval(1000);
+
+// const example = $source
+// 	.withLatestFrom($secondSource)
+// 	.map(([first, second]) => {
+// 		return `First Source (5s): ${first} Second Source (1s): ${second}`;
+// 	})
+
+// const subscribe = example.subscribe(val => console.log(val));
+
+// const $example = Rx.Observable.race(
+// 	Rx.Observable.interval(1500),
+// 	Rx.Observable.interval(2000),
+// 	Rx.Observable.interval(1200),
+// 	Rx.Observable.interval(1000).mapTo('1s won!')
+// )
+
+// const subscribe = $example.subscribe(val => console.log(val))
+
+// 每1秒发出值
+const source = Rx.Observable.interval(1000);
+// 以 -3, -2, -1 开始
+const example = source.startWith(-3, -2, -1);
+// 输出: -3, -2, -1, 0, 1, 2....
+const subscribe = example.subscribe(val => console.log(val));
