@@ -59,3 +59,11 @@ console.log(insertion(arr));
 // i等于2 就是4 开始跟1的位置来比较， 4和2比较 4大于终止循环
 //
 // i等于3 就是3  3很4比较，3很4交换位置，1234  然后3很2比较，3比2大终止循环
+function insertionSort(arr) {
+  let len = arr.length
+  for(let i = 1; i < len; i++ ) {
+    for(let j = i; j > 0 && arr[j] < arr[j-1]; j--) {
+      [arr[j], arr[j-1]] = [arr[j-1], arr[j]]
+    }
+  }
+}
