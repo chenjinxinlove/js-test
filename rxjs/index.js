@@ -223,3 +223,16 @@
 // Rx.Scheduler.asap.schedule(() => console.log('asap'))
 // Rx.Scheduler.queue.schedule(() => console.log('queue'))
 // console.log('after schedule');
+
+const source$ = Rx.Observable.range(1, 3);
+const asapSource$ = source$.observeOn(Rx.Scheduler.asap);
+
+console.log('before subscribe');
+
+asapSource$.subscribe(
+  value => console.log('data', value),
+  error => console.log('error', error),
+  () => console.log('complete')
+);
+
+console.log('after subscribe');
