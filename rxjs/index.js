@@ -236,3 +236,80 @@ asapSource$.subscribe(
 );
 
 console.log('after subscribe');
+
+// 返回一个全新的Obervable对象
+function map(project) {
+  return new Observable(observe => {
+    this.subscribe({
+      next: value => observer.next(project(value)),
+      error: err => observer.error(error),
+      complete: () => observer.complete()
+    })
+  })
+}
+
+// 订阅和退订处理
+function map(project) {
+	return new Observable(observe => {
+		const sub = this.subscribe({
+			next: value => observer.next(project(value)),
+			error: err => observer.error(error),
+			complete: () => observer.complete(),
+    })
+    return {
+      unsubscribe: () => {
+        sub.unsubscribe();
+      }
+    }
+	})
+}
+
+// 处理异常情况
+function map(project) {
+	return new Observable(observe => {
+		const sub = this.subscribe({
+			next: value => {
+        try {
+          observer.next(project(value))
+        } catch (error) {
+          observer.error(error)
+        }
+      },
+			error: err => observer.error(error),
+			complete: () => observer.complete(),
+		})
+		return {
+			unsubscribe: () => {
+				sub.unsubscribe()
+			},
+		}
+	})
+}
+
+// 写完如何关联
+
+// 给Observable打补丁
+Observable.prototype.map = map;
+
+// 使用bind绑定特定Observable对象
+
+const result$ = map.bind(source$)(x => x * 2);
+
+// 使用lift
+
+function map(project) {
+	return this.lift(function(source$){
+		return source$.subscribe({
+			next: value => {
+				try {
+					observer.next(project(value))
+				} catch (error) {
+					observer.error(error)
+				}
+			},
+			error: err => observer.error(error),
+			complete: () => observer.complete(),
+		})
+	})
+}
+Observable.prototype.map = map;
