@@ -130,9 +130,96 @@
 
 // const subscribe = $example.subscribe(val => console.log(val))
 
-// 每1秒发出值
-const source = Rx.Observable.interval(1000);
-// 以 -3, -2, -1 开始
-const example = source.startWith(-3, -2, -1);
-// 输出: -3, -2, -1, 0, 1, 2....
-const subscribe = example.subscribe(val => console.log(val));
+// // 每1秒发出值
+// const source = Rx.Observable.interval(1000);
+// // 以 -3, -2, -1 开始
+// const example = source.startWith(-3, -2, -1);
+// // 输出: -3, -2, -1, 0, 1, 2....
+// const subscribe = example.subscribe(val => console.log(val));
+
+// Rx.Observable.prototype.makeHot = function () {
+//   const cold$ = this;
+//   const subject = new Rx.Subject();
+//   cold$.subscribe(subject);
+//   return subject;
+// }
+
+// const makeTick$ = Rx.Observable.interval(1000).take(3).multicast(new Rx.Subject());
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 2000)
+
+// makeTick$.connect()
+
+// const makeTick$ = Rx.Observable.interval(1000).take(3).multicast(new Rx.Subject()).refCount();
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 2000)
+
+// const subjectFactory = () => {
+//   console.log('enter subjectFactory');
+//   return new Rx.Subject();
+// }
+
+// const makeTick$ = Rx.Observable.interval(1000)
+// 	.take(3)
+// 	.multicast(subjectFactory)
+// 	.refCount()
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 5000)
+
+
+// const makeTick$ = Rx.Observable.interval(1000)
+// 	.take(3)
+// 	.publish()
+// 	.refCount()
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 5000)
+
+// const makeTick$ = Rx.Observable.interval(1000)
+// 	.take(3)
+//   .share()
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 5000)
+
+// const makeTick$ = Rx.Observable.interval(1000)
+// 	.take(3)
+//   .publishLast()
+//   .refCount()
+  
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 5000)
+
+// const makeTick$ = Rx.Observable.interval(1000)
+//   .take(3)
+//   .do(x => console.log('source', x))
+// 	.publishBehavior(-1)
+// 	.refCount()
+
+// makeTick$.subscribe(val => console.log(`First observer ${val}`))
+
+// setTimeout(() => {
+// 	makeTick$.subscribe(val => console.log(`Second observer ${val}`))
+// }, 5000)
+
+// console.log('beforr schedule');
+// Rx.Scheduler.async.schedule(() => console.log('async'))
+// Rx.Scheduler.asap.schedule(() => console.log('asap'))
+// Rx.Scheduler.queue.schedule(() => console.log('queue'))
+// console.log('after schedule');
