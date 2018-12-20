@@ -44,3 +44,5 @@ emitter1.on('some', () => {
 })
 
 emitter1.emit('some')
+
+
