@@ -23,3 +23,6 @@ function  each(data){
   }
 }
 
+
+
+
