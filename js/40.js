@@ -2,6 +2,7 @@
 //     return Array.isArray(v) ? deepFlatten(v) : v  
 // })
 // )
+
 const deepFlatten = arr => arr.concat(...arr.map(v => Array.isArray(v) ? deepFlatten(v) : v))
 // const flatten = (arr, depth = 1) => arr.reduce((acc, v) => {
 //     return acc.concat(depth > 1 && Array.isArray(v) ? flatten(v, depth - 1): v)
@@ -185,4 +186,48 @@ const deepFlatten = arr => arr.concat(...arr.map(v => Array.isArray(v) ? deepFla
 
 // obj.__proto__ = F.prototype
 // F.call(obj)
+
 // return obj
+
+const createEventHub = () => ({
+  hub: Object.create(null),
+  emit(event, data) {
+    (this.hub[event] || []).forEach(handler => handler(data));
+  },
+  on(event, handler) {
+    if (!this.hub[event]) this.hub[event] = [];
+    this.hub[event].push(handler);
+  },
+  off(event, handler) {
+    const i = (this.hub[event] || []).findIndex(h => h === handler);
+    if (i > -1) this.hub[event].splice(i, 1);
+  },
+  once(event, handler) {
+    const func = (...args) => {
+        handler.apply(this, args)
+        this.off(event, func)
+    }
+    this.on(event, func)
+  }
+})
+
+const handler = data => console.log(data)
+const hub = createEventHub()
+let increment = 0
+
+hub.once('m', () => console.log('m'))
+hub.on('m', () => console.log('sss'))
+hub.emit('m')
+// Subscribe: listen for different types of events
+hub.on('message', handler)
+hub.on('message', () => console.log('Message event fired'))
+hub.on('increment', () => increment++)
+
+// Publish: emit events to invoke all handlers subscribed to them, passing the data to them as an argument
+hub.emit('message', 'hello world') // logs 'hello world' and 'Message event fired'
+hub.emit('message', { hello: 'world' }) // logs the object and 'Message event fired'
+hub.emit('increment') // `increment` variable is now 1
+
+// Unsubscribe: stop a specific handler from listening to the 'message' event
+hub.off('message', handler)
+
