@@ -66,3 +66,69 @@
 // };
 
 // isSubsequence("acb", "ahbgdc")
+
+
+// 17. 电话号码的字母组合
+
+// /**
+//  * @param {string} digits
+//  * @return {string[]}
+//  */
+// var letterCombinations = function(digits) {
+//     const letterMap = [
+//         " ",
+//         "",
+//         "abc",
+//         "def",
+//         "ghi",
+//         "jkl",
+//         "mno",
+//         "pgrs",
+//         "tuv",
+//         "wxyz"
+//     ]
+//     let res = []
+//     findCombination(0, "")
+//     function findCombination(index, s) {
+//         if(index === digits.length) {
+//             res.push(s)
+//             return 
+//         }
+//         let c = digits[index]
+//         let letters = letterMap[c]
+//         debugger
+//         for(let i = 0; i < letters.length; i++) {
+//             findCombination(index+1, s + letters[i])
+//         }
+//         return
+//     }
+//     return res
+// };
+// letterCombinations("23")
+
+// 46. 全排列
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+    let res = [[nums.shift()]];
+    
+    while (nums.length) {
+        let num = nums.shift();
+        let temp = [];
+        
+        for (let i = 0; i < res.length; i++) {
+            let len = res[i].length;
+            for (let j = 0; j <= len; j++) {
+                let cur = res[i].slice();
+                cur.splice(j, 0, num)
+                temp.push(cur);
+            }
+        }
+        res = temp;
+    }
+    return res;
+ }
+permute([1,2,3])
