@@ -1,32 +1,29 @@
-var timer = null;
-window.onscroll = function () {
-  clearTimeout(timer);
-  timer = setTimeout(function () {
+function getJSON(url) {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
 
-  }, 500)
-}
+    request.open("GET", url);
 
-var can = true;
-
-window.onscroll = function () {
-  if (!can) {
-    return false;
-  }
-  can = false;
-  setTimeout(function () {
-    can = true;
-  })
-
-}
-
-var add = (function () {
-  var task = [];
-  return function (...args) {
-    if (args.length === 0) {
-      return
-    } else {
-
-      task.push(args[1])
+    request.onload = function () {
+      try {
+        if (this.status === 200) {
+          resolve(JSON.parse(this.response));
+        } else {
+          reject(this.status + " " + this.statusText);
+        }
+      } catch (e) {
+        reject(e.message);
+      }
     }
-  }
-})();
+
+    request.onerror = function () {
+      reject(this.status + " " + this.statusText);
+    }
+
+    request.send();
+  });
+}
+
+getJSON("data/ninjas.json").then(ninjas => {
+  assert(ninjas !== null, "Ninjas obtained!");
+}).catch(e => fail("Shouldn't be here:" + e));
