@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=320">
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=e165f61bd0b49579893e27c23326ad27"></script>
+  <script src="https://cdn.staticfile.org/axios/0.19.0-beta.1/axios.min.js"></script>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          clientWidth = clientWidth < 780 ? clientWidth : 780;
+          docEl.style.fontSize = 50 * (clientWidth / 320) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+      // recalc();
+    })(document, window);
+
+  </script>
+  <script type="text/javascript" src="https://i.tq121.com.cn/j/wap2016/news04/zepto.min.js"></script>
+  <script src="https://i.tq121.com.cn/j/wap2017/swiper.min.js"></script>
+  <script src="https://i.tq121.com.cn/j/wap2018/swiper_zepto_sortable_switch.js"></script>
+  <link rel="stylesheet" href="https://i.tq121.com.cn/c/wap2016/news/swiper.css?45" />
+  <link rel="stylesheet" href="./style.css" />
+
+</head>
+<style type="text/css">
+  html,
+  body,
+  #container {
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<body>
+  <div id="container"></div>
+  <div id="conent">
+    <div class="hint"></div>
+    <div class="n_wd">
+      <h1>
+        <span>12</span>
+        <b>°</b>
+        <em> 晴</em>
+      </h1>
+      <h2>
+        <span class="flfx iconli">西北风 2级
+        </span>
+        <span class="xdsd iconli">相对湿度 17%</span>
+      </h2>
+    </div>
+    <div class="hours72" id="hours72">
+        <!-- Swiper -->
+        <div class="swiper-containerLi">
+          <div class="swiper-wrapper swiper-wrapper1">
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">21时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">12°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">22时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">11°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">23时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">00时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">01时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">9°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">02时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">8°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">03时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">7°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">04时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">7°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">05时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">6°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">06时</div>
+              <i class="svnicon housr_icons d00"></i>
+              <div class="tempLi">6°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">07时</div>
+              <i class="svnicon housr_icons d00"></i>
+              <div class="tempLi">6°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">08时</div>
+              <i class="svnicon housr_icons d00"></i>
+              <div class="tempLi">6°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">09时</div>
+              <i class="svnicon housr_icons d00"></i>
+              <div class="tempLi">7°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">10时</div>
+              <i class="svnicon housr_icons d01"></i>
+              <div class="tempLi">8°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">11时</div>
+              <i class="svnicon housr_icons d01"></i>
+              <div class="tempLi">9°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">12时</div>
+              <i class="svnicon housr_icons d01"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">13时</div>
+              <i class="svnicon housr_icons d02"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">14时</div>
+              <i class="svnicon housr_icons d02"></i>
+              <div class="tempLi">11°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">15时</div>
+              <i class="svnicon housr_icons d02"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">16时</div>
+              <i class="svnicon housr_icons d01"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">17时</div>
+              <i class="svnicon housr_icons d01"></i>
+              <div class="tempLi">10°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">18时</div>
+              <i class="svnicon housr_icons d01"></i>
+              <div class="tempLi">9°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">19时</div>
+              <i class="svnicon housr_icons d00"></i>
+              <div class="tempLi">8°</div>
+            </div>
+            <div class="swiper-slide" style="background:none;">
+              <div class="timeLi">20时</div>
+              <i class="svnicon housr_icons n00"></i>
+              <div class="tempLi">6°</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+<style>
+  #conent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 500px;
+    background: #043567;
+    border-top: 1px solid #ccc;
+    color: #fff;
+  }
+</style>
+<script>
+  var zeroDateIndex = new Array();
+    $(".timeLi").each(function (i, c) {
+
+
+      if ($(this).text().substring(0, 2) == "00") {
+        zeroDateIndex.push(i - 1);
+      }
+
+    })
+
+var swiper = new Swiper('#hours72 .swiper-containerLi', {
+        pagination: '#hours72 .swiper-containerLi .swiper-paginationLi',
+        slidesPerView: 6.5,
+        spaceBetween: 0,
+        initialSlide: 0,
+        freeMode: true,
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        onSlideChangeStart: function(swiper) {
+            if (swiper.activeIndex > zeroDateIndex[0]) {
+                $(".tianqicontDiv").find('li').removeClass('activeLi');
+                $(".tianqicontDiv").find('li').eq(2).addClass('activeLi');
+            } else {
+                $(".tianqicontDiv").find('li').removeClass('activeLi');
+                $(".tianqicontDiv").find('li').eq(1).addClass('activeLi');
+            }
+        },
+        onSlideChangeEnd: function(swiper) {
+            if (swiper.activeIndex > zeroDateIndex[0]) {
+                $(".tianqicontDiv").find('li').removeClass('activeLi');
+                $(".tianqicontDiv").find('li').eq(2).addClass('activeLi');
+            } else {
+                $(".tianqicontDiv").find('li').removeClass('activeLi');
+                $(".tianqicontDiv").find('li').eq(1).addClass('activeLi');
+            }
+        }
+      }    
+)
+</script>
+</html>
