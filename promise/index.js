@@ -115,4 +115,24 @@ APromise.race = promises => {
 	return result
 }
 
-export default APromise
+
+function getNums () {
+    return new APromise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1)
+        })
+    })
+}
+
+getNums()
+    .then(res => {
+        return res + 2
+    })
+    .then(r => {
+        console.log(r)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
+// export default APromise
