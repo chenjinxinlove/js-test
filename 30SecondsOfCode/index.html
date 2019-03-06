@@ -7,5 +7,13 @@
 <body>
 
 </body>
-<script src="./index.40.1.js"></script>
+<script>
+    var url ='https://www.chenjinxinlove.com/tianqi/webgis_rain_new?lat=35.9&lon=116.5&serialNo=1000512&appkey=28368882e7af97daf9b91f0dd279a5d5'
+    var request = new XMLHttpRequest()
+    request.open('get', url)
+    request.send()
+    request.onload = function () {
+        console.log(this)
+      }
+</script>
 </html>
