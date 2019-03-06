@@ -6,6 +6,28 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=320">
   <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=e165f61bd0b49579893e27c23326ad27"></script>
   <script src="https://cdn.staticfile.org/axios/0.19.0-beta.1/axios.min.js"></script>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          clientWidth = clientWidth < 780 ? clientWidth : 780;
+          docEl.style.fontSize = 50 * (clientWidth / 320) + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+      // recalc();
+    })(document, window);
+
+  </script>
+  <script type="text/javascript" src="https://i.tq121.com.cn/j/wap2016/news04/zepto.min.js"></script>
+  <script src="https://i.tq121.com.cn/j/wap2017/swiper.min.js"></script>
+  <script src="https://i.tq121.com.cn/j/wap2018/swiper_zepto_sortable_switch.js"></script>
+  <link rel="stylesheet" href="https://i.tq121.com.cn/c/wap2016/news/swiper.css?45" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <style type="text/css">
 html, body, #container {
@@ -21,14 +43,33 @@ html, body, #container {
       <div class="hint">
 
       </div>
-      <div class="current">
-
+      <div class="n_wd">
+        
       </div>
-      <div class="forecast">
-
+      <div class="hours72" id="hours72">
+          <!-- Swiper -->
+          <div class="swiper-containerLi">
+            <div class="swiper-wrapper swiper-wrapper1">
+              
+            </div>
+          </div>
       </div>
   </div>
-  <script src="http://118.24.107.173:8090/map/map.js"></script>
+  <!-- <script src="http://118.24.107.173:8090/map/map.js"></script> -->
   <script src="./info.js"></script>
+  <style>
+    #content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 400px;
+      background: #043567;
+      border-top: 1px solid #ccc;
+      color: #fff;
+    }
+  </style>
+
 </body>
 </html>

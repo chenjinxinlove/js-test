@@ -6,3 +6,719 @@
     bottom: 0;
     transition: all 500ms;
 }
+body {
+    background: #ebebeb;
+    color: #252525;
+    font-size: .28rem;
+    margin: 0 auto;
+    max-width: 640px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none
+  }
+  
+  * {
+    margin: 0;
+    padding: 0
+  }
+  
+  p {
+    margin: 0
+  }
+  
+  ul, ol, li {
+    list-style: none
+  }
+  
+  a {
+    color: #888;
+    text-decoration: none
+  }
+  
+  a:active, a:hover {
+    outline: 0
+  }
+  
+  img {
+    border: 0
+  }
+  
+  input, button, select, textarea {
+    border-radius: 0;
+    outline: 0;
+    -webkit-appearance: button
+  }
+  
+  textarea {
+    resize: none
+  }
+  
+  cite, em {
+    font-style: normal
+  }
+  
+  .f-l {
+    float: left
+  }
+  
+  .f-r {
+    float: right
+  }
+  
+  .weathercont {
+    padding-top: .9rem;
+    position: relative
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+    padding: 0
+  }
+  
+  .page.page-current {
+    overflow: auto
+  }
+  
+  .housr_icons {
+    background: url(https://i.tq121.com.cn/i/wap2017/weather_icon_wap.png) no-repeat;
+    background-size: 350px auto
+  }
+  
+  .d00 {
+    background-position: 0 0
+  }
+  
+  .d01 {
+    background-position: -26px 0
+  }
+  
+  .d03 {
+    background-position: -85px 0
+  }
+  
+  .d13 {
+    background-position: -26px -30px
+  }
+  
+  .d02 {
+    background-position: -56px 0
+  }
+  
+  .d04 {
+    background-position: -115px 0
+  }
+  
+  .d05 {
+    background-position: -145px 0
+  }
+  
+  .d06 {
+    background-position: -173px 0
+  }
+  
+  .d07 {
+    background-position: -203px 0
+  }
+  
+  .d08 {
+    background-position: -233px 0
+  }
+  
+  .d09 {
+    background-position: -260px 0
+  }
+  
+  .d10 {
+    background-position: -290px 0
+  }
+  
+  .d11 {
+    background-position: -320px 0
+  }
+  
+  .d12 {
+    background-position: 0 -30px
+  }
+  
+  .d14 {
+    background-position: -56px -30px
+  }
+  
+  .d15 {
+    background-position: -85px -30px
+  }
+  
+  .d16 {
+    background-position: -115px -30px
+  }
+  
+  .d17 {
+    background-position: -145px -30px
+  }
+  
+  .d18 {
+    background-position: -173px -30px
+  }
+  
+  .d19 {
+    background-position: -203px -30px
+  }
+  
+  .d20 {
+    background-position: -233px -30px
+  }
+  
+  .d21 {
+    background-position: -260px -30px
+  }
+  
+  .d22 {
+    background-position: -290px -30px
+  }
+  
+  .d23 {
+    background-position: -320px -30px
+  }
+  
+  .d24 {
+    background-position: 0 -56px
+  }
+  
+  .d25 {
+    background-position: -26px -56px
+  }
+  
+  .d26 {
+    background-position: -56px -56px
+  }
+  
+  .d27 {
+    background-position: -85px -56px
+  }
+  
+  .d28 {
+    background-position: -115px -56px
+  }
+  
+  .d29 {
+    background-position: -145px -56px
+  }
+  
+  .d30 {
+    background-position: -173px -56px
+  }
+  
+  .d31 {
+    background-position: -203px -56px
+  }
+  
+  .d53 {
+    background-position: -233px -56px
+  }
+  
+  .d99 {
+    background-position: -260px -56px
+  }
+  
+  .d32 {
+    background-position: -290px -56px
+  }
+  
+  .d49 {
+    background-position: -320px -56px
+  }
+  
+  .d54 {
+    background-position: 0 -86px
+  }
+  
+  .d55 {
+    background-position: -26px -86px
+  }
+  
+  .d56 {
+    background-position: -56px -86px
+  }
+  
+  .d57 {
+    background-position: -85px -86px
+  }
+  
+  .d58 {
+    background-position: -115px -86px
+  }
+  
+  .d301 {
+    background-position: -145px -86px
+  }
+  
+  .d302 {
+    background-position: -173px -86px
+  }
+  
+  .d97 {
+    background-position: -145px -86px
+  }
+  
+  .d98 {
+    background-position: -173px -86px
+  }
+  
+  .n00 {
+    background-position: -204px -88px
+  }
+  
+  .n01 {
+    background-position: -233px -85px
+  }
+  
+  .n03 {
+    background-position: -261px -86px
+  }
+  
+  .n13 {
+    background-position: -291px -86px
+  }
+  
+  .n02 {
+    background-position: -56px 0
+  }
+  
+  .n04 {
+    background-position: -115px 0
+  }
+  
+  .n05 {
+    background-position: -145px 0
+  }
+  
+  .n06 {
+    background-position: -173px 0
+  }
+  
+  .n07 {
+    background-position: -203px 0
+  }
+  
+  .n08 {
+    background-position: -233px 0
+  }
+  
+  .n09 {
+    background-position: -260px 0
+  }
+  
+  .n10 {
+    background-position: -290px 0
+  }
+  
+  .n11 {
+    background-position: -320px 0
+  }
+  
+  .n12 {
+    background-position: 0 -30px
+  }
+  
+  .n14 {
+    background-position: -56px -30px
+  }
+  
+  .n15 {
+    background-position: -85px -30px
+  }
+  
+  .n16 {
+    background-position: -115px -30px
+  }
+  
+  .n17 {
+    background-position: -145px -30px
+  }
+  
+  .n18 {
+    background-position: -173px -30px
+  }
+  
+  .n19 {
+    background-position: -203px -30px
+  }
+  
+  .n20 {
+    background-position: -233px -30px
+  }
+  
+  .n21 {
+    background-position: -260px -30px
+  }
+  
+  .n22 {
+    background-position: -290px -30px
+  }
+  
+  .n23 {
+    background-position: -320px -30px
+  }
+  
+  .n24 {
+    background-position: 0 -56px
+  }
+  
+  .n25 {
+    background-position: -26px -56px
+  }
+  
+  .n26 {
+    background-position: -56px -56px
+  }
+  
+  .n27 {
+    background-position: -85px -56px
+  }
+  
+  .n28 {
+    background-position: -115px -56px
+  }
+  
+  .n29 {
+    background-position: -145px -56px
+  }
+  
+  .n30 {
+    background-position: -173px -56px
+  }
+  
+  .n31 {
+    background-position: -203px -56px
+  }
+  
+  .n53 {
+    background-position: -233px -56px
+  }
+  
+  .n99 {
+    background-position: -260px -56px
+  }
+  
+  .n32 {
+    background-position: -290px -56px
+  }
+  
+  .n49 {
+    background-position: -320px -56px
+  }
+  
+  .n54 {
+    background-position: 0 -86px
+  }
+  
+  .n55 {
+    background-position: -26px -86px
+  }
+  
+  .n56 {
+    background-position: -56px -86px
+  }
+  
+  .n57 {
+    background-position: -85px -86px
+  }
+  
+  .n58 {
+    background-position: -115px -86px
+  }
+  
+  .n301 {
+    background-position: -145px -86px
+  }
+  
+  .n302 {
+    background-position: -173px -86px
+  }
+  
+  .n97 {
+    background-position: -145px -86px
+  }
+  
+  .n98 {
+    background-position: -173px -86px
+  }
+  
+  .air-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+  }
+  
+  .air-ellipsis-2 {
+    display: --webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: normal!important;
+    word-wrap: break-word
+  }
+  
+  .svnicon {
+    display: block;
+    height: 29px;
+    margin: 0 auto;
+    margin-top: 48px;
+    width: 29px
+  }
+  
+  .hours72 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+    border-bottom: .5px solid rgba(255, 255, 255, 0.25);
+    border-top: .5px solid rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+    position: relative;
+    width: 100%
+  }
+  
+  .hours72 ul {
+    float: left;
+    margin: 10px 0;
+    position: relative;
+    width: 365%
+  }
+  
+  .hours72 ul li {
+    background: 0;
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    width: 4.16%
+  }
+  
+  .weather-back {
+    overflow-x: hidden;
+    width: 100%
+  }
+  
+  .swiper-containerLi {
+    height: 1.997rem;
+    margin-bottom: .17rem
+  }
+  
+  .swiper-containerlq .swiper-slide:first-child dl {
+    background: url(https://i.tq121.com.cn/i/wap2017/uv.png?fd) no-repeat 0 0 / .4rem auto
+  }
+  
+  .swiper-slide {
+    align-items: center;
+    color: #000;
+    color: #fff;
+    justify-content: center;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center
+  }
+  
+  .timeLi {
+    font-size: .23rem;
+    left: 0;
+    position: absolute;
+    top: 15px;
+    width: 100%
+  }
+  
+  .tempLi {
+    bottom: 10px;
+    font-size: .24rem;
+    left: 0;
+    position: absolute;
+    width: 100%
+  }
+  
+  .timeLi b {
+    font-weight: normal
+  }
+  
+  .n_wd h1 {
+    color: #fff;
+    font-size: 1rem;
+    height: 1.9rem;
+    line-height: 2.3rem;
+    padding-left: .2rem;
+    position: relative;
+    text-align: left;
+    font-weight: 300
+  }
+  
+  .n_wd h1 b {
+    font-size: .7rem;
+    font-weight: normal;
+    position: relative;
+    top: -0.3rem;
+    font-weight: 300
+  }
+  
+  .n_wd h1 em {
+    color: #fff;
+    font-size: .3rem;
+    height: .65rem;
+    text-align: center
+  }
+  
+  .n_wd h2 {
+    clear: both;
+    color: #fff;
+    height: .8rem;
+    padding-top: 0rem
+  }
+  
+  .n_wd h2 span {
+    background-size: 5.7rem auto;
+    display: block;
+    float: left;
+    font-size: .24rem;
+    line-height: .5rem;
+    margin-left: .2rem;
+    padding-left: .55rem
+  }
+  
+  .n_wd h2 span.flfx {
+    background-position: -5.25rem -4.15rem
+  }
+  
+  .n_wd h2 span.xdsd {
+    background-position: -5.25rem -4.72rem
+  }
+  
+  .n_wd h2 span.njd {
+    background-position: -5.25rem -5.28rem
+  }
+  .n_wd h3 {
+    height: .6rem;
+    margin-bottom: .5rem
+  }
+  .rain{
+    padding-left: 0.1rem !important;
+  }
+  .n_wd h3 a {
+    border-radius: 6px;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: .22rem;
+    height: .6rem;
+    line-height: .6rem;
+    margin-left: .2rem;
+    padding-left: .6rem;
+    width: 1rem
+  }
+  
+  .n_wd h3 a b {
+    font-size: .18rem;
+    font-weight: normal;
+    padding-left: .1rem
+  }
+  
+  .hours72 h1 {
+    color: #fff;
+    font-size: .28rem;
+    font-weight: 500;
+    margin-top: .426rem;
+    text-indent: .256rem;
+    width: 100%
+  }
+  
+  .n_wd h3 a.fzjs {
+    background: url(https://i.tq121.com.cn/i/wap2017/new_bg.png) no-repeat rgba(0, 0, 0, 0.16) -1.3rem -2rem / 4.3rem auto
+  }
+  
+  .n_wd h3 a.zwx {
+    background: url(https://i.tq121.com.cn/i/wap2017/new_bg.png) no-repeat rgba(0, 0, 0, 0.16) .1rem -2.55rem / 4.3rem auto;
+    width: 1.2rem
+  }
+  
+  .n_wd h3 a.lv2 {
+    background-position: .1rem -3.1rem
+  }
+  
+  .n_wd h3 a.lv3 {
+    background-position: .1rem -3.7rem
+  }
+  
+  .n_wd h3 a.lv4 {
+    background-position: .1rem -4.35rem
+  }
+  
+  .n_wd h3 a.lv5 {
+    background-position: .1rem -4.92rem
+  }
+  
+  .n_wd p {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: .3rem;
+    height: .5rem;
+    line-height: .5rem;
+    margin-left: .25rem;
+    padding: 0 .2rem;
+    padding-right: 0;
+    top: -0.3rem;
+    width: 3rem
+  }
+  
+  .n_wd p a {
+    color: #fff;
+    display: block;
+    font-size: .22rem;
+    height: 100%;
+    overflow: hidden;
+    width: 95%
+  }
+  
+  .n_wd h3 a.aqi {
+    background: rgba(0, 0, 0, 0.16);
+    padding-left: 0;
+    padding-right: .2rem;
+    width: auto
+  }
+  
+  .n_wd h3 a.aqi span {
+    border-radius: .4rem;
+    display: block;
+    float: left;
+    font-size: .16rem;
+    height: .35rem;
+    left: .1rem;
+    line-height: .35rem;
+    position: relative;
+    text-align: center;
+    top: .13rem;
+    width: .35rem
+  }
+  
+  .n_wd h3 a.aqi b {
+    display: block;
+    float: left;
+    font-size: .22rem;
+    margin-left: .1rem
+  }
+  
+  .n_wd h3 .sudu b {
+    border-radius: 6px;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: .22rem;
+    height: .6rem;
+    line-height: .6rem;
+    margin: .1rem 0rem .11rem .1rem;
+    padding-left: .6rem;
+    padding-right: .15rem;
+    width: auto
+  }
+  
+  .iconli {
+    background: url(https://i.tq121.com.cn/i/wap2017/bg.png?20180808) no-repeat;
+    background-size: 7rem auto
+  }
