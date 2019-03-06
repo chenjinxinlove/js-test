@@ -67,6 +67,7 @@ var WINDCODE = {
 
     }
     info.prototype.init = function () {
+       
         this.getInfoData(p)
     }
     // 根据经纬读取 国内1*1公里3天逐小时格点预报
@@ -203,6 +204,10 @@ var WINDCODE = {
         }
         $('.swiper-wrapper').html(strTel)
         this.initSwiper()
+        $('#content').show(500);
+        $('.clone').on('click', function () {
+            $('#content').hide(500);
+        })
     }
     // 初始化滑动列表
     info.prototype.initSwiper = function () {
@@ -243,4 +248,6 @@ var WINDCODE = {
     window.Info = new info();
 })(window)
 
-window.Info.init()
+$('.click').on('click', function () {
+    window.Info.init()
+})
