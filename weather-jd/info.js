@@ -59,14 +59,13 @@ var WINDCODE = {
 };
 
 (function (window) {
-    var p = [116.33, 39.95]
     var baseUrl = 'https://www.chenjinxinlove.com'
     var appkey = '28368882e7af97daf9b91f0dd279a5d5'
 
     function info() {
 
     }
-    info.prototype.init = function () {
+    info.prototype.init = function (p) {
        
         this.getInfoData(p)
     }
@@ -204,9 +203,9 @@ var WINDCODE = {
         }
         $('.swiper-wrapper').html(strTel)
         this.initSwiper()
-        $('#content').show(500);
+        $('#content').hide().slideDown();
         $('.clone').on('click', function () {
-            $('#content').hide(500);
+            $('#content').show().slideUp();
         })
     }
     // 初始化滑动列表
@@ -249,5 +248,5 @@ var WINDCODE = {
 })(window)
 
 $('.click').on('click', function () {
-    window.Info.init()
+    window.Info.init([116.33, 39.95])
 })
