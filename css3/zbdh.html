@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="clock-box">
+        <div class="clock"></div>
+    </div>
+</body>
+<style>
+.clock-box {
+   width:300px;
+   height:300px;
+   margin:100px auto;
+   border:1px solid #00ff90;
+}
+
+.clock {
+   width: 2px;
+   height: 100px;
+   background: #000000;
+   margin: 30px auto;
+   position: relative;
+ }
+.clock::after {
+   content: "";
+   position: absolute;
+   bottom: -20px;
+   left: -9px;
+   width: 20px;
+   height: 20px;
+   border-radius: 10px;
+   background: #ff0000;
+}
+
+.clock {
+   animation: go 1s ease-in-out alternate infinite;
+}
+@keyframes go {
+   0% {
+       transform: rotate(30deg);
+       transform-origin: top center;
+    }
+    100% {
+       transform: rotate(-30deg);
+       transform-origin: top center;
+    }
+}
+</style>
+</html>
