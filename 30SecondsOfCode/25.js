@@ -18,7 +18,7 @@ const  curry = function(fn) {
     var args = [];
     return function() {
         if (arguments.length === 0) {
-            fn.apply(this, args)
+            fn.apply(this, args.slice(1))
         } else {
             [].push.apply(args, arguments)
             return arguments.callee
@@ -30,7 +30,7 @@ Function.prototype.bind = function(context) {
     var self = this,
         args = [].slice.call(arguments);
     return function() {
-        return self.apply(context, args.slice(1))
+        return self.apply(context, args[1])
     }
 }
 
@@ -52,7 +52,7 @@ const throttle = (fn, ms = 500) => {
             return
         }
         if (timerId) {
-            return false
+            return 
         }
         timerId = setTimeout(() => {
             clearTimeout(timerId)
@@ -66,7 +66,7 @@ const createEventHub = () => ({
         (this.hub[event] || []).forEach(h => h(data))
     },
     on(event, fn) {
-        if(this.hub[event]) this.hub[event] = []
+        if(!this.hub[event]) this.hub[event] = []
         this.hub[event].push(fn)
     },
     off(event, fn) {
@@ -254,7 +254,7 @@ function async(generation) {
         }
         var generatorValue = generatorResult.value
         if (genaratorReslut instanceof Promise) {
-            genaratorReslut.then((res) => handle(res.next()))
+            generatorValue.then((res) => handle(res.next()))
                 .catch(err => ite.throw(err))
         }
     }
