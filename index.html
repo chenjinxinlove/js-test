@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>1</title>
+  <link rel="dns-prefetch" href="https://img.58cdn.com.cn">
+  <meta name="description" content="转转前端vue项目">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta content="telephone=no,email=no" name="format-detection" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <script>
+    !(function(c,b,d,a){c[a]||(c[a]={});c[a].config={pid:"hl35o0xded@80ba25e0c7c1851",appType:"web",imgUrl:"https://arms-retcode.aliyuncs.com/r.png?",useFmp:true,enableSPA:true,sendResource:true};
+    with(b)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("crossorigin","",src=d)
+    })(window,document,"https://retcode.alicdn.com/retcode/bl.js","__bl");
+    </script>
+</head>
+
+<body>
+  <div id="app">
+    <style>
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #F2F3F6;
+  }
+
+  .loading.off {
+    display: none;
+  }
+
+  .loading .loading-indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -60px;
+    margin-top: -50px;
+    width: 120px;
+    height: 100px;
+    /* border-radius: 6px; */
+    /* background-color: rgba(0, 0, 0, 0.8); */
+  }
+
+  .loading .loading-indicator:after {
+    display: block;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    width: 40px;
+    height: 40px;
+    background:  url(http://img1.zhuanstatic.com/common/img/loading.gif) no-repeat 50% 50%;
+    background-size: 40px 40px;
+    /* -webkit-animation: rotate 1s linear infinite; */
+  }
+</style>
+<script src="https://s1.zhuanstatic.com/common/callapp/static/js/v2.0.6/index.js"></script>
+<div class="loading">
+  <div class="loading-indicator"></div>
+</div>
+  </div>
+  <!-- built files will be auto injected -->
+<!-- <script src="http://10.242.24.0:8080/common/pro_together_run_cli/vendor.js"> -->
+<!-- </script><script src="http://10.242.24.0:8080/common/pro_together_run_cli/app.js"></script> -->
+</body>
+<script>
+//const path = 'https%3a%2f%2fm.zhuanzhuan.com%2fopen%2fZZAntiqueToolBusiness%2findex.html%3fenterType%3d1%26campName%3dopenwenwan%23%2fenterActivity';
+//const path = 'https://m.zhuanzhuan.com/open/ZZAntiqueToolBusiness/index.html?enterType=1&campName=openwenwan#/enterActivity';
+//alert(decodeURIComponent(path))
+// const path = window.location.href;
+// console.log('dddd', decodeURIComponent(path))
+
+// const callApp = new CallApp();
+// callApp.start({ path });
+
+function compareVersion (currVer='0.0.0', previousVer='0.0.0') {
+			if (currVer == previousVer) return true;
+			let currVerArr = currVer.split("."),
+        previousVerArr = previousVer.split(".");
+			let len = Math.max(currVerArr.length, previousVerArr.length);
+			for (let i = 0; i < len; i++) {
+				let preVal =  Number(previousVerArr[i]),
+					curVal = Number(currVerArr[i]);
+				if (preVal < curVal) {
+					return true;
+				} else if (preVal > curVal) {
+					return false;
+				}
+			}
+			return true;
+    }
+    
+    
+</script>
+</html>

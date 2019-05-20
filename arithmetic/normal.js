@@ -42,50 +42,50 @@ function fibonacci(n) {
 
 // 前序遍历
 
-var preorderTraversal = function(root) {
+var preorder = function(root) {
     const res = [];
-    function preorder(node) {
+    function order(node) {
         if (node) {
             res.push(node.val);
-            preorder(node.left);
-            preorder(node.right);
+            order(node.left);
+            order(node.right);
         }
     }
-    preorder(root)
+    order(root)
     return res;
 };
 
 // 中序遍历
 
-var inorderTraversal = function(root) {
+var inorder = function(root) {
     const res = [];
-    function mid (node) {
+    function order(node) {
         if (node) {
-            mid(node.left)
+            order(node.left)
             res.push(node.val)
-            mid(node.right)
+            order(node.right)
         }
     }
-    mid(root)
+    order(root)
     return res;
 };
 
 // 后序遍历
 
-var postorderTraversal = function(root) {
+var postorder = function(root) {
     const res = [];
-    function n(node) {
+    function order(node) {
         if (node) {
-            n(node.left)
-            n(node.right)
+            order(node.left)
+            order(node.right)
             res.push(node.val)
         }
     }
-    n(root)
+    order(root)
     return res
 };
 
-// 翻转链表
+// 翻转二叉树
 
 var invertTree = function(root) {
     if(root == null) {
